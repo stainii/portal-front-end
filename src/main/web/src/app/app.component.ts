@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     @HostListener('document:visibilitychange', [ '$event' ])
     checkIfLoginTokenHasNotExpired($event) {
         console.info("The page lost focus and regained it, checking if user token is still valid.");
-        this._userService.checkTokenValidity();
+        this._userService.logOutWhenTokenHasExpired();
     }
 
 }

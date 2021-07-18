@@ -26,10 +26,15 @@ export class RetryInterceptor implements HttpInterceptor {
             src.pipe(
                 retryWhen((errors: Observable<any>) => errors.pipe(
                     mergeMap((error: HttpErrorResponse) => {
-                        // first, check if the user token is still valid
-                        this._userService.checkTokenValidity();
-                        if (!this._userService.isLoggedIn()) {
+                        // check if the user token is still valid
+                        if (this._userService.getLoggedInUser()?.token.hasExpired()) {
+                            this._userService.logOutWhenTokenHasExpired();
                             return this.logAndThrowError("User token was expired.", error);
+                        }
+
+                        // check if we're trying to log in. Do not retry these calls
+                        if (error.url.indexOf("auth-service/auth/") != -1) {
+                            return this.logAndThrowError("Invalid username or password", error);
                         }
 
                         // something went wrong, let's retry

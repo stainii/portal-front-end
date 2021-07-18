@@ -42,7 +42,7 @@ export class UserService {
         this._logInStatusWatcher.next(false);
     }
 
-    checkTokenValidity() {
+    logOutWhenTokenHasExpired() {
         if (this.isLoggedIn() &&
             this.getLoggedInUser().token.hasExpired()) {
             this.logOut();
