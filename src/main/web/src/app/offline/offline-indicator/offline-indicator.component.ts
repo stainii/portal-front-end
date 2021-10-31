@@ -1,21 +1,34 @@
-import {Component} from '@angular/core';
-import {fromEvent} from "rxjs";
-import {mapTo} from "rxjs/operators";
+import {Component, OnDestroy} from '@angular/core';
+import {fromEvent, Subject} from "rxjs";
+import {mapTo, takeUntil} from "rxjs/operators";
 
 @Component({
     selector: 'app-offline-indicator',
     templateUrl: './offline-indicator.component.html',
     styleUrls: ['./offline-indicator.component.scss']
 })
-export class OfflineIndicatorComponent {
+export class OfflineIndicatorComponent implements OnDestroy {
 
     isOffline: boolean;
+    private destroy$ = new Subject<void>();
 
     constructor() {
-        fromEvent(window, 'offline').pipe(mapTo(true))
+        fromEvent(window, 'offline')
+            .pipe(
+                takeUntil(this.destroy$),
+                mapTo(true)
+            )
             .subscribe(isOffline => this.isOffline = isOffline);
-        fromEvent(window, 'online').pipe(mapTo(true))
-            .subscribe(isOnline => this.isOffline = !isOnline);
+
+        fromEvent(window, 'online')
+            .pipe(
+                takeUntil(this.destroy$),
+                mapTo(true)
+            ).subscribe(isOnline => this.isOffline = !isOnline);
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next();
     }
 
 }

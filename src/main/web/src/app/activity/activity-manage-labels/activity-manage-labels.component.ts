@@ -1,9 +1,9 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {Observable} from "rxjs";
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Observable, Subject} from "rxjs";
 import {LabelService} from "@app/activity/label.service";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {MatAutocomplete, MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
-import {map, startWith} from "rxjs/operators";
+import {map, startWith, takeUntil} from "rxjs/operators";
 import {FormControl} from "@angular/forms";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 
@@ -12,7 +12,7 @@ import {COMMA, ENTER} from "@angular/cdk/keycodes";
     templateUrl: './activity-manage-labels.component.html',
     styleUrls: ['./activity-manage-labels.component.scss']
 })
-export class ActivityManageLabelsComponent implements OnInit {
+export class ActivityManageLabelsComponent implements OnInit, OnDestroy {
 
     existingLabels: string[] = [];
     filteredLabels: Observable<string[]>;
@@ -29,6 +29,8 @@ export class ActivityManageLabelsComponent implements OnInit {
     @ViewChild('auto')
     matAutocomplete: MatAutocomplete;
 
+    private destroy$ = new Subject<void>();
+
     constructor(private labelService: LabelService) {
         this.filteredLabels = this.labelCtrl.valueChanges.pipe(
             startWith(null),
@@ -36,9 +38,15 @@ export class ActivityManageLabelsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.labelService.findAllLabels().subscribe(labels =>
-            this.existingLabels = labels
-        );
+        this.labelService.findAllLabels()
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(labels =>
+                this.existingLabels = labels
+            );
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next();
     }
 
     add(event: MatChipInputEvent): void {

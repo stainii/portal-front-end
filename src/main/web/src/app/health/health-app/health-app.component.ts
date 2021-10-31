@@ -1,19 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {ExecutionService} from "@app/recurring-tasks/execution.service";
 import {RecurringTaskService} from "@app/recurring-tasks/recurring-task.service";
 import {Execution} from "@app/recurring-tasks/execution.model";
 import {DEPLOYMENT_NAME} from "@app/health/health-constants";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
-  selector: 'app-health-app',
-  templateUrl: './health-app.component.html',
-  styleUrls: ['./health-app.component.scss']
+    selector: 'app-health-app',
+    templateUrl: './health-app.component.html',
+    styleUrls: ['./health-app.component.scss']
 })
-export class HealthAppComponent implements OnInit {
+export class HealthAppComponent implements OnInit, OnDestroy {
 
     recurringTasks: RecurringTask[];
+
+    private destroy$ = new Subject<void>();
 
     constructor(private _executionService: ExecutionService,
                 private _snackBar: MatSnackBar,
@@ -24,8 +28,13 @@ export class HealthAppComponent implements OnInit {
         this._findAllRecurringTasks();
     }
 
+    ngOnDestroy(): void {
+        this.destroy$.next();
+    }
+
     addExecution(execution: Execution) {
         this._executionService.addExecution(DEPLOYMENT_NAME, execution)
+            .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
                 this._snackBar.open("Done!", "Ow yeah!", {
                     duration: 2000,
@@ -37,6 +46,7 @@ export class HealthAppComponent implements OnInit {
     _findAllRecurringTasks() {
         this._recurringTaskService
             .findAll(DEPLOYMENT_NAME)
+            .pipe(takeUntil(this.destroy$))
             .subscribe(recurringTasks => this.recurringTasks = recurringTasks);
     }
 

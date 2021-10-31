@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TaskService} from "@app/todo/task.service";
-import {map} from "rxjs/operators";
-import {Observable} from "rxjs";
+import {map, takeUntil} from "rxjs/operators";
+import {Observable, Subject} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -10,13 +10,15 @@ import {ActivatedRoute, Router} from "@angular/router";
     templateUrl: './todo-menu-bar-for-overview.component.html',
     styleUrls: ['./todo-menu-bar-for-overview.component.scss']
 })
-export class TodoMenuBarForOverviewComponent implements OnInit {
+export class TodoMenuBarForOverviewComponent implements OnInit, OnDestroy {
 
     contexts$: Observable<string[]>;
     selectedContext: string;
 
     isHandset$: Observable<boolean> = this._breakpointObserver.observe(Breakpoints.Handset)
         .pipe(map(result => result.matches));
+
+    private destroy$ = new Subject<void>();
 
     constructor(private _taskService: TaskService, private _breakpointObserver: BreakpointObserver,
                 private _route: ActivatedRoute, private _router: Router) {
@@ -33,7 +35,12 @@ export class TodoMenuBarForOverviewComponent implements OnInit {
 
         this._route
             .queryParams
+            .pipe(takeUntil(this.destroy$))
             .subscribe(params => this.selectedContext = params.context || 'all');
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next();
     }
 
     refreshTasks() {

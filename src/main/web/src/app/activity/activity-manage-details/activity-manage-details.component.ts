@@ -1,20 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Activity} from "@app/activity/activity.model";
 import {ManageActivitiesService} from "@app/activity/manage-activities.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ErrorService} from "@app/error/error.service";
 import {ActivityHelperService} from "@app/activity/activity-helper.service";
+import {Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
     selector: 'app-activity-manage-details',
     templateUrl: './activity-manage-details.component.html',
     styleUrls: ['./activity-manage-details.component.scss']
 })
-export class ActivityManageDetailsComponent implements OnInit {
+export class ActivityManageDetailsComponent implements OnInit, OnDestroy {
 
     activity: Activity;
     private isNew: boolean;
+    private destroy$ = new Subject<void>();
 
     constructor(private route: ActivatedRoute, private router: Router,
                 private manageActivitiesService: ManageActivitiesService,
@@ -25,7 +28,9 @@ export class ActivityManageDetailsComponent implements OnInit {
     private readonly NO_PHOTO = "assets/activity/no-photo.png";
 
     ngOnInit() {
-        this.route.paramMap.subscribe(params => {
+        this.route.paramMap
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(params => {
             let activityId = params.get("id");
 
             this.isNew = activityId.toLowerCase() == "new";
@@ -62,6 +67,7 @@ export class ActivityManageDetailsComponent implements OnInit {
                 };
             } else {
                 this.manageActivitiesService.findById(activityId)
+                    .pipe(takeUntil(this.destroy$))
                     .subscribe(activity => {
                         this.activity = activity
 
@@ -102,6 +108,10 @@ export class ActivityManageDetailsComponent implements OnInit {
                     });
             }
         })
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next();
     }
 
     getBeaufortDescription(value: number) {
@@ -151,11 +161,13 @@ export class ActivityManageDetailsComponent implements OnInit {
         } else {
             subscription = this.manageActivitiesService.update(this.activity);
         }
-        subscription.subscribe(result => {
+        subscription
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(result => {
             this.snackBar.open("Activity saved!", "Have fun!", {
                 duration: 5000,
             });
-            console.log("Activity saved", result);
+            console.debug("Activity saved", result);
             this.router.navigate(["/activity/manage"]);
         }, error => this.errorService.notify(error));
     }

@@ -1,16 +1,18 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {Execution} from "@app/recurring-tasks/execution.model";
 import {ActivatedRoute} from "@angular/router";
 import * as moment from "moment";
+import {Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
-  selector: 'app-health-add-execution',
-  templateUrl: './health-add-execution.component.html',
-  styleUrls: ['./health-add-execution.component.scss']
+    selector: 'app-health-add-execution',
+    templateUrl: './health-add-execution.component.html',
+    styleUrls: ['./health-add-execution.component.scss']
 })
-export class HealthAddExecutionComponent implements OnInit, OnChanges {
+export class HealthAddExecutionComponent implements OnInit, OnChanges, OnDestroy {
 
     addExecutionFormGroup: FormGroup;
 
@@ -20,11 +22,15 @@ export class HealthAddExecutionComponent implements OnInit, OnChanges {
     @Output()
     onAddExecution = new EventEmitter<Execution>();
 
+    private destroy$ = new Subject<void>();
+
     constructor(private _formBuilder: FormBuilder,
                 private _activatedRoute: ActivatedRoute) {
-        this._activatedRoute.queryParams.subscribe(params => {
-            let task = params['task'];
-        });
+        this._activatedRoute.queryParams
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(params => {
+                let task = params['task'];
+            });
     }
 
     ngOnInit() {
@@ -52,6 +58,10 @@ export class HealthAddExecutionComponent implements OnInit, OnChanges {
                 })
             }
         }
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next();
     }
 
     addExecution() {

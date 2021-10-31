@@ -1,14 +1,16 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
 import {Notification} from "../notification.model";
 import {DateService} from "@app/util/date.service";
 import {NotificationService} from "../notification.service";
+import {Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
     selector: 'app-notification',
     templateUrl: './notification.component.html',
     styleUrls: ['./notification.component.scss']
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent implements OnDestroy {
 
     @Input()
     notification: Notification;
@@ -18,11 +20,14 @@ export class NotificationComponent implements OnInit {
     @Output()
     onRead: EventEmitter<Notification> = new EventEmitter<Notification>();
 
+    private destroy$ = new Subject<void>();
+
     constructor(private dateService: DateService,
                 private _notificationService: NotificationService) {
     }
 
-    ngOnInit() {
+    ngOnDestroy(): void {
+        this.destroy$.next();
     }
 
     calculateTimeSinceNotificationPoppedUp(notification: Notification) {
@@ -31,10 +36,12 @@ export class NotificationComponent implements OnInit {
 
     markAsRead(id: number, $event: Event) {
         $event.stopPropagation();
-        this._notificationService.markAsRead(id).subscribe(() => {
-            this.read = true;
-            this.onRead.emit(this.notification);
-        });
+        this._notificationService.markAsRead(id)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => {
+                this.read = true;
+                this.onRead.emit(this.notification);
+            });
     }
 
     executeAction(notification: Notification) {

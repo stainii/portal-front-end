@@ -1,28 +1,37 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TodoSubscriptionService} from "@app/todo/todo-subscription.service";
 import {TodoSubscription} from "@app/todo/todo-subscription.model";
+import {takeUntil} from "rxjs/operators";
+import {Subject} from "rxjs";
 
 @Component({
     selector: 'app-todo-subscription-editor',
     templateUrl: './todo-subscription-editor.component.html',
     styleUrls: ['./todo-subscription-editor.component.scss']
 })
-export class TodoSubscriptionEditorComponent implements OnInit {
+export class TodoSubscriptionEditorComponent implements OnInit, OnDestroy {
 
     subscriptions: TodoSubscription[];
     currentlyEditing: TodoSubscription;
+    private destroy$ = new Subject<void>();
 
     constructor(private _subscriptionService: TodoSubscriptionService) {
     }
 
     ngOnInit() {
-        this._subscriptionService.findAll().subscribe(subscriptions => {
-            if (subscriptions && subscriptions.length > 0) {
-                this.subscriptions = subscriptions;
-            } else {
-                this.subscriptions = [];
-            }
-        })
+        this._subscriptionService.findAll()
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(subscriptions => {
+                if (subscriptions && subscriptions.length > 0) {
+                    this.subscriptions = subscriptions;
+                } else {
+                    this.subscriptions = [];
+                }
+            })
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next();
     }
 
     selectSubscription(subscription: TodoSubscription) {
@@ -31,11 +40,15 @@ export class TodoSubscriptionEditorComponent implements OnInit {
 
     save(subscription: TodoSubscription) {
         if (subscription.id) {
-            this._subscriptionService.update(subscription).subscribe();
+            this._subscriptionService.update(subscription)
+                .pipe(takeUntil(this.destroy$))
+                .subscribe();
         } else {
-            this._subscriptionService.create(subscription).subscribe(persistedSubscription => {
-                subscription.id = persistedSubscription.id;
-            });
+            this._subscriptionService.create(subscription)
+                .pipe(takeUntil(this.destroy$))
+                .subscribe(persistedSubscription => {
+                    subscription.id = persistedSubscription.id;
+                });
         }
     }
 }

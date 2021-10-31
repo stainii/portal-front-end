@@ -20,13 +20,15 @@
         </mat-panel-title>
     </mat-expansion-panel-header>
 
-    <p class="description">{{task.description}}</p>
-    <mat-action-row>
-        <button mat-button (click)="showDetails()">
-            <mat-icon aria-label="Edit task">edit</mat-icon>
-        </button>
-        <button mat-button (click)="complete()">
-            <mat-icon aria-label="Complete task">done</mat-icon>
-        </button>
-    </mat-action-row>
+    <ng-template matExpansionPanelContent>
+        <p class="description">{{task.description}}</p>
+        <mat-action-row>
+            <button mat-button (click)="showDetails()">
+                <mat-icon aria-label="Edit task">edit</mat-icon>
+            </button>
+            <button mat-button (click)="complete()">
+                <mat-icon aria-label="Complete task">done</mat-icon>
+            </button>
+        </mat-action-row>
+    </ng-template>
 </mat-expansion-panel>

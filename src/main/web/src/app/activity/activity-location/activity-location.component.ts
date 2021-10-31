@@ -1,7 +1,7 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {SearchActivitiesService} from "@app/activity/search-activities.service";
-import {fromEvent} from "rxjs";
-import {debounceTime, distinctUntilChanged, map} from "rxjs/operators";
+import {fromEvent, Subject} from "rxjs";
+import {distinctUntilChanged, map, takeUntil} from "rxjs/operators";
 import {RandomAdjectiveService} from "@app/funny-details/random-adjective.service";
 
 @Component({
@@ -9,10 +9,12 @@ import {RandomAdjectiveService} from "@app/funny-details/random-adjective.servic
     templateUrl: './activity-location.component.html',
     styleUrls: ['./activity-location.component.scss']
 })
-export class ActivityLocationComponent implements OnInit {
+export class ActivityLocationComponent implements OnInit, OnDestroy {
 
     location: string;
     placeholder: string;
+
+    private destroy$ = new Subject<void>();
 
     @ViewChild('locationElement')
     locationElement: ElementRef;
@@ -27,10 +29,16 @@ export class ActivityLocationComponent implements OnInit {
 
     ngAfterViewInit(): void {
         fromEvent(this.locationElement.nativeElement, 'input')
-            .pipe(map((event: Event) => (event.target as HTMLInputElement).value))
-            .pipe(debounceTime(1000))
-            .pipe(distinctUntilChanged())
+            .pipe(
+                takeUntil(this.destroy$),
+                map((event: Event) => (event.target as HTMLInputElement).value),
+                distinctUntilChanged()
+            )
             .subscribe(data => this.updateLocation(data));
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next();
     }
 
     updateLocation(location: string) {

@@ -1,20 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {RecurringTaskService} from "@app/recurring-tasks/recurring-task.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {DEPLOYMENT_NAME} from "@app/setlist/setlist-constants";
 import {SetlistSongDetailsComponent} from "@app/setlist/setlist-song-details/setlist-song-details.component";
+import {takeUntil} from "rxjs/operators";
+import {Subject} from "rxjs";
 
 @Component({
-  selector: 'app-setlist-manage',
-  templateUrl: './setlist-manage.component.html',
-  styleUrls: ['./setlist-manage.component.scss']
+    selector: 'app-setlist-manage',
+    templateUrl: './setlist-manage.component.html',
+    styleUrls: ['./setlist-manage.component.scss']
 })
-export class SetlistManageComponent implements OnInit {
+export class SetlistManageComponent implements OnInit, OnDestroy {
 
     displayedColumns: string[] = ['name', 'minNumberOfDaysBetweenExecutions', 'maxNumberOfDaysBetweenExecutions', 'edit', 'delete',];
     setlist: RecurringTask[];
+    private destroy$ = new Subject<void>();
 
     constructor(private _recurringTaskService: RecurringTaskService,
                 private _snackBar: MatSnackBar,
@@ -23,6 +26,10 @@ export class SetlistManageComponent implements OnInit {
 
     ngOnInit() {
         this._loadSetlist();
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next();
     }
 
     edit(song: RecurringTask): void {
@@ -36,6 +43,7 @@ export class SetlistManageComponent implements OnInit {
     delete(song: RecurringTask) {
         this._recurringTaskService
             .delete(DEPLOYMENT_NAME, song)
+            .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
                 this._loadSetlist();
                 this._snackBar.open(`${song.name} deleted`, "Ok!", {
@@ -56,24 +64,30 @@ export class SetlistManageComponent implements OnInit {
             data: {song: song}
         });
 
-        dialogRef.afterClosed().subscribe(result => {
-            let isNew = !result.id;
-            if (isNew) {
-                this._recurringTaskService.create(DEPLOYMENT_NAME, result).subscribe(() => {
-                    this._loadSetlist();
-                });
-                this._snackBar.open(`${result.name} created!`, "Ok!", {
-                    duration: 2000,
-                });
-            } else {
-                this._recurringTaskService.update(DEPLOYMENT_NAME, result).subscribe(() => {
-                    this._loadSetlist();
-                    this._snackBar.open(`${result.name} updated!`, "Ok!", {
+        dialogRef.afterClosed()
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(result => {
+                let isNew = !result.id;
+                if (isNew) {
+                    this._recurringTaskService.create(DEPLOYMENT_NAME, result)
+                        .pipe(takeUntil(this.destroy$))
+                        .subscribe(() => {
+                            this._loadSetlist();
+                        });
+                    this._snackBar.open(`${result.name} created!`, "Ok!", {
                         duration: 2000,
                     });
-                });
-            }
-        });
+                } else {
+                    this._recurringTaskService.update(DEPLOYMENT_NAME, result)
+                        .pipe(takeUntil(this.destroy$))
+                        .subscribe(() => {
+                            this._loadSetlist();
+                            this._snackBar.open(`${result.name} updated!`, "Ok!", {
+                                duration: 2000,
+                            });
+                        });
+                }
+            });
     }
 
 }

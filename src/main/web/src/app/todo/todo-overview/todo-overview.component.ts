@@ -1,14 +1,16 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Task} from "@app/todo/task.model";
 import {ActivatedRoute} from "@angular/router";
 import {taskComparator} from "@app/todo/task.comparator";
+import {takeUntil} from "rxjs/operators";
+import {Subject} from "rxjs";
 
 @Component({
     selector: 'app-todo-overview',
     templateUrl: './todo-overview.component.html',
     styleUrls: ['./todo-overview.component.scss'],
 })
-export class TodoOverviewComponent implements OnInit {
+export class TodoOverviewComponent implements OnInit, OnDestroy {
 
     mostImportantTasks: Task[];
     lessImportantTasks: Task[];
@@ -18,6 +20,7 @@ export class TodoOverviewComponent implements OnInit {
 
     private _allTasks: Task[];
     private context: string;
+    private destroy$ = new Subject<void>();
 
     @Input()
     set tasks(tasks: Task[]) {
@@ -38,11 +41,16 @@ export class TodoOverviewComponent implements OnInit {
     ngOnInit() {
         this._route
             .queryParams
+            .pipe(takeUntil(this.destroy$))
             .subscribe(params => {
                 this.context = params.context;
                 this.watchTasks();
             });
         this.lessImportantTasksVisible = false;
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next();
     }
 
     makeLessImportantTasksVisible() {

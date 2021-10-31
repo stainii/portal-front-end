@@ -1,16 +1,18 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import * as moment from "moment";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {Execution} from "@app/recurring-tasks/execution.model";
 import {ActivatedRoute} from "@angular/router";
+import {Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
     selector: 'app-housagotchi-add-execution',
     templateUrl: './housagotchi-add-execution.component.html',
     styleUrls: ['./housagotchi-add-execution.component.scss']
 })
-export class HousagotchiAddExecutionComponent implements OnInit, OnChanges {
+export class HousagotchiAddExecutionComponent implements OnInit, OnChanges, OnDestroy {
 
     addExecutionFormGroup: FormGroup;
 
@@ -20,11 +22,15 @@ export class HousagotchiAddExecutionComponent implements OnInit, OnChanges {
     @Output()
     onAddExecution = new EventEmitter<Execution>();
 
+    private destroy$ = new Subject<void>();
+
     constructor(private _formBuilder: FormBuilder,
                 private _activatedRoute: ActivatedRoute) {
-        this._activatedRoute.queryParams.subscribe(params => {
-            let task = params['task'];
-        });
+        this._activatedRoute.queryParams
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(params => {
+                let task = params['task'];
+            });
     }
 
     ngOnInit() {
@@ -54,11 +60,15 @@ export class HousagotchiAddExecutionComponent implements OnInit, OnChanges {
         }
     }
 
+    ngOnDestroy(): void {
+        this.destroy$.next();
+    }
+
     addExecution() {
         if (this.addExecutionFormGroup.valid) {
             this.onAddExecution.emit({
                 recurringTaskId: this.addExecutionFormGroup.value.selectedRecurringTask.id,
-                    date: this.addExecutionFormGroup.value.selectedDate
+                date: this.addExecutionFormGroup.value.selectedDate
             });
         }
     }

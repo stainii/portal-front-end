@@ -2,13 +2,12 @@ import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild} from '@angul
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {ManageActivitiesService} from "@app/activity/manage-activities.service";
-import {fromEvent, merge, Observable, of, Subscription} from "rxjs";
-import {catchError, debounceTime, map, startWith, switchMap} from "rxjs/operators";
+import {fromEvent, merge, Observable, of, Subject} from "rxjs";
+import {catchError, debounceTime, map, startWith, switchMap, takeUntil} from "rxjs/operators";
 import {Activity} from "@app/activity/activity.model";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {MatDialog} from "@angular/material/dialog";
 import {ActivityConfirmDeleteComponent} from "@app/activity/activity-confirm-delete/activity-confirm-delete.component";
-import {Router} from "@angular/router";
 import {MatTable} from "@angular/material/table";
 
 
@@ -37,13 +36,16 @@ export class ActivityManageListComponent implements AfterViewInit, OnDestroy {
     @ViewChild("input")
     filter: ElementRef;
 
-    private isHandsetSubscription: Subscription;
+    private destroy$ = new Subject<void>();
 
     constructor(private manageActivitiesService: ManageActivitiesService, private breakpointObserver: BreakpointObserver,
-                public dialog: MatDialog, private router: Router) {
+                public dialog: MatDialog) {
         this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset)
+            .pipe(takeUntil(this.destroy$))
             .pipe(map(result => result.matches));
-        this.isHandsetSubscription = this.isHandset$.subscribe(isHandSet => this.changeDisplayedColumns(isHandSet));
+        this.isHandset$
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(isHandSet => this.changeDisplayedColumns(isHandSet));
     }
 
     ngAfterViewInit() {
@@ -53,6 +55,7 @@ export class ActivityManageListComponent implements AfterViewInit, OnDestroy {
 
         merge(sortChangeEvent, pageChangeEvent, filterKeyUpEvent)
             .pipe(
+                takeUntil(this.destroy$),
                 startWith({}),
                 switchMap(() => {
                     this.isLoadingResults = true;
@@ -72,19 +75,24 @@ export class ActivityManageListComponent implements AfterViewInit, OnDestroy {
                 })
             ).subscribe(data => this.data = data);
 
-        sortChangeEvent.subscribe(() => this.paginator.pageIndex = 0);
+        sortChangeEvent
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => this.paginator.pageIndex = 0);
     }
 
-    ngOnDestroy() {
-        this.isHandsetSubscription.unsubscribe();
+    ngOnDestroy(): void {
+        this.destroy$.next();
     }
 
     deleteWhenConfirmed(activity: Activity) {
         const deleteDialog = this.dialog.open(ActivityConfirmDeleteComponent);
 
-        deleteDialog.afterClosed().subscribe(deleteConfirmed => {
+        deleteDialog.afterClosed()
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(deleteConfirmed => {
             if (deleteConfirmed) {
                 this.manageActivitiesService.delete(activity)
+                    .pipe(takeUntil(this.destroy$))
                     .subscribe(() => {
                         this.data.splice(this.data.indexOf(activity), 1);
                         this.table.renderRows()
@@ -105,7 +113,7 @@ export class ActivityManageListComponent implements AfterViewInit, OnDestroy {
         if (activity.location) {
             let parts = [activity.location.city, activity.location.province, activity.location.country];
             let formattedLocation = "";
-            for(let part of parts) {
+            for (let part of parts) {
                 if (part) {
                     if (formattedLocation != "") {
                         formattedLocation += ", ";
