@@ -60,7 +60,7 @@ export class ActivityManageDetailsComponent implements OnInit, OnDestroy {
                     maxNumberOfParticipants: undefined,
                     minNumberOfParticipants: undefined,
                     name: undefined,
-                    photo: this.NO_PHOTO,
+                    photo: undefined,
                     newPhotoContent: undefined,
                     source: "manual",
                     timeIntervals: []
@@ -101,9 +101,6 @@ export class ActivityManageDetailsComponent implements OnInit, OnDestroy {
                         }
                         if (!this.activity.timeIntervals) {
                             this.activity.timeIntervals = [];
-                        }
-                        if (!this.activity.photo) {
-                            this.activity.photo = this.NO_PHOTO;
                         }
                     });
             }
