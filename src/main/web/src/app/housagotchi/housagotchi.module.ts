@@ -55,8 +55,6 @@ import {RecurringTasksModule} from "@app/recurring-tasks/recurring-tasks.module"
         HousagotchiMenuBarForCreatureComponent,
         HousagotchiMenuBarForManageRecurringTasksComponent,
         HousagotchiRecurringTaskDetailsComponent
-    ], entryComponents: [
-        HousagotchiRecurringTaskDetailsComponent
     ]
 })
 export class HousagotchiModule {

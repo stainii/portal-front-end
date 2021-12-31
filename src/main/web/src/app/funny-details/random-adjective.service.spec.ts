@@ -6,12 +6,12 @@ describe('RandomAdjectiveGeneratorService', () => {
     beforeEach(() => TestBed.configureTestingModule({}));
 
     it('should be created', () => {
-        const service: RandomAdjectiveService = TestBed.get(RandomAdjectiveService);
+        const service: RandomAdjectiveService = TestBed.inject(RandomAdjectiveService);
         expect(service).toBeTruthy();
     });
 
     it('should generate a random lowercase adjective', () => {
-        const service: RandomAdjectiveService = TestBed.get(RandomAdjectiveService);
+        const service: RandomAdjectiveService = TestBed.inject(RandomAdjectiveService);
 
         let adjective1 = service.lowercase();
         let adjective2 = service.lowercase();
@@ -22,7 +22,7 @@ describe('RandomAdjectiveGeneratorService', () => {
     });
 
     it('should generate a random capitalized adjective', () => {
-        const service: RandomAdjectiveService = TestBed.get(RandomAdjectiveService);
+        const service: RandomAdjectiveService = TestBed.inject(RandomAdjectiveService);
 
         let adjective1 = service.capitalized();
         let adjective2 = service.capitalized();

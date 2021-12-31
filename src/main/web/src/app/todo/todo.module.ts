@@ -73,11 +73,6 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
         MatTooltipModule,
         MatAutocompleteModule,
         HammerModule
-    ],
-    entryComponents: [
-        TodoTaskDetailsComponent,
-        TodoTaskTemplateDetailsComponent,
-        TodoTaskTemplateEntryDetailsComponent
     ]
 })
 export class TodoModule {

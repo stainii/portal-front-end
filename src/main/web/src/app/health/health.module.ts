@@ -53,8 +53,6 @@ import {MatButtonModule} from "@angular/material/button";
         MatSnackBarModule,
         MatTableModule,
         MatRadioModule
-    ], entryComponents: [
-        HealthRecurringTaskDetailsComponent
     ]
 })
 export class HealthModule {

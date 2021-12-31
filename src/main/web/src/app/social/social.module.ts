@@ -43,8 +43,6 @@ library.add(faUserCog);
         FormsModule,
         MatDatepickerModule,
         MatMomentDateModule,
-    ], entryComponents: [
-        SocialPersonSettingsEditComponent
     ]
 })
 export class SocialModule {
