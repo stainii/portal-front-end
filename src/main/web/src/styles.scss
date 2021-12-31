@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@use '~@angular/material' as mat;
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
@@ -8,12 +9,11 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 @import "~typeface-indie-flower/index.css";
 
 /* rolling a custom Angular Material theme */
-@import '~@angular/material/theming';
-@include mat-core();
+@include mat.core();
 
-$portal-primary: mat-palette($mat-teal);
-$portal-accent:  mat-palette($mat-pink, 500, 900, A100);
-$portal-warn:    mat-palette($mat-deep-orange);
+$portal-primary: mat.define-palette(mat.$teal-palette);
+$portal-accent:  mat.define-palette(mat.$pink-palette, 500, 900, A100);
+$portal-warn:    mat.define-palette(mat.$deep-orange-palette);
 
-$portal-theme: mat-light-theme($portal-primary, $portal-accent, $portal-warn);
-@include angular-material-theme($portal-theme);
+$portal-theme: mat.define-light-theme($portal-primary, $portal-accent, $portal-warn);
+@include mat.all-component-themes($portal-theme);
