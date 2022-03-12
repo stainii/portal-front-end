@@ -41,10 +41,10 @@ import {RecurringTasksModule} from "@app/recurring-tasks/recurring-tasks.module"
         MatSelectModule,
         MatDatepickerModule,
         MatMomentDateModule,
-        ReactiveFormsModule,
         MatSnackBarModule,
         MatTableModule,
-        MatRadioModule
+        MatRadioModule,
+        ReactiveFormsModule,
     ],
     declarations: [
         HousagotchiAppComponent,

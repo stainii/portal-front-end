@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Task} from "@app/todo/task.model";
 import {environment} from "@env/environment";
-import {LocalStorageService} from "ngx-webstorage";
 import {HttpClient} from "@angular/common/http";
 import {TaskTemplateEntry} from "@app/todo/task-template-entry.model";
 import {catchError, map, tap} from "rxjs/operators";
@@ -12,6 +11,7 @@ import * as moment from "moment";
 import {TaskPatchService} from "@app/todo/task-patch.service";
 import {ErrorService} from "@app/error/error.service";
 import {TaskPatchResult} from "@app/todo/task-patch-result.model";
+import {LocalStorageService} from "@app/util/local-storage.service";
 
 /**
  * This repository is the single source of truth regarding the current state of tasks and their patches.
@@ -223,8 +223,8 @@ export class TaskRepository {
     }
 
     private _clearLocalStorage() {
-        this._storage.clear("tasks");
-        this._storage.clear("dateOfLastUpdate");
+        this._storage.remove("tasks");
+        this._storage.remove("dateOfLastUpdate");
     }
 
     private _publishTasksOfLocalStorage() {

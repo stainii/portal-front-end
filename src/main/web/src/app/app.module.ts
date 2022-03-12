@@ -16,16 +16,16 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {DashboardComponent} from "@app/dashboard/dashboard.component";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {NgxWebstorageModule} from 'ngx-webstorage';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthenticationHttpInterceptor} from "@app/user/authentication.interceptor";
 import {MenuComponent} from './menu/menu.component';
-import {NgProgressModule} from "@ngx-progressbar/core";
-import {NgProgressHttpModule} from "@ngx-progressbar/http";
+import {NgProgressModule} from "ngx-progressbar";
+import {NgProgressHttpModule} from "ngx-progressbar/http";
 import {UserModule} from "@app/user/user.module";
 import {RetryInterceptor} from "@app/retry.interceptor";
 import {OfflineModule} from "@app/offline/offline.module";
 import {ErrorModule} from "@app/error/error.module";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
     declarations: [
@@ -42,7 +42,6 @@ import {ErrorModule} from "@app/error/error.module";
         AppRoutingModule,
         LayoutModule,
         FormsModule,
-        NgxWebstorageModule.forRoot(),
         MatToolbarModule,
         MatButtonModule,
         MatSidenavModule,
@@ -52,7 +51,9 @@ import {ErrorModule} from "@app/error/error.module";
         NgProgressHttpModule,
         OfflineModule,
         ErrorModule,
-        HammerModule
+        HammerModule,
+        MatDialogModule,
+        ReactiveFormsModule
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,

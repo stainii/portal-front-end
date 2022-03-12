@@ -3,7 +3,7 @@ import {User} from "./user.model";
 import {TokenService} from "./token.service";
 import {BehaviorSubject, Observable} from "rxjs";
 import {map, tap} from "rxjs/operators";
-import {LocalStorageService} from "ngx-webstorage";
+import {LocalStorageService} from "@app/util/local-storage.service";
 
 @Injectable({
     providedIn: 'root'
@@ -38,7 +38,7 @@ export class UserService {
 
     logOut() {
         this._user = null;
-        this._storage.clear("user");
+        this._storage.remove("user");
         this._logInStatusWatcher.next(false);
     }
 
