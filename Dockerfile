@@ -3,4 +3,4 @@ VOLUME /tmp
 EXPOSE 2001
 ARG JAR_FILE
 ADD ${JAR_FILE} app.jar
-ENTRYPOINT exec java $JAVA_OPTS_FRONT_END -Djava.security.egd=file:/dev/./urandom -jar /app.jar --spring.datasource.url=${POSTGRES_URL_FRONT_END} --spring.datasource.username=${POSTGRES_USERNAME_FRONT_END}  --spring.datasource.password=${POSTGRES_PASSWORD_FRONT_END} --security.jwt.secret=${JWT_SECRET} --eureka.client.service-url.defaultZone=${EUREKA_SERVICE_URL}
+ENTRYPOINT exec java $JAVA_OPTS_FRONT_END -Djava.security.egd=file:/dev/./urandom -jar /app.jar --spring.datasource.url=${POSTGRES_URL_FRONT_END} --spring.datasource.username=${POSTGRES_USERNAME_FRONT_END}  --spring.datasource.password=${POSTGRES_PASSWORD_FRONT_END} --security.jwt.secret=${JWT_SECRET}

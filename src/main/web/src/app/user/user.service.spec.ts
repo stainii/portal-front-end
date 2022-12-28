@@ -4,8 +4,8 @@ import {UserService} from './user.service';
 import {TokenService} from "./token.service";
 import {of} from "rxjs";
 import {Token} from "./token.model";
-import {LocalStorageService} from 'ngx-webstorage';
 import {User} from "./user.model";
+import {LocalStorageService} from "@app/util/local-storage.service";
 
 describe('UserService', () => {
     let tokenService;

@@ -12,7 +12,7 @@ $cursive-font: "Indie Flower", cursive;
     width: $menu-width;
     height: $menu-height;
     margin: 0;
-    padding-left: $menu-width / 4;
+    padding-left: calc($menu-width / 4);
     padding-top: 3px;
     z-index: 100;
 }
