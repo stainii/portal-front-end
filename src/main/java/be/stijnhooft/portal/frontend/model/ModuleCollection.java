@@ -70,7 +70,7 @@ public class ModuleCollection {
 
     public Module add(@NonNull Module module) {
         Optional<Module> existingModuleWithSameName = findModuleByName(module.getName());
-        if (!existingModuleWithSameName.isPresent()) {
+        if (existingModuleWithSameName.isEmpty()) {
             modules.add(module);
             return module;
         } else {
