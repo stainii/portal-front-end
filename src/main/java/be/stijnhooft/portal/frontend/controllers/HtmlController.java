@@ -1,9 +1,8 @@
 package be.stijnhooft.portal.frontend.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 @RequestMapping("/")
@@ -15,7 +14,7 @@ public class HtmlController {
      *
      * Other rest services will override this route, so it does not get in the way.
      */
-    @RequestMapping(value = {"", "/", "/**/{[path:[^\\\\.]*}"}, method = GET)
+    @GetMapping({"", "/", "/**/{[path:[^\\\\.]*}"})
     public String routeToIndex() {
         return "forward:/index.html";
     }

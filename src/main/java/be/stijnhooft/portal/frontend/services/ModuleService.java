@@ -7,7 +7,6 @@ import be.stijnhooft.portal.frontend.model.Module;
 import be.stijnhooft.portal.frontend.model.ModuleCollection;
 import be.stijnhooft.portal.frontend.repositories.ModuleCollectionRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +24,6 @@ public class ModuleService {
     private final ModuleCollectionRepository moduleCollectionRepository;
     private final ModuleMapper moduleMapper;
 
-    @Autowired
     public ModuleService(ModuleCollectionRepository moduleCollectionRepository,
                          ModuleMapper moduleMapper) {
         this.moduleCollectionRepository = moduleCollectionRepository;
