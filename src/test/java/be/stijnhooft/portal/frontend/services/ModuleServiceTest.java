@@ -6,29 +6,26 @@ import be.stijnhooft.portal.frontend.mappers.ModuleMapper;
 import be.stijnhooft.portal.frontend.model.Module;
 import be.stijnhooft.portal.frontend.model.ModuleCollection;
 import be.stijnhooft.portal.frontend.repositories.ModuleCollectionRepository;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 public class ModuleServiceTest {
 
     @InjectMocks
     private ModuleService moduleService;
-
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
 
     @Mock
     private ModuleCollectionRepository moduleCollectionRepository;
@@ -46,7 +43,7 @@ public class ModuleServiceTest {
     private ModuleDto moduleDto2;
     private List<ModuleDto> moduleDtos;
 
-    @Before
+    @BeforeEach
     public void init() {
         module1 = new Module("module1",  true);
         module2 = new Module("module2",  false);
@@ -57,19 +54,18 @@ public class ModuleServiceTest {
 
     @Test
     public void findForUserWhenNothingFound() {
-        //mock
-        doReturn(Optional.empty()).when(moduleCollectionRepository).findForUser("test");
+        Throwable exception = assertThrows(ModuleCollectionNotFoundException.class, () -> {
+            //mock
+            doReturn(Optional.empty()).when(moduleCollectionRepository).findForUser("test");
 
-        //expect exception
-        expectedException.expect(ModuleCollectionNotFoundException.class);
-        expectedException.expectMessage("No module collection for user test found");
+            //execute
+            moduleService.findForUser("test");
 
-        //execute
-        moduleService.findForUser("test");
-
-        //verify
-        verify(moduleCollectionRepository).findForUser("test");
-        verifyNoMoreInteractions(moduleCollectionRepository, moduleCollection, moduleMapper);
+            //verify
+            verify(moduleCollectionRepository).findForUser("test");
+            verifyNoMoreInteractions(moduleCollectionRepository, moduleCollection, moduleMapper);
+        });
+        assertThat(exception.getMessage()).contains("No module collection for user test found");
     }
 
     @Test

@@ -1,24 +1,19 @@
 package be.stijnhooft.portal.frontend.model;
 
 import be.stijnhooft.portal.frontend.exceptions.ModuleDoesNotExistInModuleCollectionException;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ModuleCollectionTest {
 
     private ModuleCollection moduleCollection;
 
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
-
-    @Before
+    @BeforeEach
     public void init() {
         moduleCollection = new ModuleCollection("test");
     }
@@ -66,9 +61,10 @@ public class ModuleCollectionTest {
         assertFalse(moduleCollection.findModuleByName("test").isPresent());
     }
 
-    @Test(expected = NullPointerException.class)
-    public void findModuleByNameWhenNullArgument() throws Exception {
-        moduleCollection.findModuleByName(null);
+    @Test
+    public void findModuleByNameWhenNullArgument() {
+        assertThrows(NullPointerException.class, () ->
+            moduleCollection.findModuleByName(null));
     }
 
     @Test
@@ -94,9 +90,10 @@ public class ModuleCollectionTest {
         assertEquals(1, moduleCollection.getModulesInOrder().size());
     }
 
-    @Test(expected = NullPointerException.class)
-    public void addWhenNullArgument() throws Exception {
-        moduleCollection.add(null);
+    @Test
+    public void addWhenNullArgument() {
+        assertThrows(NullPointerException.class, () ->
+            moduleCollection.add(null));
     }
 
     @Test
@@ -163,21 +160,20 @@ public class ModuleCollectionTest {
     }
 
     @Test
-    public void changePositionOfWhenModuleIsNotInTheList() throws Exception {
-        //data set
-        Module module1 = new Module("module1", true);
-        Module module2 = new Module("module2", false);
-        Module module3 = new Module("module3", true);
+    public void changePositionOfWhenModuleIsNotInTheList() {
+        Throwable exception = assertThrows(ModuleDoesNotExistInModuleCollectionException.class, () -> {
+            //data set
+            Module module1 = new Module("module1", true);
+            Module module2 = new Module("module2", false);
+            Module module3 = new Module("module3", true);
 
-        moduleCollection.add(module1);
-        moduleCollection.add(module2);
+            moduleCollection.add(module1);
+            moduleCollection.add(module2);
 
-        //expect exception
-        expectedException.expect(ModuleDoesNotExistInModuleCollectionException.class);
-        expectedException.expectMessage("Provided module module3 does not exist for module collection of user test");
-
-        //execute
-        moduleCollection.changePositionOf(module3, 2);
+            //execute
+            moduleCollection.changePositionOf(module3, 2);
+        });
+        assertTrue(exception.getMessage().contains("Provided module module3 does not exist for module collection of user test"));
     }
 
     @Test
@@ -202,20 +198,19 @@ public class ModuleCollectionTest {
 
     @Test
     public void updateWhenCollectionDoesNotContainModule() {
-        //data set
-        Module module1 = new Module("module1", true);
-        Module module2 = new Module("module2", false);
-        Module module3 = new Module("module3", false);
+        Throwable exception = assertThrows(ModuleDoesNotExistInModuleCollectionException.class, () -> {
+            //data set
+            Module module1 = new Module("module1", true);
+            Module module2 = new Module("module2", false);
+            Module module3 = new Module("module3", false);
 
-        moduleCollection.add(module1);
-        moduleCollection.add(module2);
+            moduleCollection.add(module1);
+            moduleCollection.add(module2);
 
-        //expect exception
-        expectedException.expect(ModuleDoesNotExistInModuleCollectionException.class);
-        expectedException.expectMessage("Provided module module3 does not exist for module collection of user test");
-
-        //execute
-        moduleCollection.update(module3);
+            //execute
+            moduleCollection.update(module3);
+        });
+        assertTrue(exception.getMessage().contains("Provided module module3 does not exist for module collection of user test"));
     }
 
     @Test
@@ -237,20 +232,19 @@ public class ModuleCollectionTest {
 
     @Test
     public void removeWhenCollectionDoesNotContainModule() {
-        //data set
-        Module module1 = new Module("module1", true);
-        Module module2 = new Module("module2", false);
-        Module module3 = new Module("module3", false);
+        Throwable exception = assertThrows(ModuleDoesNotExistInModuleCollectionException.class, () -> {
+            //data set
+            Module module1 = new Module("module1", true);
+            Module module2 = new Module("module2", false);
+            Module module3 = new Module("module3", false);
 
-        moduleCollection.add(module1);
-        moduleCollection.add(module2);
+            moduleCollection.add(module1);
+            moduleCollection.add(module2);
 
-        //expect exception
-        expectedException.expect(ModuleDoesNotExistInModuleCollectionException.class);
-        expectedException.expectMessage("Provided module module3 does not exist for module collection of user test");
-
-        //execute
-        moduleCollection.remove(module3);
+            //execute
+            moduleCollection.remove(module3);
+        });
+        assertTrue(exception.getMessage().contains("Provided module module3 does not exist for module collection of user test"));
     }
 
 }

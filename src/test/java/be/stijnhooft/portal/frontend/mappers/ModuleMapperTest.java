@@ -3,26 +3,26 @@ package be.stijnhooft.portal.frontend.mappers;
 import be.stijnhooft.portal.frontend.dtos.ModuleDto;
 import be.stijnhooft.portal.frontend.model.Module;
 import be.stijnhooft.portal.frontend.model.ModuleCollection;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ModuleMapperTest {
 
     private ModuleMapper moduleMapper;
 
-    @Before
+    @BeforeEach
     public void init() {
         moduleMapper = new ModuleMapper();
     }
 
-    @Test(expected = NullPointerException.class)
-    public void mapWhenModuleCollectionIsNull() throws Exception {
-        moduleMapper.map((ModuleCollection) null);
+    @Test
+    public void mapWhenModuleCollectionIsNull() {
+        assertThrows(NullPointerException.class, () ->
+            moduleMapper.map((ModuleCollection) null));
     }
 
     @Test
