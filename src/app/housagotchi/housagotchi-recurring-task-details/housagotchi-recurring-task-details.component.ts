@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 
@@ -10,10 +10,10 @@ import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 })
 export class HousagotchiRecurringTaskDetailsComponent implements OnInit {
 
-    editorFormGroup: FormGroup;
+    editorFormGroup: UntypedFormGroup;
     private readonly _recurringTask: RecurringTask;
 
-    constructor(private _formBuilder: FormBuilder,
+    constructor(private _formBuilder: UntypedFormBuilder,
                 public dialogRef: MatDialogRef<HousagotchiRecurringTaskDetailsComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: any) {
         if (data) {

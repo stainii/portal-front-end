@@ -4,7 +4,7 @@ import {LabelService} from "@app/activity/label.service";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {MatAutocomplete, MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {map, startWith, takeUntil} from "rxjs/operators";
-import {FormControl} from "@angular/forms";
+import {UntypedFormControl} from "@angular/forms";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 
 @Component({
@@ -20,7 +20,7 @@ export class ActivityManageLabelsComponent implements OnInit, OnDestroy {
     @Input()
     labels: string[];
 
-    labelCtrl = new FormControl();
+    labelCtrl = new UntypedFormControl();
     separatorKeysCodes: number[] = [ENTER, COMMA];
 
     @ViewChild('labelInput')

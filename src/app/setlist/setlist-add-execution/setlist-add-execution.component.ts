@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import {Execution} from "@app/recurring-tasks/execution.model";
 import {ActivatedRoute} from "@angular/router";
 import * as moment from "moment";
@@ -13,7 +13,7 @@ import {Song} from "@app/setlist/song.model";
 })
 export class SetlistAddExecutionComponent implements OnInit {
 
-    addExecutionFormGroup: FormGroup;
+    addExecutionFormGroup: UntypedFormGroup;
 
     @Input()
     setlist: Setlist;
@@ -21,7 +21,7 @@ export class SetlistAddExecutionComponent implements OnInit {
     @Output()
     onAddExecution = new EventEmitter<Execution>();
 
-    constructor(private _formBuilder: FormBuilder,
+    constructor(private _formBuilder: UntypedFormBuilder,
                 private _activatedRoute: ActivatedRoute) {
     }
 

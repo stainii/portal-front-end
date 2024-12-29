@@ -4,7 +4,7 @@ import {TaskTemplate} from "@app/todo/task-template.model";
 import {Observable} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {map} from "rxjs/operators";
-import {FormControl} from "@angular/forms";
+import {UntypedFormControl} from "@angular/forms";
 import {RandomAdjectiveService} from "@app/funny-details/random-adjective.service";
 import {TaskDefinition} from "@app/todo/task-definition.model";
 import {ErrorService} from "@app/error/error.service";
@@ -21,7 +21,7 @@ export class TodoTaskTemplateDetailsComponent {
 
     isHandset$: Observable<boolean> = this._breakpointObserver.observe(Breakpoints.Handset)
         .pipe(map(result => result.matches));
-    selectedTaskDefinition = new FormControl(0);
+    selectedTaskDefinition = new UntypedFormControl(0);
     placeholderForTaskTemplateName: string;
     placeholderForVariableName: string;
 

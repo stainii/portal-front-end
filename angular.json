@@ -145,7 +145,6 @@
             }
         }
     },
-    "defaultProject": "portal",
     "schematics": {
         "@schematics/angular:component": {
             "style": "scss"

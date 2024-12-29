@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
@@ -10,10 +10,10 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 })
 export class SetlistSongDetailsComponent implements OnInit {
 
-    editorFormGroup: FormGroup;
+    editorFormGroup: UntypedFormGroup;
     private readonly _song: RecurringTask;
 
-    constructor(private _formBuilder: FormBuilder,
+    constructor(private _formBuilder: UntypedFormBuilder,
                 public dialogRef: MatDialogRef<SetlistSongDetailsComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: any) {
         if (data) {
