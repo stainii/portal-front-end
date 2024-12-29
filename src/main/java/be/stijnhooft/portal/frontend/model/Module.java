@@ -1,8 +1,7 @@
 package be.stijnhooft.portal.frontend.model;
 
+import jakarta.persistence.Embeddable;
 import lombok.*;
-
-import javax.persistence.Embeddable;
 
 @Embeddable
 @ToString

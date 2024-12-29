@@ -1,12 +1,12 @@
 package be.stijnhooft.portal.frontend.model;
 
 import be.stijnhooft.portal.frontend.exceptions.ModuleDoesNotExistInModuleCollectionException;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
