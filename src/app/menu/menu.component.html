@@ -1,0 +1,7 @@
+<mat-nav-list>
+    <a mat-list-item
+       *ngFor="let module of modules"
+       [routerLink]="[module | lowercase]"
+       routerLinkActive="active"
+    >{{module}}</a>
+</mat-nav-list>

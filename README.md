@@ -3,19 +3,6 @@
 
 This the front-end of the portal.
 
-## Url
-### In development
-When building this app with profile **dev**, the url of the front-end will be **http://localhost:2001**.
-
-The Angular base href will be "/".
-
-### In production
-When running in production, it is assumed that you **access the front-end through portal-proxy**.
-This means that the url will be **https://*host-of-portal-proxy*:*port-of-portal-proxy*/front-end/**.
-
-The Angular base href will be set to "/front-end/".
-
-
 ## How modular is this front-end?
 
 ### The first attempt: a true modular front-end
@@ -82,10 +69,8 @@ This back-end part is responsible to **manage user-specific front-end settings**
 You can find the code under ``src/main/web``.
 
 ## How to build this project?
-You have 2 options:
-
-1. Build both the back-end and front-end with ``mvn clean install``.
-1. Build the front-end only with ``npm run build`` or ``npm run build-prod`` (for production).
+* Local environment: ``npm run dev``
+* Production environment: ``npm run build``
 
 
 ## A swift development workflow

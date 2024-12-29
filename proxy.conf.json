@@ -1,0 +1,56 @@
+{
+    "/auth-service": {
+        "target": "https://portal.stijnhooft.be",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/health": {
+        "target": "https://portal.stijnhooft.be",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/todo": {
+        "target": "https://portal.stijnhooft.be",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/setlist": {
+        "target": "https://portal.stijnhooft.be",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/housagotchi": {
+        "target": "https://portal.stijnhooft.be",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/activity": {
+        "target": "https://portal.stijnhooft.be",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/social": {
+        "target": "https://portal.stijnhooft.be",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/image": {
+        "target": "https://portal.stijnhooft.be",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/notifications": {
+        "target": "https://portal.stijnhooft.be",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    }
+}
