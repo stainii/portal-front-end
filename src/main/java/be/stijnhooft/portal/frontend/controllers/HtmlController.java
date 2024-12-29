@@ -10,11 +10,11 @@ public class HtmlController {
 
     /**
      * Routes every request without a suffix to the index page.
-     * This way, the HTML5-routing of React is supported.
+     * This way, the HTML5-routing of Angular is supported.
      *
      * Other rest services will override this route, so it does not get in the way.
      */
-    @GetMapping({"", "/", "/**/{[path:[^\\\\.]*}"})
+    @GetMapping(value = {"/{path:[^\\.]*}", "/{path:[^\\.]*}/**"})
     public String routeToIndex() {
         return "forward:/index.html";
     }
