@@ -1,31 +1,32 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "baseUrl": "./",
-    "module": "es2020",
-        "outDir": "../resources/public/out-tsc",
-        "sourceMap": true,
-        "declaration": false,
-        "moduleResolution": "node",
-        "experimentalDecorators": true,
-        "target": "es2020",
-        "typeRoots": [
-            "node_modules/@types"
+      "baseUrl": "./",
+      "module": "es2020",
+      "outDir": "../resources/public/out-tsc",
+      "sourceMap": true,
+      "declaration": false,
+      "moduleResolution": "node",
+      "experimentalDecorators": true,
+      "target": "ES2022",
+      "typeRoots": [
+        "node_modules/@types"
+      ],
+      "paths": {
+        "@app/*": [
+          "src/app/*"
         ],
-        "paths": {
-            "@app/*": [
-                "src/app/*"
-            ],
-            "@env/*": [
-                "src/environments/*"
-            ],
-            "core-js/es7/reflect": [
-                "node_modules/core-js/proposals/reflect-metadata"
-            ] //https://github.com/zloirock/core-js/issues/412
-        },
-        "lib": [
-            "es2017",
-            "dom"
+        "@env/*": [
+          "src/environments/*"
+        ],
+        "core-js/es7/reflect": [
+          "node_modules/core-js/proposals/reflect-metadata"
         ]
+      },
+      "lib": [
+        "es2017",
+        "dom"
+      ],
+      "useDefineForClassFields": false
     }
 }
