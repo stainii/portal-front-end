@@ -1,9 +1,7 @@
 {
     "/auth-service": {
-        "target": "https://portal.stijnhooft.be",
-        "secure": false,
-        "changeOrigin": true,
-        "logLevel": "debug"
+        "target": "http://localhost:9100",
+        "pathRewrite": { "^/auth-service": "" }
     },
     "/health": {
         "target": "https://portal.stijnhooft.be",
