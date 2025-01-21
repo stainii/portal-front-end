@@ -3,7 +3,7 @@ import {Person} from "@app/social/person.model";
 import {
     SocialPersonSettingsEditComponent
 } from "@app/social/social-person-settings-edit/social-person-settings-edit.component";
-import {MatDialog} from "@angular/material/dialog";
+import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
 import {SocialService} from "@app/social/social.service";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";

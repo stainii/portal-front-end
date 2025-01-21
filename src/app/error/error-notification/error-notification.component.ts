@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ErrorService} from "@app/error/error.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatLegacySnackBar as MatSnackBar} from "@angular/material/legacy-snack-bar";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 

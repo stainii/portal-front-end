@@ -6,7 +6,7 @@ import {map, takeUntil} from "rxjs/operators";
 import {Setlist} from "@app/setlist/setlist.model";
 import {Execution} from "@app/recurring-tasks/execution.model";
 import {ExecutionService} from "@app/recurring-tasks/execution.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatLegacySnackBar as MatSnackBar} from "@angular/material/legacy-snack-bar";
 import {Subject} from "rxjs";
 
 @Component({

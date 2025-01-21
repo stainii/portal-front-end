@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
+import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
 import {Task} from "@app/todo/task.model";
 import {TaskService} from "@app/todo/task.service";
 import {Observable, Subject} from "rxjs";
@@ -11,7 +11,7 @@ import {
 } from "@app/todo/todo-task-template-entry-details/todo-task-template-entry-details.component";
 import {DialogResultNextAction} from "@app/todo/dialog-result.model";
 import {ErrorService} from "@app/error/error.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatLegacySnackBar as MatSnackBar} from "@angular/material/legacy-snack-bar";
 import {takeUntil} from "rxjs/operators";
 
 @Component({
@@ -130,7 +130,7 @@ export class TodoAppComponent implements OnDestroy {
                         this._taskService.createTasksBasedOn(result.data)
                             .pipe(takeUntil(this.destroy$))
                             .subscribe(
-                                task => console.log("Tasks created!"),
+                                _ => console.log("Tasks created!"),
                                 error => this._errorService.notify(error));
                     }
                 });

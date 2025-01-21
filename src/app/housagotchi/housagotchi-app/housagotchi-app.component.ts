@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ExecutionService} from "@app/recurring-tasks/execution.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatLegacySnackBar as MatSnackBar} from "@angular/material/legacy-snack-bar";
 import {RecurringTaskService} from "@app/recurring-tasks/recurring-task.service";
 import {Execution} from "@app/recurring-tasks/execution.model";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";

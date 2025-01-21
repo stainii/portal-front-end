@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {MenuComponent} from './menu.component';
-import {MatListModule} from "@angular/material/list";
+import {MatLegacyListModule as MatListModule} from "@angular/material/legacy-list";
 
 describe('MenuComponent', () => {
     let component: MenuComponent;

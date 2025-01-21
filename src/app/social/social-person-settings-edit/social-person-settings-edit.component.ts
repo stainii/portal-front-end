@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Person} from "@app/social/person.model";
-import {MAT_DIALOG_DATA, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
+import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogConfig as MatDialogConfig, MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
 import {DomSanitizer} from "@angular/platform-browser";
 import {SocialService} from "@app/social/social.service";
 

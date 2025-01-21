@@ -15,17 +15,17 @@ import {
 import {
     HousagotchiMenuBarForManageRecurringTasksComponent
 } from './housagotchi-menu-bar-for-manage-recurring-tasks/housagotchi-menu-bar-for-manage-recurring-tasks.component';
-import {MatButtonModule} from "@angular/material/button";
-import {MatCardModule} from "@angular/material/card";
+import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy-button";
+import {MatLegacyCardModule as MatCardModule} from "@angular/material/legacy-card";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatLegacyFormFieldModule as MatFormFieldModule} from "@angular/material/legacy-form-field";
 import {MatIconModule} from "@angular/material/icon";
-import {MatInputModule} from "@angular/material/input";
-import {MatListModule} from "@angular/material/list";
-import {MatRadioModule} from "@angular/material/radio";
-import {MatSelectModule} from "@angular/material/select";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatTableModule} from "@angular/material/table";
+import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";
+import {MatLegacyListModule as MatListModule} from "@angular/material/legacy-list";
+import {MatLegacyRadioModule as MatRadioModule} from "@angular/material/legacy-radio";
+import {MatLegacySelectModule as MatSelectModule} from "@angular/material/legacy-select";
+import {MatLegacySnackBarModule as MatSnackBarModule} from "@angular/material/legacy-snack-bar";
+import {MatLegacyTableModule as MatTableModule} from "@angular/material/legacy-table";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {

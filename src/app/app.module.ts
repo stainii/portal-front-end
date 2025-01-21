@@ -7,10 +7,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LayoutModule} from '@angular/cdk/layout';
 import {AppRoutingModule} from "@app/app-routing.module";
 
-import {MatButtonModule} from '@angular/material/button';
+import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
-import {MatListModule} from '@angular/material/list';
+import {MatLegacyListModule as MatListModule} from '@angular/material/legacy-list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {DashboardComponent} from "@app/dashboard/dashboard.component";
@@ -24,7 +24,7 @@ import {UserModule} from "@app/user/user.module";
 import {RetryInterceptor} from "@app/retry.interceptor";
 import {OfflineModule} from "@app/offline/offline.module";
 import {ErrorModule} from "@app/error/error.module";
-import {MatDialogModule} from "@angular/material/dialog";
+import {MatLegacyDialogModule as MatDialogModule} from "@angular/material/legacy-dialog";
 
 @NgModule({
     declarations: [

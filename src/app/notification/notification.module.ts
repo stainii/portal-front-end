@@ -24,13 +24,13 @@ import {
 import {
     NotificationMenuBarForSubscriptionsComponent
 } from './notification-menu-bar-for-subscriptions/notification-menu-bar-for-subscriptions.component';
-import {MatButtonModule} from "@angular/material/button";
-import {MatCardModule} from "@angular/material/card";
-import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy-button";
+import {MatLegacyCardModule as MatCardModule} from "@angular/material/legacy-card";
+import {MatLegacyFormFieldModule as MatFormFieldModule} from "@angular/material/legacy-form-field";
 import {MatIconModule} from "@angular/material/icon";
-import {MatInputModule} from "@angular/material/input";
-import {MatListModule} from "@angular/material/list";
-import {MatSelectModule} from "@angular/material/select";
+import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";
+import {MatLegacyListModule as MatListModule} from "@angular/material/legacy-list";
+import {MatLegacySelectModule as MatSelectModule} from "@angular/material/legacy-select";
 
 @NgModule({
     imports: [
