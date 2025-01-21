@@ -16,11 +16,8 @@ import {
 } from "@app/notification/notification-subscription-list/notification-subscription-list.component";
 import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {AuthenticationHttpInterceptor} from "@app/user/authentication.interceptor";
 /* manage font-awesome icons */
-import {library} from '@fortawesome/fontawesome-svg-core';
-import {faBell} from '@fortawesome/free-solid-svg-icons';
 import {
     NotificationMenuBarForListComponent
 } from './notification-menu-bar-for-list/notification-menu-bar-for-list.component';
@@ -35,14 +32,11 @@ import {MatInputModule} from "@angular/material/input";
 import {MatListModule} from "@angular/material/list";
 import {MatSelectModule} from "@angular/material/select";
 
-library.add(faBell);
-
 @NgModule({
     imports: [
         CommonModule,
         NotificationRoutingModule,
         HttpClientModule,
-        FontAwesomeModule,
         FormsModule,
         MatIconModule,
         MatCardModule,
