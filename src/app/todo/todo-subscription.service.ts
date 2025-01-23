@@ -11,15 +11,15 @@ export class TodoSubscriptionService {
     }
 
     findAll() {
-        return this._http.get<TodoSubscription[]>("/todo/api/subscription/");
+        return this._http.get<TodoSubscription[]>("/api/todo/api/subscription/");
     }
 
     create(subscription: TodoSubscription) {
-        return this._http.post<TodoSubscription>("/todo/api/subscription/", subscription);
+        return this._http.post<TodoSubscription>("/api/todo/api/subscription/", subscription);
     }
 
     update(subscription: TodoSubscription) {
-        return this._http.put<TodoSubscription>("/todo/api/subscription/" + subscription.id + "/", subscription);
+        return this._http.put<TodoSubscription>("/api/todo/api/subscription/" + subscription.id + "/", subscription);
     }
 
 }

@@ -14,29 +14,29 @@ export class SocialService {
     }
 
     create(person: Person) {
-        return this._http.post(`/social/api/person/`, person);
+        return this._http.post(`/api/social/api/person/`, person);
     }
 
     update(person: Person) {
-        return this._http.put(`/social/api/person/${person.id}/`, person);
+        return this._http.put(`/api/social/api/person/${person.id}/`, person);
     }
 
     delete(person: Person) {
-        return this._http.delete(`/social/api/person/${person.id}/`);
+        return this._http.delete(`/api/social/api/person/${person.id}/`);
     }
 
     findAll(): Observable<Person[]> {
-        return this._http.get<Person[]>(`/social/api/person/`);
+        return this._http.get<Person[]>(`/api/social/api/person/`);
     }
 
     addContact(contact: Contact, person: Person) {
-        return this._http.post<Person>(`/social/api/person/${person.id}/contact/`, {
+        return this._http.post<Person>(`/api/social/api/person/${person.id}/contact/`, {
             latestUpdates: contact.latestUpdates,
             lastContact: moment(contact.lastContact).format("YYYY-MM-DDT00:00:00")
         });
     }
 
     getImageUrl(imageName) {
-        return `/image/api/retrieve/${imageName}`;
+        return `/api/image/api/retrieve/${imageName}`;
     }
 }

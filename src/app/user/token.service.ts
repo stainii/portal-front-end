@@ -13,7 +13,7 @@ export class TokenService {
     }
 
     logIn(username: string, password: string): Observable<Token> {
-        return this._httpClient.post<Token>("/auth-service/auth/", {
+        return this._httpClient.post<Token>("/api/auth-service/auth/", {
             username: username,
             password: password
         }, {observe: 'response'})

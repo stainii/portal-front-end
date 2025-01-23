@@ -18,25 +18,25 @@ export class ManageActivitiesService {
     public find(sortField: string, order: string, page: number, pageSize: number, filter: string): Observable<Page<Activity>> {
         let searchParams = this.calculateSearchParams(sortField, order, page, pageSize, filter);
         let searchParamsAsString = this._activityHelper.searchParamsToString(searchParams);
-        return this._http.get<Page<Activity>>(`/activity/activities/${searchParamsAsString}`);
+        return this._http.get<Page<Activity>>(`/api/activity/activities/${searchParamsAsString}`);
     }
 
     public findById(id: string) {
-        return this._http.get<Activity>(`/activity/activities/${id}`);
+        return this._http.get<Activity>(`/api/activity/activities/${id}`);
     }
 
     public create(activity: Activity) {
-        return this._http.post<Activity>(`/activity/activities/`, activity)
+        return this._http.post<Activity>(`/api/activity/activities/`, activity)
             .pipe(tap(() => this._search.refresh()));
     }
 
     public update(activity: Activity) {
-        return this._http.put<Activity>(`/activity/activities/${activity.id}`, activity)
+        return this._http.put<Activity>(`/api/activity/activities/${activity.id}`, activity)
             .pipe(tap(() => this._search.refresh()));
     }
 
     public delete(activity: Activity) {
-        return this._http.delete(`/activity/activities/${activity.id}`)
+        return this._http.delete(`/api/activity/activities/${activity.id}`)
             .pipe(tap(() => this._search.refresh()));
     }
 

@@ -54,7 +54,7 @@ export class TaskRepository {
         this._publishTasksOfLocalStorage();
 
         // then, create task on server
-        return this._http.post<Task>("/todo/api/task/", task)
+        return this._http.post<Task>("/api/todo/api/task/", task)
             .pipe(catchError(error => {
                 // if we get an error that is not handled by the offline interceptor, revert changes in local history
                 this._removeTaskFromLocalStorage(task);
@@ -64,12 +64,12 @@ export class TaskRepository {
     }
 
     createTasksBasedOn(taskTemplateEntry: TaskTemplateEntry) {
-        return this._http.post<Task[]>("/todo/api/task/from-template/", taskTemplateEntry);
+        return this._http.post<Task[]>("/api/todo/api/task/from-template/", taskTemplateEntry);
     }
 
     findPatchesSince(date: Date) {
         console.info("Looking for patches to tasks since " + date);
-        return this._http.get<TaskPatch[]>("/todo/api/task/patch/?since=" + date.toISOString());
+        return this._http.get<TaskPatch[]>("/api/todo/api/task/patch/?since=" + date.toISOString());
     }
 
     patch(task: Task, patch: TaskPatch) {
@@ -79,7 +79,7 @@ export class TaskRepository {
         this._publishTasksOfLocalStorage();
 
         // then, send patch to server
-        return this._http.patch<TaskPatchResult>("/todo/api/task/" + task.id, patch)
+        return this._http.patch<TaskPatchResult>("/api/todo/api/task/" + task.id, patch)
             .pipe(catchError(error => {
                 // if we get an error that is not handled by the offline interceptor, revert changes in local history
                 task.rollback(patch);
@@ -90,7 +90,7 @@ export class TaskRepository {
     }
 
     undo(taskPatch: TaskPatch) {
-        return this._http.delete<TaskPatch>("/todo/api/task/patch/" + taskPatch.id);
+        return this._http.delete<TaskPatch>("/api/todo/api/task/patch/" + taskPatch.id);
     }
 
     private _setup() {
@@ -123,7 +123,7 @@ export class TaskRepository {
                             this._upsertTaskInLocalStorage(task);
                         })
                     }),
-                    map(patches => this._findTasksFromLocalStorage()) // don't return the changed tasks, return all tasks!)
+                    map(_ => this._findTasksFromLocalStorage()) // don't return the changed tasks, return all tasks!)
                 );
         } else {
             console.log("No tasks found from a previous session in local storage. Fetching fresh list of tasks from server.");
@@ -132,8 +132,7 @@ export class TaskRepository {
     }
 
     private _watchChangesToTasks() {
-        this._taskTail = new EventSource(
-            "/todo/api/task/patch/?tail&jwt=" + this._userService.getLoggedInUser().token.value);
+        this._taskTail = new EventSource("/api/todo/api/task/patch/?tail&jwt=" + this._userService.getLoggedInUser().token.value);
 
         this._taskTail.addEventListener('message', (event: MessageEvent) => {
             console.info("New task patches were sent by the server.");
@@ -175,7 +174,7 @@ export class TaskRepository {
     }
 
     private _findTasksFromServer() {
-        return this._http.get<Task[]>("/todo/api/task/")
+        return this._http.get<Task[]>("/api/todo/api/task/")
             .pipe(
                 map(tasks => tasks.map(
                     task => Object.assign(new Task(), task)))

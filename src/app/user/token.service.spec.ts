@@ -37,7 +37,7 @@ describe('TokenService', () => {
             expect(token).toEqual(expectedToken);
         });
 
-        const req = httpMock.expectOne("/auth-service/auth/");
+        const req = httpMock.expectOne("/api/auth-service/auth/");
         expect(req.request.method).toBe("POST");
         req.flush({}, {headers: new HttpHeaders().append("Authorization", `Bearer ${dummyToken}`)});
     }));

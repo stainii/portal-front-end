@@ -11,6 +11,6 @@ export class LabelService {
     }
 
     findAllLabels(): Observable<string[]> {
-        return this._http.get<string[]>(`/activity/labels/`);
+        return this._http.get<string[]>(`/api/activity/labels/`);
     }
 }

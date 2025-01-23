@@ -72,7 +72,7 @@ export class SearchActivitiesService {
         let searchParams = this.calculateSearchParams();
         let searchParamsAsString = this._activityHelper.searchParamsToString(searchParams);
 
-        return this._http.get<Activity[]>(`/activity/activities/search/${searchParamsAsString}`)
+        return this._http.get<Activity[]>(`/api/activity/activities/search/${searchParamsAsString}`)
             .subscribe(results => this.searchResults.next(results));
     }
 

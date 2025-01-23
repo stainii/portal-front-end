@@ -11,11 +11,11 @@ export class NotificationService {
     }
 
     findActiveNotifications() {
-        return this._http.get<Notification[]>("/notifications/api/notification/?onlyUnread=true");
+        return this._http.get<Notification[]>("/api/notifications/api/notification/?onlyUnread=true");
     }
 
     markAsRead(id: number) {
-        return this._http.put("/notifications/api/notification/" + id + "/read/", {
+        return this._http.put("/api/notifications/api/notification/" + id + "/read/", {
             id: id,
             read: true
         });

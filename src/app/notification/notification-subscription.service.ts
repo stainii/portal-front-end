@@ -11,15 +11,15 @@ export class NotificationSubscriptionService {
     }
 
     findAll() {
-        return this._http.get<NotificationSubscription[]>("/notifications/api/subscription/");
+        return this._http.get<NotificationSubscription[]>("/api/notifications/api/subscription/");
     }
 
     create(subscription: NotificationSubscription) {
-        return this._http.post<NotificationSubscription>("/notifications/api/subscription/", subscription);
+        return this._http.post<NotificationSubscription>("/api/notifications/api/subscription/", subscription);
     }
 
     update(subscription: NotificationSubscription) {
-        return this._http.put<NotificationSubscription>("/notifications/api/subscription/" + subscription.id + "/", subscription);
+        return this._http.put<NotificationSubscription>("/api/notifications/api/subscription/" + subscription.id + "/", subscription);
     }
 
 }
