@@ -49,10 +49,10 @@ The unsplittable common part is kept in a single location. Efforts are made to k
 * All static resources, like the manifest, css, images, ... are kept in one place.
 
 ## Environment variables
-| Name | Example value | Description | Required? |
-| ---- | ------------- | ----------- | -------- |
-| POSTGRES_PASSWORD | secret | Password to log in to the database | required
-| JAVA_OPTS_FRONT_END | -Xmx400m -Xms400m | Java opts you want to pass to the JVM | optional
+| Name                | Example value     | Description                           | Required? |
+|---------------------|-------------------|---------------------------------------|-----------|
+| POSTGRES_PASSWORD   | secret            | Password to log in to the database    | required  |
+| JAVA_OPTS_FRONT_END | -Xmx400m -Xms400m | Java opts you want to pass to the JVM | optional  |
 
 
 
@@ -96,11 +96,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ### Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-### Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `ng test`.
 
 ### Further help
 
