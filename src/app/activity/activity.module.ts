@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {ActivityRoutingModule} from './activity-routing.module';
 import {ActivityAppComponent} from './activity-app/activity-app.component';
 import {MatExpansionModule} from "@angular/material/expansion";
-import {MatLegacyChipsModule as MatChipsModule} from "@angular/material/legacy-chips";
+import {MatChipsModule} from "@angular/material/chips";
 import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy-button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbarModule} from "@angular/material/toolbar";

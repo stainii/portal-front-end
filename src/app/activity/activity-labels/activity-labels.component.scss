@@ -1,9 +1,6 @@
 .labels {
     margin: 20px;
 }
-mat-chip {
-    cursor: pointer;
-}
-.mat-chip-selected.shaary {
+.mat-mdc-standard-chip.mat-mdc-chip-selected.mat-primary.shaary, .mat-mdc-standard-chip.mat-mdc-chip-highlighted.mat-primary.shaary {
     background-color: hotpink !important;
 }
