@@ -1,10 +1,4 @@
 @import "../../styles";
-.active {
-    background-color: rgba(0, 0, 0, 0.04);
-}
-.mat-list, .mat-nav-list, .mat-selection-list {
+.mdc-list {
     padding-top: 0; // default is 8px
-}
-.mat-toolbar.mat-primary {
-    line-height: 1;
 }
