@@ -8,6 +8,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import {AppRoutingModule} from "@app/app-routing.module";
 
 import {MAT_DATE_LOCALE} from '@angular/material/core';
+import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -39,6 +40,7 @@ import {ErrorModule} from "@app/error/error.module";
         AppRoutingModule,
         LayoutModule,
         FormsModule,
+        MatButtonModule,
         MatToolbarModule,
         MatSidenavModule,
         MatIconModule,
