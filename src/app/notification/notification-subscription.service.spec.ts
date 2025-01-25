@@ -27,7 +27,7 @@ describe('NotificationSubscriptionService', () => {
                 subscriptionService.findAll().subscribe();
 
                 backend.expectOne({
-                    url: '/notifications/api/subscription/',
+                    url: '/api/notifications/api/subscription/',
                     method: 'GET'
                 });
             })
@@ -41,7 +41,7 @@ describe('NotificationSubscriptionService', () => {
                 subscriptionService.create(subscription).subscribe();
 
                 backend.expectOne({
-                    url: '/notifications/api/subscription/',
+                    url: '/api/notifications/api/subscription/',
                     method: 'POST',
                 });
             })
@@ -56,7 +56,7 @@ describe('NotificationSubscriptionService', () => {
                 subscriptionService.update(subscription).subscribe();
 
                 backend.expectOne({
-                    url: '/notifications/api/subscription/100/',
+                    url: '/api/notifications/api/subscription/100/',
                     method: 'PUT'
                 });
             })

@@ -25,7 +25,7 @@ describe('NotificationService', () => {
                 notificationService.findActiveNotifications().subscribe();
 
                 backend.expectOne({
-                    url: '/notifications/api/notification/?onlyUnread=true',
+                    url: '/api/notifications/api/notification/?onlyUnread=true',
                     method: 'GET'
                 });
             })
@@ -39,7 +39,7 @@ describe('NotificationService', () => {
                 notificationService.markAsRead(100).subscribe();
 
                 backend.expectOne({
-                    url: '/notifications/api/notification/100/read/',
+                    url: '/api/notifications/api/notification/100/read/',
                     method: 'PUT'
                 });
             })

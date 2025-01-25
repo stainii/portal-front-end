@@ -25,7 +25,7 @@ describe('RecurringTaskService', () => {
         service.findAll(deploymentName).subscribe();
 
         backend.expectOne({
-            url: `/${deploymentName}/api/recurring-task/`,
+            url: `/api/${deploymentName}/api/recurring-task/`,
             method: 'GET'
         });
     }));
@@ -42,7 +42,7 @@ describe('RecurringTaskService', () => {
         service.delete(deploymentName, recurringTask).subscribe();
 
         backend.expectOne({
-            url: `/${deploymentName}/api/recurring-task/12/`,
+            url: `/api/${deploymentName}/api/recurring-task/12/`,
             method: 'DELETE'
         });
     }));
@@ -60,7 +60,7 @@ describe('RecurringTaskService', () => {
         service.update(deploymentName, recurringTask).subscribe();
 
         let request = backend.expectOne({
-            url: `/${deploymentName}/api/recurring-task/12/`,
+            url: `/api/${deploymentName}/api/recurring-task/12/`,
             method: 'PUT'
         });
         request.flush(recurringTask);
@@ -79,7 +79,7 @@ describe('RecurringTaskService', () => {
         service.create(deploymentName, recurringTask).subscribe();
 
         let request = backend.expectOne({
-            url: `/${deploymentName}/api/recurring-task/`,
+            url: `/api/${deploymentName}/api/recurring-task/`,
             method: 'POST'
         });
         request.flush(recurringTask);

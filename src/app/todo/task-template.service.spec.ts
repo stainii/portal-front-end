@@ -42,7 +42,7 @@ describe('TaskTemplateService', () => {
         service.create(taskTemplate).subscribe();
 
         let request = backend.expectOne({
-            url: "/todo/api/template/",
+            url: "/api/todo/api/template/",
             method: 'POST'
         });
         request.flush(taskTemplate);
@@ -64,7 +64,7 @@ describe('TaskTemplateService', () => {
         service.create(taskTemplate).subscribe();
 
         let request = backend.expectOne({
-            url: "/todo/api/template/",
+            url: "/api/todo/api/template/",
             method: 'POST'
         });
         request.flush(taskTemplate);
@@ -92,7 +92,7 @@ describe('TaskTemplateService', () => {
         service.create(taskTemplate).subscribe();
 
         let request = backend.expectOne({
-            url: "/todo/api/template/",
+            url: "/api/todo/api/template/",
             method: 'POST'
         });
         request.flush(taskTemplate);
@@ -120,7 +120,7 @@ describe('TaskTemplateService', () => {
         service.update(taskTemplate).subscribe();
 
         let request = backend.expectOne({
-            url: "/todo/api/template/12",
+            url: "/api/todo/api/template/12",
             method: 'PUT'
         });
         request.flush(taskTemplate);
@@ -142,7 +142,7 @@ describe('TaskTemplateService', () => {
         service.update(taskTemplate).subscribe();
 
         let request = backend.expectOne({
-            url: "/todo/api/template/12",
+            url: "/api/todo/api/template/12",
             method: 'PUT'
         });
         request.flush(taskTemplate);
@@ -170,7 +170,7 @@ describe('TaskTemplateService', () => {
         service.update(taskTemplate).subscribe();
 
         let request = backend.expectOne({
-            url: "/todo/api/template/12",
+            url: "/api/todo/api/template/12",
             method: 'PUT'
         });
         request.flush(taskTemplate);

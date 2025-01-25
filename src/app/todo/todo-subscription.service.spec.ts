@@ -27,7 +27,7 @@ describe('TodoSubscriptionService', () => {
                 subscriptionService.findAll().subscribe();
 
                 backend.expectOne({
-                    url: '/todo/api/subscription/',
+                    url: '/api/todo/api/subscription/',
                     method: 'GET'
                 });
             })
@@ -41,7 +41,7 @@ describe('TodoSubscriptionService', () => {
                 subscriptionService.create(subscription).subscribe();
 
                 backend.expectOne({
-                    url: '/todo/api/subscription/',
+                    url: '/api/todo/api/subscription/',
                     method: 'POST',
                 });
             })
@@ -56,7 +56,7 @@ describe('TodoSubscriptionService', () => {
                 subscriptionService.update(subscription).subscribe();
 
                 backend.expectOne({
-                    url: '/todo/api/subscription/100/',
+                    url: '/api/todo/api/subscription/100/',
                     method: 'PUT'
                 });
             })
