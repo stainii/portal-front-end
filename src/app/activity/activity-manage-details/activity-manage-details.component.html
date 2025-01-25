@@ -95,77 +95,93 @@
                             <p>
                                 <mat-label>Min temperature</mat-label>
                                 <mat-slider
-                                    thumbLabel
-                                    [(ngModel)]="activity.weather.minTemperature"
+                                    discrete
+                                    (input)="activity.weather.minTemperature = $event.target.valueAsNumber"
                                     min="-10"
-                                    max="40"></mat-slider>
+                                    max="40">
+                                    <input matSliderThumb [value]="activity.weather.minTemperature">
+                                </mat-slider>
                                 <span>{{activity.weather.minTemperature}} °C</span>
                             </p>
                             <p>
                                 <mat-label>Max temperature</mat-label>
                                 <mat-slider
-                                    thumbLabel
-                                    [(ngModel)]="activity.weather.maxTemperature"
+                                    discrete
+                                    (input)="activity.weather.maxTemperature = $event.target.valueAsNumber"
                                     min="-10"
-                                    max="40"></mat-slider>
+                                    max="40">
+                                    <input matSliderThumb  [value]="activity.weather.maxTemperature">
+                                </mat-slider>
                                 <span>{{activity.weather.maxTemperature}} °C</span>
                             </p>
                             <p>
                                 <mat-label>Max cloudiness</mat-label>
                                 <mat-slider
-                                    thumbLabel
-                                    [(ngModel)]="activity.weather.maxCloudiness"
+                                    discrete
+                                    (input)="activity.weather.maxCloudiness = $event.target.valueAsNumber"
                                     step="10"
                                     min="0"
-                                    max="100"></mat-slider>
+                                    max="100">
+                                    <input matSliderThumb  [value]="activity.weather.maxCloudiness">
+                                </mat-slider>
                                 <span>{{activity.weather.maxCloudiness}} %</span>
                             </p>
                             <p>
                                 <mat-label>Max rain</mat-label>
                                 <mat-slider
-                                    thumbLabel
-                                    [(ngModel)]="activity.weather.maxRain"
+                                    discrete
+                                    (input)="activity.weather.maxRain = $event.target.valueAsNumber"
                                     step="10"
                                     min="0"
-                                    max="100"></mat-slider>
+                                    max="100">
+                                    <input matSliderThumb  [value]="activity.weather.maxRain">
+                                </mat-slider>
                                 <span>{{activity.weather.maxRain}} %</span>
                             </p>
                             <p>
                                 <mat-label>Max snow</mat-label>
                                 <mat-slider
-                                    thumbLabel
-                                    [(ngModel)]="activity.weather.maxSnow"
+                                    discrete
+                                    (input)="activity.weather.maxSnow = $event.target.valueAsNumber"
                                     step="10"
                                     min="0"
-                                    max="100"></mat-slider>
+                                    max="100">
+                                    <input matSliderThumb  [value]="activity.weather.maxSnow">
+                                </mat-slider>
                                 <span>{{activity.weather.maxSnow}} %</span>
                             </p>
                             <p>
                                 <mat-label>Max fog</mat-label>
                                 <mat-slider
-                                    thumbLabel
-                                    [(ngModel)]="activity.weather.maxFog"
+                                    discrete
+                                    (input)="activity.weather.maxFog = $event.target.valueAsNumber"
                                     step="10"
                                     min="0"
-                                    max="100"></mat-slider>
+                                    max="100">
+                                    <input matSliderThumb  [value]="activity.weather.maxFog">
+                                </mat-slider>
                                 <span>{{activity.weather.maxFog}} %</span>
                             </p>
                             <p>
                                 <mat-label>Min wind in beaufort</mat-label>
                                 <mat-slider
-                                    thumbLabel
-                                    [(ngModel)]="activity.weather.minWind"
+                                    discrete
+                                    (input)="activity.weather.minWind = $event.target.valueAsNumber"
                                     min="0"
-                                    max="12"></mat-slider>
+                                    max="12">
+                                    <input matSliderThumb  [value]="activity.weather.minWind">
+                                </mat-slider>
                                 <span>{{getBeaufortDescription(activity.weather.minWind)}}</span>
                             </p>
                             <p>
                                 <mat-label>Max wind in beaufort</mat-label>
                                 <mat-slider
-                                    thumbLabel
-                                    [(ngModel)]="activity.weather.maxWind"
+                                    discrete
+                                    (input)="activity.weather.maxWind = $event.target.valueAsNumber"
                                     min="0"
-                                    max="12"></mat-slider>
+                                    max="12">
+                                    <input matSliderThumb  [value]="activity.weather.maxWind">
+                                </mat-slider>
                                 <span>{{getBeaufortDescription(activity.weather.maxWind)}}</span>
                             </p>
                         </div>

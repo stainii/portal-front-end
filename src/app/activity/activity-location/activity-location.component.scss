@@ -1,7 +1,3 @@
 mat-form-field {
     display: block;
 }
-// ugly hack to get rid of left margin in title
-:host ::ng-deep .mat-card-header-text {
-    margin-left: 0;
-}

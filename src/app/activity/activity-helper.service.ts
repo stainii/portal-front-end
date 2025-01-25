@@ -6,7 +6,7 @@ import {Injectable} from '@angular/core';
 export class ActivityHelperService {
 
     public getPhotoUrl(photo) {
-        return `/image/api/retrieve/${photo}`;
+        return `api/image/api/retrieve/${photo}`;
     }
 
     public searchParamsToString(searchParams: string[]): string {

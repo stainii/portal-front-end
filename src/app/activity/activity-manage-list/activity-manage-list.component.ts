@@ -1,14 +1,14 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
-import {MatLegacyPaginator as MatPaginator} from '@angular/material/legacy-paginator';
+import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {ManageActivitiesService} from "@app/activity/manage-activities.service";
 import {fromEvent, merge, Observable, of, Subject} from "rxjs";
 import {catchError, debounceTime, map, startWith, switchMap, takeUntil} from "rxjs/operators";
 import {Activity} from "@app/activity/activity.model";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
-import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {ActivityConfirmDeleteComponent} from "@app/activity/activity-confirm-delete/activity-confirm-delete.component";
-import {MatLegacyTable as MatTable} from "@angular/material/legacy-table";
+import {MatTable} from "@angular/material/table";
 
 
 @Component({

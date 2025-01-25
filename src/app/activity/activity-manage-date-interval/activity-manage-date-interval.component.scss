@@ -1,6 +1,7 @@
 input, mat-checkbox, .mat-input-element {
     display: inline-block;
 }
+
 .day, .month {
     width: 40px;
 }
@@ -8,14 +9,20 @@ input, mat-checkbox, .mat-input-element {
 .year {
     width: 80px;
 }
+
 .mat-input-element {
     position: relative;
     bottom: 3px;
     margin-left: 10px;
 }
+
 .mat-icon.delete {
     position: absolute;
     right: 15px;
     top: 15px;
     cursor: pointer;
+}
+
+.mat-mdc-card {
+    padding: 0 10px;
 }

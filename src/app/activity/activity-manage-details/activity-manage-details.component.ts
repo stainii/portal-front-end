@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Activity} from "@app/activity/activity.model";
 import {ManageActivitiesService} from "@app/activity/manage-activities.service";
-import {MatLegacySnackBar as MatSnackBar} from "@angular/material/legacy-snack-bar";
+import {MatSnackBar} from "@angular/material/snack-bar";
 import {ErrorService} from "@app/error/error.service";
 import {ActivityHelperService} from "@app/activity/activity-helper.service";
 import {Subject} from "rxjs";

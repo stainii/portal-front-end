@@ -1,13 +1,13 @@
 <mat-form-field class="labels">
-    <mat-chip-listbox #chipList aria-label="Labels">
-        <mat-chip-option
+    <mat-label>Labels</mat-label>
+    <mat-chip-grid #chipList aria-label="Labels">
+        <mat-chip-row
             *ngFor="let label of labels"
-            [selectable]="true"
             [removable]="true"
             (removed)="remove(label)">
             {{label}}
             <mat-icon matChipRemove>cancel</mat-icon>
-        </mat-chip-option>
+        </mat-chip-row>
         <input
             placeholder="Labels"
             #labelInput
@@ -16,7 +16,7 @@
             [matChipInputFor]="chipList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
             (matChipInputTokenEnd)="add($event)">
-    </mat-chip-listbox>
+    </mat-chip-grid>
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
         <mat-option *ngFor="let label of filteredLabels | async" [value]="label">
             {{label}}

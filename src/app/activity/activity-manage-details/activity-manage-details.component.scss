@@ -3,19 +3,24 @@
     right: 50px;
     bottom: 50px;
 }
+
 .tab-body {
     padding: 15px;
 }
+
 mat-label {
     min-width: 200px;
     display: inline-block;
 }
+
 mat-form-field {
     width: 100%;
 }
+
 .hide {
     display: none;
 }
+
 .photo-thumbnail {
     max-height: 250px;
     width: auto;
@@ -25,13 +30,16 @@ mat-form-field {
 .flex-grid {
     display: flex;
 }
+
 .col {
     flex: 1;
     margin: 10px;
 }
+
 .col-photo-thumbnail {
     flex: 0;
 }
+
 
 @media all and (max-width: 600px) {
     .flex-grid {

@@ -1,8 +1,8 @@
 import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Observable, Subject} from "rxjs";
 import {LabelService} from "@app/activity/label.service";
-import {MatLegacyChipInputEvent as MatChipInputEvent} from "@angular/material/legacy-chips";
-import {MatLegacyAutocomplete as MatAutocomplete, MatLegacyAutocompleteSelectedEvent as MatAutocompleteSelectedEvent} from "@angular/material/legacy-autocomplete";
+import {MatChipInputEvent} from "@angular/material/chips";
+import {MatAutocomplete, MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {map, startWith, takeUntil} from "rxjs/operators";
 import {UntypedFormControl} from "@angular/forms";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";

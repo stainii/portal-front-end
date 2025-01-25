@@ -1,19 +1,37 @@
 <mat-card>
-    <h4>From</h4>
-    <input matInput type="number" class="day" min="1" max="31" [(ngModel)]="dateInterval.startDay">
-    <span>/</span>
-    <input matInput type="number" class="month" min="1" max="12" [(ngModel)]="dateInterval.startMonth">
-    <span>/</span>
-    <input matInput type="number" class="year" min="1900" max="9999" [(ngModel)]="dateInterval.startYear">
-    <span> or </span>
-    <mat-checkbox [(ngModel)]="dateInterval.infiniteStart">infinite</mat-checkbox>
-    <h4>Until</h4>
-    <input matInput type="number" class="day" min="1" max="31" [(ngModel)]="dateInterval.endDay">
-    <span>/</span>
-    <input matInput type="number" class="month" min="1" max="12" [(ngModel)]="dateInterval.endMonth">
-    <span>/</span>
-    <input matInput type="number" class="year" min="1900" max="9999" [(ngModel)]="dateInterval.endYear">
-    <span> or </span>
-    <mat-checkbox [(ngModel)]="dateInterval.infiniteEnd">infinite</mat-checkbox>
+    <div class="from">
+        <h4>From</h4>
+        <mat-form-field>
+            <input matInput type="number" class="day" min="1" max="31" [(ngModel)]="dateInterval.startDay">
+        </mat-form-field>
+        <span>/</span>
+        <mat-form-field>
+            <input matInput type="number" class="month" min="1" max="12" [(ngModel)]="dateInterval.startMonth">
+        </mat-form-field>
+        <span>/</span>
+        <mat-form-field>
+            <input matInput type="number" class="year" min="1900" max="9999" [(ngModel)]="dateInterval.startYear">
+        </mat-form-field>
+        <span> or </span>
+        <mat-checkbox [(ngModel)]="dateInterval.infiniteStart">infinite</mat-checkbox>
+    </div>
+
+    <div class="until">
+        <h4>Until</h4>
+        <mat-form-field>
+            <input matInput type="number" class="day" min="1" max="31" [(ngModel)]="dateInterval.endDay">
+        </mat-form-field>
+        <span>/</span>
+        <mat-form-field>
+            <input matInput type="number" class="month" min="1" max="12" [(ngModel)]="dateInterval.endMonth">
+        </mat-form-field>
+        <span>/</span>
+        <mat-form-field>
+            <input matInput type="number" class="year" min="1900" max="9999" [(ngModel)]="dateInterval.endYear">
+        </mat-form-field>
+        <span> or </span>
+        <mat-checkbox [(ngModel)]="dateInterval.infiniteEnd">infinite</mat-checkbox>
+    </div>
+
     <mat-icon color="warn" class="delete" (click)="deleteClicked()">delete</mat-icon>
 </mat-card>
