@@ -24,7 +24,7 @@ import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-i
 import {MatLegacyListModule as MatListModule} from "@angular/material/legacy-list";
 import {MatLegacyRadioModule as MatRadioModule} from "@angular/material/legacy-radio";
 import {MatLegacySelectModule as MatSelectModule} from "@angular/material/legacy-select";
-import {MatLegacySnackBarModule as MatSnackBarModule} from "@angular/material/legacy-snack-bar";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatLegacyTableModule as MatTableModule} from "@angular/material/legacy-table";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";

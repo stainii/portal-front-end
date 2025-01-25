@@ -11,7 +11,7 @@ import {
 } from "@app/todo/todo-task-template-entry-details/todo-task-template-entry-details.component";
 import {DialogResultNextAction} from "@app/todo/dialog-result.model";
 import {ErrorService} from "@app/error/error.service";
-import {MatLegacySnackBar as MatSnackBar} from "@angular/material/legacy-snack-bar";
+import {MatSnackBar} from "@angular/material/snack-bar";
 import {takeUntil} from "rxjs/operators";
 
 @Component({

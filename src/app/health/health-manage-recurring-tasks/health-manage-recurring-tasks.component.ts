@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {RecurringTaskService} from "@app/recurring-tasks/recurring-task.service";
 import {DEPLOYMENT_NAME} from "@app/health/health-constants";
-import {MatLegacySnackBar as MatSnackBar} from "@angular/material/legacy-snack-bar";
+import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
 import {
     HealthRecurringTaskDetailsComponent

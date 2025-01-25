@@ -23,7 +23,7 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {MatLegacyFormFieldModule as MatFormFieldModule} from "@angular/material/legacy-form-field";
 import {MatLegacyRadioModule as MatRadioModule} from "@angular/material/legacy-radio";
 import {MatLegacyTableModule as MatTableModule} from "@angular/material/legacy-table";
-import {MatLegacySnackBarModule as MatSnackBarModule} from "@angular/material/legacy-snack-bar";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatLegacySelectModule as MatSelectModule} from "@angular/material/legacy-select";
 import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";

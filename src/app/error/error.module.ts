@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ErrorNotificationComponent} from './error-notification/error-notification.component';
-import {MatLegacySnackBarModule as MatSnackBarModule} from "@angular/material/legacy-snack-bar";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -10,7 +10,7 @@ import {MatLegacySnackBarModule as MatSnackBarModule} from "@angular/material/le
         CommonModule,
         MatSnackBarModule
     ], exports: [
-        ErrorNotificationComponent
+        ErrorNotificationComponent,
     ]
 })
 export class ErrorModule {

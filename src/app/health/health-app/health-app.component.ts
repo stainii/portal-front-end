@@ -4,7 +4,7 @@ import {ExecutionService} from "@app/recurring-tasks/execution.service";
 import {RecurringTaskService} from "@app/recurring-tasks/recurring-task.service";
 import {Execution} from "@app/recurring-tasks/execution.model";
 import {DEPLOYMENT_NAME} from "@app/health/health-constants";
-import {MatLegacySnackBar as MatSnackBar} from "@angular/material/legacy-snack-bar";
+import {MatSnackBar} from "@angular/material/snack-bar";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 
