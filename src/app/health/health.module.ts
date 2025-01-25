@@ -20,17 +20,18 @@ import {
 } from './health-menu-bar-for-sporty-spice/health-menu-bar-for-sporty-spice.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
-import {MatLegacyFormFieldModule as MatFormFieldModule} from "@angular/material/legacy-form-field";
-import {MatLegacyRadioModule as MatRadioModule} from "@angular/material/legacy-radio";
-import {MatLegacyTableModule as MatTableModule} from "@angular/material/legacy-table";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatTableModule} from "@angular/material/table";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatLegacySelectModule as MatSelectModule} from "@angular/material/legacy-select";
-import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";
-import {MatLegacyCardModule as MatCardModule} from "@angular/material/legacy-card";
-import {MatLegacyListModule as MatListModule} from "@angular/material/legacy-list";
+import {MatSelectModule} from "@angular/material/select";
+import {MatInputModule} from "@angular/material/input";
+import {MatCardModule} from "@angular/material/card";
+import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
-import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy-button";
+import {MatButtonModule} from "@angular/material/button";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy
         ReactiveFormsModule,
         MatSnackBarModule,
         MatTableModule,
-        MatRadioModule
+        MatRadioModule,
+        MatDialogModule
     ]
 })
 export class HealthModule {

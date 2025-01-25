@@ -1,20 +1,20 @@
 <form #addExecutionForm="ngForm" [formGroup]="addExecutionFormGroup"
       (submit)="addExecution()">
     <mat-form-field>
+        <mat-label>What did you do?</mat-label>
         <mat-select id="task"
                     name="task"
                     formControlName="selectedRecurringTask"
-                    required
-                    placeholder="What did you do?">
+                    required>
             <mat-option *ngFor="let recurringTask of recurringTasks"
                         [value]="recurringTask">{{recurringTask.name}}</mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field>
+        <mat-label>When did you do it?</mat-label>
         <input matInput
                formControlName="selectedDate"
                [matDatepicker]="dateExecuted"
-               placeholder="When did you do it?"
                required>
         <mat-datepicker-toggle matSuffix
                                [for]="dateExecuted">

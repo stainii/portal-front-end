@@ -2,15 +2,15 @@
 <form #editorForm="ngForm" [formGroup]="editorFormGroup"
       (submit)="save()">
     <mat-form-field>
+        <mat-label>Activity</mat-label>
         <input matInput
                formControlName="activity"
-               placeholder="Activity"
                required>
     </mat-form-field>
     <mat-form-field>
+        <mat-label>Rest days</mat-label>
         <input matInput
                formControlName="restDays"
-               placeholder="Rest days"
                required
                type="number">
     </mat-form-field>

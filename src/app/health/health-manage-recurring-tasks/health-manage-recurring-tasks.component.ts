@@ -3,7 +3,7 @@ import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {RecurringTaskService} from "@app/recurring-tasks/recurring-task.service";
 import {DEPLOYMENT_NAME} from "@app/health/health-constants";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {
     HealthRecurringTaskDetailsComponent
 } from "@app/health/health-recurring-task-details/health-recurring-task-details.component";
