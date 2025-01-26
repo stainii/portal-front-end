@@ -1,21 +1,20 @@
 .login {
     width: 300px;
-    height: 270px;
+    height: 250px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -135px;
+    margin-top: -125px;
     margin-left: -150px;
 }
-.login mat-card {
-    margin: 0 auto;
-    padding: 30px 60px;
-}
 
-.login input {
+mat-form-field {
     width: 100%;
 }
 
+mat-card-header {
+    margin-bottom: 2rem;
+}
 
 .shake {
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
