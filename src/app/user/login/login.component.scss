@@ -6,6 +6,7 @@
     left: 50%;
     margin-top: -125px;
     margin-left: -150px;
+    padding: 16px;
 }
 
 mat-form-field {
@@ -14,6 +15,9 @@ mat-form-field {
 
 mat-card-header {
     margin-bottom: 2rem;
+}
+mat-card-actions {
+    padding: 0 16px 16px 16px;
 }
 
 .shake {
