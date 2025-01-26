@@ -1,22 +1,22 @@
 <form #editorForm="ngForm" [formGroup]="editorFormGroup"
       (submit)="save()">
     <mat-form-field>
+        <mat-label>Name</mat-label>
         <input matInput
                formControlName="name"
-               placeholder="Name"
                required>
     </mat-form-field>
     <mat-form-field>
+        <mat-label>Min number of days</mat-label>
         <input matInput
                formControlName="minNumberOfDays"
-               placeholder="Min number of days"
                required
                type="number">
     </mat-form-field>
     <mat-form-field>
+        <mat-label>Max number of days</mat-label>
         <input matInput
                formControlName="maxNumberOfDays"
-               placeholder="Max number of days"
                required
                type="number">
     </mat-form-field>

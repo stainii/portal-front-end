@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {RecurringTaskService} from "@app/recurring-tasks/recurring-task.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {DEPLOYMENT_NAME} from "@app/setlist/setlist-constants";
 import {SetlistSongDetailsComponent} from "@app/setlist/setlist-song-details/setlist-song-details.component";
 import {takeUntil} from "rxjs/operators";
