@@ -4,17 +4,17 @@ import {CommonModule} from '@angular/common';
 import {TodoRoutingModule} from './todo-routing.module';
 import {TodoOverviewComponent} from './todo-overview/todo-overview.component';
 import {TodoMenuBarForOverviewComponent} from './todo-menu-bar-for-overview/todo-menu-bar-for-overview.component';
-import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy-button";
-import {MatLegacyCardModule as MatCardModule} from "@angular/material/legacy-card";
+import {MatButtonModule} from "@angular/material/button";
+import {MatCardModule} from "@angular/material/card";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
 import {TodoTaskPanelComponent} from './todo-task-panel/todo-task-panel.component';
-import {MatLegacySelectModule as MatSelectModule} from "@angular/material/legacy-select";
+import {MatSelectModule} from "@angular/material/select";
 import {TodoAppComponent} from './todo-app/todo-app.component';
-import {MatLegacyDialogModule as MatDialogModule} from "@angular/material/legacy-dialog";
+import {MatDialogModule} from "@angular/material/dialog";
 import {MatStepperModule} from "@angular/material/stepper";
 import {FormsModule} from "@angular/forms";
-import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";
+import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {TodoMenuBarForTemplatesComponent} from './todo-menu-bar-for-templates/todo-menu-bar-for-templates.component';
@@ -24,8 +24,8 @@ import {
     TodoTaskTemplateDetailsComponent
 } from "@app/todo/todo-task-template-details/todo-task-template-details.component";
 import {TodoTaskTemplatesComponent} from './todo-task-templates/todo-task-templates.component';
-import {MatLegacyTabsModule as MatTabsModule} from "@angular/material/legacy-tabs";
-import {MatLegacyListModule as MatListModule} from "@angular/material/legacy-list";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatListModule} from "@angular/material/list";
 import {
     TodoTaskDefinitionDetailsComponent
 } from './todo-task-definition-details/todo-task-definition-details.component';
@@ -33,7 +33,7 @@ import {
     TodoTaskTemplateEntryDetailsComponent
 } from './todo-task-template-entry-details/todo-task-template-entry-details.component';
 import {TodoTaskDetailsComponent} from './todo-task-details/todo-task-details.component';
-import {MatLegacyTooltipModule as MatTooltipModule} from "@angular/material/legacy-tooltip";
+import {MatTooltipModule} from "@angular/material/tooltip";
 import {HammerModule} from "@angular/platform-browser";
 import {TodoSubscriptionDetailsComponent} from './todo-subscription-details/todo-subscription-details.component';
 import {TodoSubscriptionEditorComponent} from './todo-subscription-editor/todo-subscription-editor.component';
@@ -41,7 +41,7 @@ import {TodoSubscriptionListComponent} from './todo-subscription-list/todo-subsc
 import {
     TodoMenuBarForSubscriptionsComponent
 } from './todo-menu-bar-for-subscriptions/todo-menu-bar-for-subscriptions.component';
-import {MatLegacyAutocompleteModule as MatAutocompleteModule} from '@angular/material/legacy-autocomplete';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
     declarations: [

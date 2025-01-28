@@ -3,7 +3,7 @@ import {Person} from "@app/social/person.model";
 import {
     SocialPersonSettingsEditComponent
 } from "@app/social/social-person-settings-edit/social-person-settings-edit.component";
-import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {SocialService} from "@app/social/social.service";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
@@ -47,7 +47,7 @@ export class SocialManagePeopleComponent implements OnDestroy {
 
     private _showDialog(person: Person, $event) {
         const dialogRef = this._dialog.open(SocialPersonSettingsEditComponent, {
-            width: '350px',
+            width: '360px',
             data: {person: person, $event: $event}
         });
 

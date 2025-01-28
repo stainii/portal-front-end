@@ -9,9 +9,9 @@
                 (onComplete)="complete($event)">
             </app-todo-task-panel>
         </div>
-        <div *ngIf="mostImportantTasks?.length == 0"
+        <div *ngIf="mostImportantTasks?.length == 0 && futureTasks?.length == 0"
              class="nothing-to-do">
-            <img src="assets/todo/imgs/nothing_to_do.png"/>
+            <img alt="Nothing to do" src="assets/todo/imgs/nothing_to_do.png"/>
             <p>Relax! Nothing else to do.</p>
         </div>
     </section>

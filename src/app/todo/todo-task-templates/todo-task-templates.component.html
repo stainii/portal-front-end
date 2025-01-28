@@ -7,20 +7,20 @@
                     <button mat-icon-button matTreeNodeToggle
                             [attr.aria-label]="'toggle ' + node.name">
                         <mat-icon class="mat-icon-rtl-mirror">
-                            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                            {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
                         </mat-icon>
                     </button>
-                    {{node.name}}
+                    {{ node.name }}
                 </span>
 
                 <span class="buttons">
-                <button mat-icon-button>
-                    <mat-icon (click)="editTaskTemplate(node)">edit</mat-icon>
-                </button>
-                <button mat-icon-button>
-                    <mat-icon (click)="deleteTaskTemplate(node)">delete</mat-icon>
-                </button>
-            </span>
+                    <button mat-icon-button (click)="editTaskTemplate(node)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="deleteTaskTemplate(node)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </span>
             </div>
             <ul [class.tree-invisible]="!treeControl.isExpanded(node)">
                 <ng-container matTreeNodeOutlet></ng-container>
@@ -36,7 +36,7 @@
                 <button mat-icon-button disabled>
                     <mat-icon></mat-icon>
                 </button>
-                {{node.name}}
+                {{ node.name }}
             </span>
         </li>
     </mat-tree-node>

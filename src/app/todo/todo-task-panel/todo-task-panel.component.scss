@@ -1,3 +1,7 @@
+::ng-deep .mat-content.mat-content-hide-toggle {
+    margin-right: 0 !important;
+}
+
 mat-expansion-panel {
     width: 400px;
     max-width: 90%;

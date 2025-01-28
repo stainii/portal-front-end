@@ -24,6 +24,7 @@ import {UserModule} from "@app/user/user.module";
 import {RetryInterceptor} from "@app/retry.interceptor";
 import {OfflineModule} from "@app/offline/offline.module";
 import {ErrorModule} from "@app/error/error.module";
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 
 @NgModule({
     declarations: [
@@ -62,6 +63,8 @@ import {ErrorModule} from "@app/error/error.module";
         multi: true
     }, {
         provide: MAT_DATE_LOCALE, useValue: 'nl-BE'
+    }, {
+        provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}
     }],
     bootstrap: [AppComponent]
 })

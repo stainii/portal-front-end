@@ -1,6 +1,6 @@
 import {Component, OnDestroy} from '@angular/core';
 import {TaskTemplate} from "@app/todo/task-template.model";
-import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {
     TodoTaskTemplateDetailsComponent
 } from "@app/todo/todo-task-template-details/todo-task-template-details.component";

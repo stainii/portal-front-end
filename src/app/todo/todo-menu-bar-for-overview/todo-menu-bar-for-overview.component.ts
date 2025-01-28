@@ -27,9 +27,9 @@ export class TodoMenuBarForOverviewComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.contexts$ = this._taskService.watchTasks()
             .pipe(
-                map(tasks => tasks.filter(task => task.isActive())),
                 map(tasks => tasks.map(task => task.context)),
                 map(contexts => Array.from(new Set(contexts))),
+                map(contexts => contexts.filter(context => context?.length > 0)),
                 map(contexts => contexts.sort())
             );
 

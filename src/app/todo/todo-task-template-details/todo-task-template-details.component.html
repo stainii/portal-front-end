@@ -1,61 +1,53 @@
-<h1 mat-dialog-title>{{taskTemplate ? taskTemplate.name : 'New task'}}</h1>
-<div mat-dialog-content>
-    <div class="block">
-        <mat-list-item>
-            <mat-form-field>
-                <mat-label>Template name</mat-label>
-                <input required
-                       matInput [(ngModel)]="taskTemplate.name"
-                       [placeholder]="placeholderForTaskTemplateName">
-            </mat-form-field>
+<h1 mat-dialog-title>{{ taskTemplate ? taskTemplate.name : 'New task' }}</h1>
+<div mat-dialog-content class="content">
+    <mat-form-field>
+        <mat-label>Template name</mat-label>
+        <input required
+               matInput [(ngModel)]="taskTemplate.name"
+               [placeholder]="placeholderForTaskTemplateName">
+    </mat-form-field>
+
+    <h3>Variables</h3>
+    <mat-list>
+        <mat-list-item *ngFor="let variableName of taskTemplate.variableNames" class="list-item">
+            <p>{{ variableName }}</p>
+            <mat-icon class="icon" (click)="deleteVariableName(variableName)">delete</mat-icon>
         </mat-list-item>
-    </div>
+        <mat-list-item class="new-variable">
+            <mat-form-field>
+                <mat-label>New variable name</mat-label>
+                <input matInput
+                       [(ngModel)]="newVariableName"
+                       [placeholder]="placeholderForVariableName">
+            </mat-form-field>
+            <mat-icon class="icon" (click)="addVariableName()">add</mat-icon>
+        </mat-list-item>
+    </mat-list>
 
-    <div class="block">
-        <h3>Variables</h3>
-        <mat-list>
-            <mat-list-item *ngFor="let variableName of taskTemplate.variableNames">
-                <p>{{variableName}}</p>
-                <mat-icon (click)="deleteVariableName(variableName)">delete</mat-icon>
-            </mat-list-item>
-            <mat-list-item>
-                <mat-form-field>
-                    <mat-label>New variable name</mat-label>
-                    <input matInput
-                           [(ngModel)]="newVariableName"
-                           [placeholder]="placeholderForVariableName">
-                </mat-form-field>
-                <mat-icon (click)="addVariableName()">add</mat-icon>
-            </mat-list-item>
-        </mat-list>
-    </div>
+    <h3>
+        Task definitions
+        <mat-icon
+            class="add-task-definition"
+            (click)="addTab()">add
+        </mat-icon>
+    </h3>
 
-    <div class="block">
-        <h3>
-            Task definitions
-            <mat-icon
-                class="add-task-definition"
-                (click)="addTab()">add
-            </mat-icon>
-        </h3>
+    <mat-tab-group [selectedIndex]="selectedTaskDefinition.value"
+                   (selectedIndexChange)="selectedTaskDefinition.setValue($event)">
+        <mat-tab *ngFor="let taskDefinition of taskTemplate.taskDefinitions; let index = index">
+            <ng-template mat-tab-label>
+                <span>{{ taskDefinition.name }}</span>
+                <mat-icon
+                    class="tab-delete"
+                    *ngIf="taskTemplate.taskDefinitions.length != 1"
+                    (click)="deleteTaskDefinition(index)">
+                    delete
+                </mat-icon>
+            </ng-template>
 
-        <mat-tab-group [selectedIndex]="selectedTaskDefinition.value"
-                       (selectedIndexChange)="selectedTaskDefinition.setValue($event)">
-            <mat-tab *ngFor="let taskDefinition of taskTemplate.taskDefinitions; let index = index">
-                <ng-template mat-tab-label>
-                    <span>{{taskDefinition.name}}</span>
-                    <mat-icon
-                        class="tab-delete"
-                        *ngIf="taskTemplate.taskDefinitions.length != 1"
-                        (click)="deleteTaskDefinition(index)">
-                        delete
-                    </mat-icon>
-                </ng-template>
-
-                <app-todo-task-definition-details [taskDefinition]="taskDefinition"></app-todo-task-definition-details>
-            </mat-tab>
-        </mat-tab-group>
-    </div>
+            <app-todo-task-definition-details [taskDefinition]="taskDefinition"></app-todo-task-definition-details>
+        </mat-tab>
+    </mat-tab-group>
 </div>
 
 <div class="mat-dialog-actions">

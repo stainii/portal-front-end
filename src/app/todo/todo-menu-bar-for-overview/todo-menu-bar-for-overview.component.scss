@@ -15,6 +15,18 @@
         cursor: pointer;
     }
 
+    ::ng-deep .mat-mdc-select-value, ::ng-deep .mat-mdc-select-arrow {
+        color: white;
+    }
+
+    ::ng-deep .mdc-notched-outline__leading, ::ng-deep .mdc-notched-outline__trailing {
+        border: 0;
+    }
+
+    ::ng-deep .mat-mdc-text-field-wrapper {
+        margin-top: 20px;
+    }
+
     mat-icon {
         display: inline-block;
         cursor: pointer;

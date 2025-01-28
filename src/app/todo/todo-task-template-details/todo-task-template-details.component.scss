@@ -1,18 +1,30 @@
 .mat-dialog-actions {
+    display: flex;
     justify-content: flex-end;
+    padding: 16px;
 }
-mat-list-item {
-    width: 100%;
 
-    mat-form-field, p {
-        flex-grow: 1;
-        width: 100%;
-    }
-    mat-icon {
-        flex-grow: 0;
-        cursor: pointer;
-    }
+.content {
+    padding: 16px;
 }
+
+::ng-deep .mdc-list-item__primary-text {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 0fr;
+
+    .icon {
+        cursor: pointer;
+        width: 32px;
+    }
+
+}
+
+.new-variable { /* ugly hack, figure out what's going on later */
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
 .tab-delete {
     margin-left: 20px;
     cursor: pointer;
@@ -21,7 +33,4 @@ mat-list-item {
     float: right;
     cursor: pointer;
     margin-right: 15px;
-}
-.block {
-    margin: 5px 20px 30px;
 }

@@ -1,5 +1,16 @@
 .mat-dialog-actions {
+    display: flex;
     justify-content: flex-end;
+    padding: 16px;
+}
+button {
+    margin: 8px;
+    position: absolute;
+    z-index: 100;
+}
+.buttons {
+    position: absolute;
+    z-index: 100;
 }
 textarea.description {
     height: 280px;

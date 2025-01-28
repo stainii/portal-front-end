@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Task} from '../task.model';
 import {environment} from "@env/environment";
-import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {RandomAdjectiveService} from "@app/funny-details/random-adjective.service";
 import {DialogResult, DialogResultNextAction} from "@app/todo/dialog-result.model";
 import {map} from "rxjs/operators";
@@ -31,9 +31,9 @@ export class TodoTaskDetailsComponent implements OnInit {
     ngOnInit(): void {
         this.contexts$ = this._taskService.watchTasks()
             .pipe(
-                map(tasks => tasks.filter(task => task.isActive())),
                 map(tasks => tasks.map(task => task.context)),
                 map(contexts => Array.from(new Set(contexts))),
+                map(contexts => contexts.filter(context => context?.length > 0)),
                 map(contexts => contexts.sort())
             );
     }

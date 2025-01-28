@@ -4,7 +4,7 @@ import {TaskTemplateEntry} from "@app/todo/task-template-entry.model";
 import {TaskTemplateService} from "@app/todo/task-template.service";
 import {Observable} from "rxjs";
 import {DialogResult, DialogResultNextAction} from "@app/todo/dialog-result.model";
-import {MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
     selector: 'app-todo-task-template-entry-details',

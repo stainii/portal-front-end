@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {Task} from "@app/todo/task.model";
 import {TaskService} from "@app/todo/task.service";
 import {Observable, Subject} from "rxjs";
