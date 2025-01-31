@@ -2,8 +2,6 @@ import {async, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from "@angular/router/testing";
 import {LoginComponent} from "./login.component";
 import {FormsModule} from "@angular/forms";
-import {MatButton} from "@angular/material/button";
-import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatRippleModule} from "@angular/material/core";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -23,12 +21,6 @@ describe('LoginComponent', () => {
         TestBed.configureTestingModule({
             declarations: [
                 LoginComponent,
-                MatButton,
-                MatCard,
-                MatCardHeader,
-                MatCardContent,
-                MatCardTitle,
-                MatCardActions,
             ], imports: [
                 RouterTestingModule.withRoutes([]),
                 FormsModule,
