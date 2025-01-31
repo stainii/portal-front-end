@@ -1,14 +1,20 @@
 .health-sporty-spice {
 
     display: flex;
+    max-width: 600px;
+    margin: 0 auto;
 
     img {
         max-height: 300px;
         max-width: 300px;
 
-        margin: 50px 0 50px 25%;
+        margin: 50px 0 50px 0;
         display: flex;
         flex-grow: 1;
+    }
+
+    app-health-balloon {
+        width: 100%;
     }
 
 }
