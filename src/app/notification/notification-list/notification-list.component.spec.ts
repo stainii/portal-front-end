@@ -23,23 +23,22 @@ describe('NotificationListComponent', () => {
         apiService = jasmine.createSpyObj("TokenService", ["logIn"]);
 
         TestBed.configureTestingModule({
-            declarations: [NotificationListComponent, NotificationComponent],
-            imports: [FormsModule,
-                MatIconModule,
-                MatCardModule,
-                MatButtonModule,
-                MatIconModule,
-                MatListModule,
-                MatCardModule,
-                MatFormFieldModule,
-                MatInputModule,
-                MatSelectModule],
-            providers: [
-                {provide: TokenService, useValue: apiService},
-                provideHttpClient(withInterceptorsFromDi()),
-                provideHttpClientTesting(),
-            ]
-        })
+    imports: [FormsModule,
+        MatIconModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatListModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule, NotificationListComponent, NotificationComponent],
+    providers: [
+        { provide: TokenService, useValue: apiService },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+    ]
+})
             .compileComponents();
     }));
 

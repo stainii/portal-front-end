@@ -3,12 +3,16 @@ import {SearchActivitiesService} from "@app/activity/search-activities.service";
 import {fromEvent, Subject} from "rxjs";
 import {distinctUntilChanged, map, takeUntil} from "rxjs/operators";
 import {RandomAdjectiveService} from "@app/funny-details/random-adjective.service";
+import { MatCard, MatCardHeader, MatCardTitle, MatCardContent } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
 
 @Component({
     selector: 'app-activity-location',
     templateUrl: './activity-location.component.html',
     styleUrls: ['./activity-location.component.scss'],
-    standalone: false
+    imports: [MatCard, MatCardHeader, MatCardTitle, MatCardContent, FormsModule, MatFormField, MatInput]
 })
 export class ActivityLocationComponent implements OnInit, OnDestroy {
 

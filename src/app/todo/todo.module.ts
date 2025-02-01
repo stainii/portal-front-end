@@ -44,23 +44,6 @@ import {
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
-    declarations: [
-        TodoOverviewComponent,
-        TodoMenuBarForOverviewComponent,
-        TodoTaskPanelComponent,
-        TodoAppComponent,
-        TodoMenuBarForTemplatesComponent,
-        TodoTemplatesComponent,
-        TodoTaskTemplateDetailsComponent,
-        TodoTaskTemplatesComponent,
-        TodoTaskDefinitionDetailsComponent,
-        TodoTaskTemplateEntryDetailsComponent,
-        TodoTaskDetailsComponent,
-        TodoSubscriptionDetailsComponent,
-        TodoSubscriptionEditorComponent,
-        TodoSubscriptionListComponent,
-        TodoMenuBarForSubscriptionsComponent
-    ],
     imports: [
         CommonModule,
         TodoRoutingModule,
@@ -80,7 +63,22 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
         MatListModule,
         MatTooltipModule,
         MatAutocompleteModule,
-        HammerModule
+        HammerModule,
+        TodoOverviewComponent,
+        TodoMenuBarForOverviewComponent,
+        TodoTaskPanelComponent,
+        TodoAppComponent,
+        TodoMenuBarForTemplatesComponent,
+        TodoTemplatesComponent,
+        TodoTaskTemplateDetailsComponent,
+        TodoTaskTemplatesComponent,
+        TodoTaskDefinitionDetailsComponent,
+        TodoTaskTemplateEntryDetailsComponent,
+        TodoTaskDetailsComponent,
+        TodoSubscriptionDetailsComponent,
+        TodoSubscriptionEditorComponent,
+        TodoSubscriptionListComponent,
+        TodoMenuBarForSubscriptionsComponent
     ]
 })
 export class TodoModule {

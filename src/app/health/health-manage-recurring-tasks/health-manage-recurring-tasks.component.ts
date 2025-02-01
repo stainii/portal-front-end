@@ -9,12 +9,16 @@ import {
 } from "@app/health/health-recurring-task-details/health-recurring-task-details.component";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
+import { NgIf } from '@angular/common';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatIcon } from '@angular/material/icon';
+import { MatFabButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-health-manage-recurring-tasks',
     templateUrl: './health-manage-recurring-tasks.component.html',
     styleUrls: ['./health-manage-recurring-tasks.component.scss'],
-    standalone: false
+    imports: [NgIf, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatIcon, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatFabButton]
 })
 export class HealthManageRecurringTasksComponent implements OnInit, OnDestroy {
 

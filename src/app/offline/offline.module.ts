@@ -5,10 +5,10 @@ import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
-    declarations: [OfflineIndicatorComponent],
     imports: [
         CommonModule,
-        MatIconModule
+        MatIconModule,
+        OfflineIndicatorComponent
     ],
     exports: [
         OfflineIndicatorComponent

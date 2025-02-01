@@ -4,12 +4,14 @@ import {ActivatedRoute} from "@angular/router";
 import {taskComparator} from "@app/todo/task.comparator";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
+import { NgIf, NgFor } from '@angular/common';
+import { TodoTaskPanelComponent } from '../todo-task-panel/todo-task-panel.component';
 
 @Component({
     selector: 'app-todo-overview',
     templateUrl: './todo-overview.component.html',
     styleUrls: ['./todo-overview.component.scss'],
-    standalone: false
+    imports: [NgIf, NgFor, TodoTaskPanelComponent]
 })
 export class TodoOverviewComponent implements OnInit, OnDestroy {
 

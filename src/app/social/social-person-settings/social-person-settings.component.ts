@@ -2,12 +2,13 @@ import {Component, Input} from '@angular/core';
 import {Person} from "@app/social/person.model";
 import moment from "moment";
 import {SocialService} from "@app/social/social.service";
+import { MatCard, MatCardAvatar, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent } from '@angular/material/card';
 
 @Component({
     selector: 'app-social-person-settings',
     templateUrl: './social-person-settings.component.html',
     styleUrls: ['./social-person-settings.component.scss'],
-    standalone: false
+    imports: [MatCard, MatCardAvatar, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent]
 })
 export class SocialPersonSettingsComponent {
 

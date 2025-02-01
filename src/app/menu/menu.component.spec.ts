@@ -2,6 +2,8 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {MenuComponent} from './menu.component';
 import {MatListModule} from "@angular/material/list";
+import { ActivatedRoute } from '@angular/router';
+import {of} from "rxjs";
 
 describe('MenuComponent', () => {
     let component: MenuComponent;
@@ -9,9 +11,16 @@ describe('MenuComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [MenuComponent],
             imports: [
                 MatListModule,
+                MenuComponent,
+            ], providers: [
+                {
+                    provide: ActivatedRoute,
+                    useValue: {
+                        params: of({}) // Mock any required params here
+                    }
+                }
             ]
         })
             .compileComponents();

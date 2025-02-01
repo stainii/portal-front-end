@@ -4,12 +4,15 @@ import {DateService} from "@app/util/date.service";
 import {NotificationService} from "../notification.service";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
+import { NgIf } from '@angular/common';
+import { MatCardSubtitle, MatCard, MatCardTitle, MatCardContent, MatCardActions } from '@angular/material/card';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-notification',
     templateUrl: './notification.component.html',
     styleUrls: ['./notification.component.scss'],
-    standalone: false
+    imports: [NgIf, MatCardSubtitle, MatCard, MatCardTitle, MatCardContent, MatCardActions, MatButton]
 })
 export class NotificationComponent implements OnDestroy {
 

@@ -1,18 +1,29 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Task} from '../task.model';
 import {environment} from "@env/environment";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent } from "@angular/material/dialog";
 import {RandomAdjectiveService} from "@app/funny-details/random-adjective.service";
 import {DialogResult, DialogResultNextAction} from "@app/todo/dialog-result.model";
 import {map} from "rxjs/operators";
 import {TaskService} from "@app/todo/task.service";
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatStepper, MatStep, MatStepLabel } from '@angular/material/stepper';
+import { MatFormField, MatSuffix } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { MatButton } from '@angular/material/button';
+import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
+import { MatOption } from '@angular/material/core';
+import { MatSelect } from '@angular/material/select';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
 
 
 @Component({
     selector: 'app-todo-task-details',
     templateUrl: './todo-task-details.component.html',
     styleUrls: ['./todo-task-details.component.scss'],
-    standalone: false
+    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatStepper, MatStep, MatStepLabel, MatFormField, MatInput, FormsModule, NgIf, MatButton, MatAutocompleteTrigger, MatAutocomplete, NgFor, MatOption, MatSelect, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, AsyncPipe]
 })
 export class TodoTaskDetailsComponent implements OnInit {
 

@@ -7,12 +7,14 @@ import {MatDialog} from "@angular/material/dialog";
 import {SocialService} from "@app/social/social.service";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
+import { SocialManagePeopleListComponent } from '../social-manage-people-list/social-manage-people-list.component';
+import { MatFabButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-social-manage-people',
     templateUrl: './social-manage-people.component.html',
     styleUrls: ['./social-manage-people.component.scss'],
-    standalone: false
+    imports: [SocialManagePeopleListComponent, MatFabButton]
 })
 export class SocialManagePeopleComponent implements OnDestroy {
 

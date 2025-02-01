@@ -15,14 +15,14 @@ describe('LogoutComponent', () => {
         userService = jasmine.createSpyObj("UserService", ["logOut"]);
         router = jasmine.createSpyObj("Router", ["navigate"]);
         TestBed.configureTestingModule({
-            declarations: [LogoutComponent],
-            providers: [
-                {provide: UserService, useValue: userService},
-                {provide: Router, useValue: router}
-            ], imports: [
-                MatIconModule
-            ]
-        }).compileComponents();
+    providers: [
+        { provide: UserService, useValue: userService },
+        { provide: Router, useValue: router }
+    ], imports: [
+        MatIconModule,
+        LogoutComponent
+    ]
+}).compileComponents();
     }));
 
     beforeEach(() => {

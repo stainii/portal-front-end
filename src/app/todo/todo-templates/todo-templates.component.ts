@@ -7,12 +7,15 @@ import {
 import {TaskTemplateService} from "@app/todo/task-template.service";
 import {Observable, Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
+import { TodoTaskTemplatesComponent } from '../todo-task-templates/todo-task-templates.component';
+import { MatFabButton } from '@angular/material/button';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-todo-templates',
     templateUrl: './todo-templates.component.html',
     styleUrls: ['./todo-templates.component.scss'],
-    standalone: false
+    imports: [TodoTaskTemplatesComponent, MatFabButton, AsyncPipe]
 })
 export class TodoTemplatesComponent implements OnDestroy {
 

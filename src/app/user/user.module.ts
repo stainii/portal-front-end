@@ -12,10 +12,6 @@ import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
-    declarations: [
-        LoginComponent,
-        LogoutComponent,
-    ],
     imports: [
         CommonModule,
         FormsModule,
@@ -25,6 +21,8 @@ import {MatButtonModule} from "@angular/material/button";
         MatInputModule,
         MatIconModule,
         MatButtonModule,
+        LoginComponent,
+        LogoutComponent,
     ], exports: [
         LoginComponent,
         LogoutComponent

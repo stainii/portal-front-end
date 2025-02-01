@@ -45,20 +45,6 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
-    declarations: [ActivityAppComponent,
-        ActivityLabelsComponent,
-        ActivityLocationComponent,
-        ActivityDateComponent,
-        ActivitySearchResultComponent,
-        ActivitySearchResultsComponent,
-        ActivityMenuBarForSearchComponent,
-        ActivityManageListComponent,
-        ActivityManageDetailsComponent,
-        ActivityMenuBarForManageComponent,
-        ActivityConfirmDeleteComponent,
-        ActivityManageLabelsComponent,
-        ActivityManageDateIntervalsComponent,
-        ActivityManageDateIntervalComponent],
     imports: [
         CommonModule,
         ActivityRoutingModule,
@@ -85,6 +71,20 @@ import {MatFormFieldModule} from "@angular/material/form-field";
         MatDividerModule,
         MatSnackBarModule,
         MatFormFieldModule,
+        ActivityAppComponent,
+        ActivityLabelsComponent,
+        ActivityLocationComponent,
+        ActivityDateComponent,
+        ActivitySearchResultComponent,
+        ActivitySearchResultsComponent,
+        ActivityMenuBarForSearchComponent,
+        ActivityManageListComponent,
+        ActivityManageDetailsComponent,
+        ActivityMenuBarForManageComponent,
+        ActivityConfirmDeleteComponent,
+        ActivityManageLabelsComponent,
+        ActivityManageDateIntervalsComponent,
+        ActivityManageDateIntervalComponent,
     ]
 })
 export class ActivityModule {

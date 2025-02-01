@@ -31,16 +31,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatListModule} from "@angular/material/list";
 import {MatSelectModule} from "@angular/material/select";
 
-@NgModule({ declarations: [
-        NotificationListComponent,
-        NotificationAppComponent,
-        NotificationComponent,
-        NotificationSubscriptionEditorComponent,
-        NotificationSubscriptionListComponent,
-        NotificationSubscriptionDetailsComponent,
-        NotificationMenuBarForListComponent,
-        NotificationMenuBarForSubscriptionsComponent
-    ], imports: [CommonModule,
+@NgModule({
+    imports: [CommonModule,
         NotificationRoutingModule,
         FormsModule,
         MatIconModule,
@@ -51,7 +43,14 @@ import {MatSelectModule} from "@angular/material/select";
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSelectModule], providers: [
+        MatSelectModule, NotificationListComponent,
+        NotificationAppComponent,
+        NotificationComponent,
+        NotificationSubscriptionEditorComponent,
+        NotificationSubscriptionListComponent,
+        NotificationSubscriptionDetailsComponent,
+        NotificationMenuBarForListComponent,
+        NotificationMenuBarForSubscriptionsComponent], providers: [
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthenticationHttpInterceptor,

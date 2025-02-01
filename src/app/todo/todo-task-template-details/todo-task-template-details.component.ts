@@ -1,19 +1,28 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent } from "@angular/material/dialog";
 import {TaskTemplate} from "@app/todo/task-template.model";
 import {Observable} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {map} from "rxjs/operators";
-import {UntypedFormControl} from "@angular/forms";
+import { UntypedFormControl, FormsModule } from "@angular/forms";
 import {RandomAdjectiveService} from "@app/funny-details/random-adjective.service";
 import {TaskDefinition} from "@app/todo/task-definition.model";
 import {ErrorService} from "@app/error/error.service";
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatList, MatListItem } from '@angular/material/list';
+import { NgFor, NgIf } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
+import { TodoTaskDefinitionDetailsComponent } from '../todo-task-definition-details/todo-task-definition-details.component';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-todo-task-template-details',
     templateUrl: './todo-task-template-details.component.html',
     styleUrls: ['./todo-task-template-details.component.scss'],
-    standalone: false
+    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, FormsModule, MatList, NgFor, MatListItem, MatIcon, MatTabGroup, MatTab, MatTabLabel, NgIf, TodoTaskDefinitionDetailsComponent, MatButton]
 })
 export class TodoTaskTemplateDetailsComponent {
 

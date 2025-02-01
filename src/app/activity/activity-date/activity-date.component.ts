@@ -1,12 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {SearchActivitiesService} from "@app/activity/search-activities.service";
 import {Moment} from "moment";
+import { MatCard, MatCardHeader, MatCardTitle, MatCardContent } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatSuffix } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular/material/datepicker';
+import { NgIf } from '@angular/common';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 
 @Component({
     selector: 'app-activity-date',
     templateUrl: './activity-date.component.html',
     styleUrls: ['./activity-date.component.scss'],
-    standalone: false
+    imports: [MatCard, MatCardHeader, MatCardTitle, MatCardContent, FormsModule, MatFormField, MatInput, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, NgIf, MatSlideToggle]
 })
 export class ActivityDateComponent implements OnInit {
     startDate: Moment;

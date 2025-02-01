@@ -1,17 +1,21 @@
 import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Observable, Subject} from "rxjs";
 import {LabelService} from "@app/activity/label.service";
-import {MatChipInputEvent} from "@angular/material/chips";
-import {MatAutocomplete, MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
+import { MatChipInputEvent, MatChipGrid, MatChipRow, MatChipRemove, MatChipInput } from "@angular/material/chips";
+import { MatAutocomplete, MatAutocompleteSelectedEvent, MatAutocompleteTrigger } from "@angular/material/autocomplete";
 import {map, startWith, takeUntil} from "rxjs/operators";
-import {UntypedFormControl} from "@angular/forms";
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { NgFor, AsyncPipe } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { MatOption } from '@angular/material/core';
 
 @Component({
     selector: 'app-activity-manage-labels',
     templateUrl: './activity-manage-labels.component.html',
     styleUrls: ['./activity-manage-labels.component.scss'],
-    standalone: false
+    imports: [MatFormField, MatLabel, MatChipGrid, NgFor, MatChipRow, MatIcon, MatChipRemove, FormsModule, MatAutocompleteTrigger, MatChipInput, ReactiveFormsModule, MatAutocomplete, MatOption, AsyncPipe]
 })
 export class ActivityManageLabelsComponent implements OnInit, OnDestroy {
 

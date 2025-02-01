@@ -17,21 +17,21 @@ describe('NotificationMenuBarForListComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [NotificationMenuBarForListComponent],
-            imports: [
-                FormsModule,
-                MatIconModule,
-                MatCardModule,
-                MatButtonModule,
-                MatIconModule,
-                MatListModule,
-                MatCardModule,
-                MatFormFieldModule,
-                MatInputModule,
-                MatSelectModule,
-                RouterTestingModule.withRoutes([]),
-            ]
-        })
+    imports: [
+        FormsModule,
+        MatIconModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatListModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        RouterTestingModule.withRoutes([]),
+        NotificationMenuBarForListComponent,
+    ]
+})
             .compileComponents();
     }));
 

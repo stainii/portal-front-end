@@ -54,9 +54,7 @@ import {MatDialogModule} from "@angular/material/dialog";
         MatTableModule,
         MatRadioModule,
         ReactiveFormsModule,
-        MatDialogModule
-    ],
-    declarations: [
+        MatDialogModule,
         HousagotchiAppComponent,
         HousagotchiAddExecutionComponent,
         HousagotchiBalloonComponent,

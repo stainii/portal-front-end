@@ -35,15 +35,6 @@ import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
-    declarations: [
-        HealthAppComponent,
-        HealthMenuBarForManageRecurringTasksComponent,
-        HealthManageRecurringTasksComponent,
-        HealthRecurringTaskDetailsComponent,
-        HealthSportySpiceComponent,
-        HealthBalloonComponent,
-        HealthAddExecutionComponent,
-        HealthMenuBarForSportySpiceComponent],
     imports: [
         CommonModule,
         HealthRoutingModule,
@@ -62,7 +53,15 @@ import {MatDialogModule} from "@angular/material/dialog";
         MatSnackBarModule,
         MatTableModule,
         MatRadioModule,
-        MatDialogModule
+        MatDialogModule,
+        HealthAppComponent,
+        HealthMenuBarForManageRecurringTasksComponent,
+        HealthManageRecurringTasksComponent,
+        HealthRecurringTaskDetailsComponent,
+        HealthSportySpiceComponent,
+        HealthBalloonComponent,
+        HealthAddExecutionComponent,
+        HealthMenuBarForSportySpiceComponent
     ]
 })
 export class HealthModule {

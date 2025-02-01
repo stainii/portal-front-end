@@ -1,11 +1,13 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Person} from "@app/social/person.model";
+import { NgFor } from '@angular/common';
+import { SocialPersonSettingsComponent } from '../social-person-settings/social-person-settings.component';
 
 @Component({
     selector: 'app-social-manage-people-list',
     templateUrl: './social-manage-people-list.component.html',
     styleUrls: ['./social-manage-people-list.component.scss'],
-    standalone: false
+    imports: [NgFor, SocialPersonSettingsComponent]
 })
 export class SocialManagePeopleListComponent {
 

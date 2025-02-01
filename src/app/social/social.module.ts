@@ -25,7 +25,6 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 
 @NgModule({
-    declarations: [SocialManagePeopleComponent, SocialMenuBarForManagePeopleComponent, SocialMenuBarForOverviewComponent, SocialManagePeopleListComponent, SocialPersonSettingsEditComponent, SocialPolaroidComponent, SocialOverviewComponent, SocialPersonSettingsComponent, SocialAddContactComponent],
     imports: [
         CommonModule,
         SocialRoutingModule,
@@ -39,6 +38,7 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
         FormsModule,
         MatDatepickerModule,
         MatMomentDateModule,
+        SocialManagePeopleComponent, SocialMenuBarForManagePeopleComponent, SocialMenuBarForOverviewComponent, SocialManagePeopleListComponent, SocialPersonSettingsEditComponent, SocialPolaroidComponent, SocialOverviewComponent, SocialPersonSettingsComponent, SocialAddContactComponent,
     ]
 })
 export class SocialModule {

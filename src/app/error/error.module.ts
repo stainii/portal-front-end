@@ -5,10 +5,10 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
-    declarations: [ErrorNotificationComponent],
     imports: [
         CommonModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        ErrorNotificationComponent
     ], exports: [
         ErrorNotificationComponent,
     ]

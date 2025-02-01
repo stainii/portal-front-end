@@ -7,12 +7,16 @@ import {DEPLOYMENT_NAME} from "@app/setlist/setlist-constants";
 import {SetlistSongDetailsComponent} from "@app/setlist/setlist-song-details/setlist-song-details.component";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
+import { NgIf } from '@angular/common';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatIcon } from '@angular/material/icon';
+import { MatFabButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-setlist-manage',
     templateUrl: './setlist-manage.component.html',
     styleUrls: ['./setlist-manage.component.scss'],
-    standalone: false
+    imports: [NgIf, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatIcon, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatFabButton]
 })
 export class SetlistManageComponent implements OnInit, OnDestroy {
 

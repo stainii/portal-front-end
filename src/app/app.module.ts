@@ -26,11 +26,7 @@ import {OfflineModule} from "@app/offline/offline.module";
 import {ErrorModule} from "@app/error/error.module";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 
-@NgModule({ declarations: [
-        AppComponent,
-        DashboardComponent,
-        MenuComponent,
-    ],
+@NgModule({ declarations: [AppComponent],
     bootstrap: [AppComponent], imports: [BrowserModule,
         BrowserAnimationsModule,
         UserModule,
@@ -48,7 +44,8 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
         OfflineModule,
         ErrorModule,
         HammerModule,
-        ReactiveFormsModule], providers: [{
+        ReactiveFormsModule, DashboardComponent,
+        MenuComponent], providers: [{
             provide: HTTP_INTERCEPTORS,
             useClass: AuthenticationHttpInterceptor,
             multi: true

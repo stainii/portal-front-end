@@ -8,12 +8,14 @@ import {Execution} from "@app/recurring-tasks/execution.model";
 import {ExecutionService} from "@app/recurring-tasks/execution.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Subject} from "rxjs";
+import { SetlistListComponent } from '../setlist-list/setlist-list.component';
+import { SetlistAddExecutionComponent } from '../setlist-add-execution/setlist-add-execution.component';
 
 @Component({
     selector: 'app-setlist-app',
     templateUrl: './setlist-app.component.html',
     styleUrls: ['./setlist-app.component.scss'],
-    standalone: false
+    imports: [SetlistListComponent, SetlistAddExecutionComponent]
 })
 export class SetlistAppComponent implements OnInit, OnDestroy {
 

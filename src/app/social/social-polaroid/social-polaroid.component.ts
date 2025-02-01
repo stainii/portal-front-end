@@ -3,12 +3,13 @@ import {Person} from "@app/social/person.model";
 import moment from "moment";
 import {Contact} from "@app/social/contact.model";
 import {SocialService} from "@app/social/social.service";
+import { SocialAddContactComponent } from '../social-add-contact/social-add-contact.component';
 
 @Component({
     selector: 'app-social-polaroid',
     templateUrl: './social-polaroid.component.html',
     styleUrls: ['./social-polaroid.component.scss'],
-    standalone: false
+    imports: [SocialAddContactComponent]
 })
 export class SocialPolaroidComponent {
 

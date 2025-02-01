@@ -7,8 +7,7 @@ import {takeUntil} from "rxjs/operators";
 @Component({
     selector: 'app-error-notification',
     templateUrl: './error-notification.component.html',
-    styleUrls: ['./error-notification.component.scss'],
-    standalone: false
+    styleUrls: ['./error-notification.component.scss']
 })
 export class ErrorNotificationComponent implements OnInit, OnDestroy {
 

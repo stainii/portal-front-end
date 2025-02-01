@@ -1,11 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DateInterval} from "@app/activity/date-interval.model";
+import { NgFor } from '@angular/common';
+import { ActivityManageDateIntervalComponent } from '../activity-manage-date-interval/activity-manage-date-interval.component';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-activity-manage-date-intervals',
     templateUrl: './activity-manage-date-intervals.component.html',
     styleUrls: ['./activity-manage-date-intervals.component.scss'],
-    standalone: false
+    imports: [NgFor, ActivityManageDateIntervalComponent, MatButton]
 })
 export class ActivityManageDateIntervalsComponent implements OnInit {
 

@@ -33,12 +33,6 @@ describe('NotificationAppComponent', () => {
         apiService = jasmine.createSpyObj("TokenService", ["logIn"]);
 
         TestBed.configureTestingModule({
-    declarations: [NotificationAppComponent,
-        NotificationListComponent,
-        NotificationSubscriptionEditorComponent,
-        NotificationComponent,
-        NotificationSubscriptionListComponent,
-        NotificationSubscriptionDetailsComponent],
     imports: [FormsModule,
         MatIconModule,
         MatCardModule,
@@ -48,7 +42,12 @@ describe('NotificationAppComponent', () => {
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSelectModule],
+        MatSelectModule, NotificationAppComponent,
+        NotificationListComponent,
+        NotificationSubscriptionEditorComponent,
+        NotificationComponent,
+        NotificationSubscriptionListComponent,
+        NotificationSubscriptionDetailsComponent],
     providers: [
         { provide: TokenService, useValue: apiService },
         provideHttpClient(withInterceptorsFromDi()),

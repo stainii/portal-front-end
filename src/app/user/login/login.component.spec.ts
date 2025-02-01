@@ -19,19 +19,18 @@ describe('LoginComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [
-                LoginComponent,
-            ], imports: [
-                RouterTestingModule.withRoutes([]),
-                FormsModule,
-                MatRippleModule,
-                MatInputModule,
-                MatFormFieldModule
-            ], providers: [
-                {provide: UserService, useValue: userService},
-                {provide: Router, useValue: router}
-            ]
-        }).compileComponents();
+    imports: [
+        RouterTestingModule.withRoutes([]),
+        FormsModule,
+        MatRippleModule,
+        MatInputModule,
+        MatFormFieldModule,
+        LoginComponent
+    ], providers: [
+        { provide: UserService, useValue: userService },
+        { provide: Router, useValue: router }
+    ]
+}).compileComponents();
     }));
 
     it('should create', waitForAsync(() => {

@@ -13,12 +13,15 @@ import {DialogResultNextAction} from "@app/todo/dialog-result.model";
 import {ErrorService} from "@app/error/error.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {takeUntil} from "rxjs/operators";
+import { TodoOverviewComponent } from '../todo-overview/todo-overview.component';
+import { MatFabButton } from '@angular/material/button';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-todo-app',
     templateUrl: './todo-app.component.html',
     styleUrls: ['./todo-app.component.scss'],
-    standalone: false
+    imports: [TodoOverviewComponent, MatFabButton, AsyncPipe]
 })
 export class TodoAppComponent implements OnDestroy {
 

@@ -3,12 +3,14 @@ import {NotificationSubscriptionService} from "../notification-subscription.serv
 import {NotificationSubscription} from "../notification-subscription.model";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
+import { NotificationSubscriptionListComponent } from '../notification-subscription-list/notification-subscription-list.component';
+import { NotificationSubscriptionDetailsComponent } from '../notification-subscription-details/notification-subscription-details.component';
 
 @Component({
     selector: 'app-notification-subscription-editor',
     templateUrl: './notification-subscription-editor.component.html',
     styleUrls: ['./notification-subscription-editor.component.scss'],
-    standalone: false
+    imports: [NotificationSubscriptionListComponent, NotificationSubscriptionDetailsComponent]
 })
 export class NotificationSubscriptionEditorComponent implements OnInit, OnDestroy {
 

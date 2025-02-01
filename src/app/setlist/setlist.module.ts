@@ -21,7 +21,6 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
 
 
 @NgModule({
-    declarations: [SetlistAppComponent, SetlistMenuBarForListComponent, SetlistManageComponent, SetlistSongDetailsComponent, SetlistMenuBarForManageComponent, SetlistAddExecutionComponent, SetlistListComponent],
     imports: [
         CommonModule,
         SetlistRoutingModule,
@@ -33,7 +32,8 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
         MatInputModule,
         MatDatepickerModule,
         MatMomentDateModule,
-        MatSelectModule
+        MatSelectModule,
+        SetlistAppComponent, SetlistMenuBarForListComponent, SetlistManageComponent, SetlistSongDetailsComponent, SetlistMenuBarForManageComponent, SetlistAddExecutionComponent, SetlistListComponent
     ]
 })
 export class SetlistModule {

@@ -7,12 +7,23 @@ import {ErrorService} from "@app/error/error.service";
 import {ActivityHelperService} from "@app/activity/activity-helper.service";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
+import { NgIf } from '@angular/common';
+import { MatTabGroup, MatTab } from '@angular/material/tabs';
+import { MatCard } from '@angular/material/card';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { ActivityManageLabelsComponent } from '../activity-manage-labels/activity-manage-labels.component';
+import { ActivityManageDateIntervalsComponent } from '../activity-manage-date-intervals/activity-manage-date-intervals.component';
+import { MatSlider, MatSliderThumb } from '@angular/material/slider';
+import { MatFabButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
     selector: 'app-activity-manage-details',
     templateUrl: './activity-manage-details.component.html',
     styleUrls: ['./activity-manage-details.component.scss'],
-    standalone: false
+    imports: [NgIf, MatTabGroup, MatTab, MatCard, MatFormField, MatLabel, MatInput, FormsModule, ActivityManageLabelsComponent, ActivityManageDateIntervalsComponent, MatSlider, MatSliderThumb, MatFabButton, MatIcon]
 })
 export class ActivityManageDetailsComponent implements OnInit, OnDestroy {
 

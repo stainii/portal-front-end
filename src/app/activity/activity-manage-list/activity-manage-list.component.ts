@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
 import {ManageActivitiesService} from "@app/activity/manage-activities.service";
 import {fromEvent, merge, Observable, of, Subject} from "rxjs";
 import {catchError, debounceTime, map, startWith, switchMap, takeUntil} from "rxjs/operators";
@@ -8,14 +8,19 @@ import {Activity} from "@app/activity/activity.model";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {MatDialog} from "@angular/material/dialog";
 import {ActivityConfirmDeleteComponent} from "@app/activity/activity-confirm-delete/activity-confirm-delete.component";
-import {MatTable} from "@angular/material/table";
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatNoDataRow } from "@angular/material/table";
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
+import { MatFabButton } from '@angular/material/button';
 
 
 @Component({
     selector: 'app-activity-manage-list',
     templateUrl: './activity-manage-list.component.html',
     styleUrls: ['./activity-manage-list.component.scss'],
-    standalone: false
+    imports: [MatFormField, MatLabel, MatInput, MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, MatIcon, RouterLink, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatNoDataRow, MatPaginator, MatFabButton]
 })
 export class ActivityManageListComponent implements AfterViewInit, OnDestroy {
 

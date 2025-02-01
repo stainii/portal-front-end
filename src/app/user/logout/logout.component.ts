@@ -1,12 +1,13 @@
 import {Component} from '@angular/core';
 import {UserService} from "../user.service";
 import {Router} from "@angular/router";
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
     selector: 'app-logout',
     templateUrl: './logout.component.html',
     styleUrls: ['./logout.component.scss'],
-    standalone: false
+    imports: [MatIcon]
 })
 export class LogoutComponent {
 

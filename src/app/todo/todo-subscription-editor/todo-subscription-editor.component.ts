@@ -3,12 +3,14 @@ import {TodoSubscriptionService} from "@app/todo/todo-subscription.service";
 import {TodoSubscription} from "@app/todo/todo-subscription.model";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
+import { TodoSubscriptionListComponent } from '../todo-subscription-list/todo-subscription-list.component';
+import { TodoSubscriptionDetailsComponent } from '../todo-subscription-details/todo-subscription-details.component';
 
 @Component({
     selector: 'app-todo-subscription-editor',
     templateUrl: './todo-subscription-editor.component.html',
     styleUrls: ['./todo-subscription-editor.component.scss'],
-    standalone: false
+    imports: [TodoSubscriptionListComponent, TodoSubscriptionDetailsComponent]
 })
 export class TodoSubscriptionEditorComponent implements OnInit, OnDestroy {
 
