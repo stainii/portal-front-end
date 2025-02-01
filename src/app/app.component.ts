@@ -1,14 +1,22 @@
 import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from "@app/user/user.service";
-import {Router} from "@angular/router";
+import { Router, RouterOutlet } from "@angular/router";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
+import { NgProgressModule } from 'ngx-progressbar';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ErrorNotificationComponent } from './error/error-notification/error-notification.component';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    standalone: false,
+    imports: [
+        NgProgressModule,
+        DashboardComponent,
+        RouterOutlet,
+        ErrorNotificationComponent,
+    ],
 })
 export class AppComponent implements OnInit, OnDestroy {
 
