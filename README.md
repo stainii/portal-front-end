@@ -72,15 +72,6 @@ You can find the code under ``src/main/web``.
 * Local environment: ``npm run dev``
 * Production environment: ``npm run build``
 
-
-## A swift development workflow
-During development of the front-end, I like to start the Java application to serve as a back-end, ignoring the front-end at port 2001.
-
-Then, I use ``npm start`` to start up another front-end on 4200. This front-end makes use of the backend at port 2001, so no mocking required. Still, I can adapt the code and watch the front-end reload live, allowing me to develop swiftly.
-
-If I need to test the **Progressive Web App functionality**, like offline working, I need to run the front-end with ``npm run staging`` instead.
-
-
 ## The security system
 ### Naming conventions of modules and routes
 Make sure that the route to your component is the same as the component name in lowercase.

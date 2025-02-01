@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Report} from "@app/housagotchi/report.model";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {Mood} from "@app/housagotchi/mood.model";
-import * as moment from "moment";
+import moment from "moment";
 
 @Injectable({
     providedIn: 'root'

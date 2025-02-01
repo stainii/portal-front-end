@@ -1,7 +1,7 @@
 import {inject, TestBed} from '@angular/core/testing';
 
-import {HttpClientModule} from "@angular/common/http";
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing";
 import {environment} from "@env/environment";
 import {TaskTemplateService} from "@app/todo/task-template.service";
 import {TaskTemplate} from "@app/todo/task-template.model";
@@ -11,14 +11,13 @@ describe('TaskTemplateService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [
-                TaskTemplateService
-            ],
-            imports: [
-                HttpClientModule,
-                HttpClientTestingModule
-            ]
-        });
+    imports: [],
+    providers: [
+        TaskTemplateService,
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+});
     });
 
     it('should be created', inject([TaskTemplateService], (service: TaskTemplateService) => {

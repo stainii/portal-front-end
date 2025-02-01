@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Setlist} from "@app/setlist/setlist.model";
 import {Song} from "@app/setlist/song.model";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
-import * as moment from "moment";
+import moment from "moment";
 
 @Injectable({
     providedIn: 'root'

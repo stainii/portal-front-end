@@ -1,17 +1,14 @@
-import {async, inject, TestBed} from '@angular/core/testing';
-import {HttpClientModule} from '@angular/common/http';
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {inject, TestBed, waitForAsync} from '@angular/core/testing';
+import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
+import {HttpTestingController, provideHttpClientTesting} from '@angular/common/http/testing';
 
 import {NotificationService} from './notification.service';
 
 describe('NotificationService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [NotificationService],
-            imports: [
-                HttpClientModule,
-                HttpClientTestingModule
-            ]
+            imports: [],
+            providers: [NotificationService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
         });
     });
 
@@ -20,7 +17,7 @@ describe('NotificationService', () => {
     }));
 
     it("should call the webservice when finding all notifications",
-        async(
+        waitForAsync(
             inject([NotificationService, HttpTestingController], (notificationService: NotificationService, backend: HttpTestingController) => {
                 notificationService.findActiveNotifications().subscribe();
 
@@ -33,7 +30,7 @@ describe('NotificationService', () => {
     );
 
     it("should call the webservice when marking a notification as read",
-        async(
+        waitForAsync(
             inject([NotificationService, HttpTestingController], (notificationService: NotificationService, backend: HttpTestingController) => {
 
                 notificationService.markAsRead(100).subscribe();

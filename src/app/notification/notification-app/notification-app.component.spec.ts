@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {NotificationAppComponent} from './notification-app.component';
 import {NotificationListComponent} from "@app/notification/notification-list/notification-list.component";
@@ -21,39 +21,40 @@ import {MatInputModule} from "@angular/material/input";
 import {MatListModule} from "@angular/material/list";
 import {MatSelectModule} from "@angular/material/select";
 import {TokenService} from "@app/user/token.service";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('NotificationAppComponent', () => {
     let component: NotificationAppComponent;
     let fixture: ComponentFixture<NotificationAppComponent>;
     let apiService;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         apiService = jasmine.createSpyObj("TokenService", ["logIn"]);
 
         TestBed.configureTestingModule({
-            declarations: [NotificationAppComponent,
-                NotificationListComponent,
-                NotificationSubscriptionEditorComponent,
-                NotificationComponent,
-                NotificationSubscriptionListComponent,
-                NotificationSubscriptionDetailsComponent],
-            imports: [
-                FormsModule,
-                MatIconModule,
-                MatCardModule,
-                MatButtonModule,
-                MatIconModule,
-                MatListModule,
-                MatCardModule,
-                MatFormFieldModule,
-                MatInputModule,
-                MatSelectModule,
-                HttpClientTestingModule
-            ], providers: [
-                {provide: TokenService, useValue: apiService},
-            ]
-        })
+    declarations: [NotificationAppComponent,
+        NotificationListComponent,
+        NotificationSubscriptionEditorComponent,
+        NotificationComponent,
+        NotificationSubscriptionListComponent,
+        NotificationSubscriptionDetailsComponent],
+    imports: [FormsModule,
+        MatIconModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatListModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule],
+    providers: [
+        { provide: TokenService, useValue: apiService },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+    ]
+})
             .compileComponents();
     }));
 

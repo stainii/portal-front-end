@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {NotificationMenuBarForListComponent} from './notification-menu-bar-for-list.component';
 import {FormsModule} from "@angular/forms";
@@ -15,7 +15,7 @@ describe('NotificationMenuBarForListComponent', () => {
     let component: NotificationMenuBarForListComponent;
     let fixture: ComponentFixture<NotificationMenuBarForListComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [NotificationMenuBarForListComponent],
             imports: [

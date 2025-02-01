@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Task} from "@app/todo/task.model";
-import * as moment from "moment";
+import moment from "moment";
 import {Guid} from "guid-typescript";
 
 @Injectable({

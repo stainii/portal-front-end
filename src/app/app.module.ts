@@ -14,7 +14,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {DashboardComponent} from "@app/dashboard/dashboard.component";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthenticationHttpInterceptor} from "@app/user/authentication.interceptor";
 import {MenuComponent} from './menu/menu.component';
@@ -26,17 +26,14 @@ import {OfflineModule} from "@app/offline/offline.module";
 import {ErrorModule} from "@app/error/error.module";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
         DashboardComponent,
         MenuComponent,
     ],
-    imports: [
-        BrowserModule,
+    bootstrap: [AppComponent], imports: [BrowserModule,
         BrowserAnimationsModule,
         UserModule,
-        HttpClientModule,
         ServiceWorkerModule.register('/ngsw-worker.js'),
         AppRoutingModule,
         LayoutModule,
@@ -51,23 +48,19 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
         OfflineModule,
         ErrorModule,
         HammerModule,
-        ReactiveFormsModule
-    ],
-    providers: [{
-        provide: HTTP_INTERCEPTORS,
-        useClass: AuthenticationHttpInterceptor,
-        multi: true
-    }, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: RetryInterceptor,
-        multi: true
-    }, {
-        provide: MAT_DATE_LOCALE, useValue: 'nl-BE'
-    }, {
-        provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}
-    }],
-    bootstrap: [AppComponent]
-})
+        ReactiveFormsModule], providers: [{
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthenticationHttpInterceptor,
+            multi: true
+        }, {
+            provide: HTTP_INTERCEPTORS,
+            useClass: RetryInterceptor,
+            multi: true
+        }, {
+            provide: MAT_DATE_LOCALE, useValue: 'nl-BE'
+        }, {
+            provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' }
+        }, provideHttpClient(withInterceptorsFromDi())] })
 
 export class AppModule {
 }

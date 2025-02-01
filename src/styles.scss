@@ -10,9 +10,9 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-@import '~material-design-icons/iconfont/material-icons.css';
-@import "~roboto-fontface/css/roboto/roboto-fontface.css";
-@import "~typeface-indie-flower/index.css";
+@import 'material-design-icons/iconfont/material-icons.css';
+@import "roboto-fontface/css/roboto/roboto-fontface.css";
+@import "typeface-indie-flower/index.css";
 @include mat.core();
 
 $portal-primary: mat.define-palette(mat.$teal-palette);

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Task} from "@app/todo/task.model";
 import {environment} from "@env/environment";
 import {TaskTemplateEntry} from "@app/todo/task-template-entry.model";
-import * as moment from "moment";
+import moment from "moment";
 import {TaskRepository} from "@app/todo/task.repository";
 import {TaskStatus} from "@app/todo/task-status.model";
 import {TaskPatchService} from "@app/todo/task-patch.service";

@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Task} from "@app/todo/task.model";
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import {TaskTemplateEntry} from "@app/todo/task-template-entry.model";
 import {catchError, map, tap} from "rxjs/operators";
 import {UserService} from "@app/user/user.service";
 import {TaskPatch} from "@app/todo/task-patch.model";
-import * as moment from "moment";
+import moment from "moment";
 import {TaskPatchService} from "@app/todo/task-patch.service";
 import {ErrorService} from "@app/error/error.service";
 import {TaskPatchResult} from "@app/todo/task-patch-result.model";

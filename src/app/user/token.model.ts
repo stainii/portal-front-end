@@ -1,9 +1,9 @@
-import * as jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode";
 
 export class Token {
-    private _data;
+    private _data: { exp: number; };
 
-    constructor(public value) {
+    constructor(public value: string) {
         try {
             this._data = jwt_decode(value);
         } catch (e) {

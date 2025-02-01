@@ -1,8 +1,9 @@
 import {getTestBed, inject, TestBed} from '@angular/core/testing';
 
 import {ExecutionService} from './execution.service';
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
-import * as moment from "moment";
+import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing";
+import moment from "moment";
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('ExecutionService', () => {
     let injector: TestBed;
@@ -10,11 +11,9 @@ describe('ExecutionService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [ExecutionService],
-            imports: [
-                HttpClientTestingModule
-            ]
-        });
+    imports: [],
+    providers: [ExecutionService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
         injector = getTestBed();
         httpMock = injector.get(HttpTestingController);
     });

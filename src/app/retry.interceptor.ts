@@ -1,6 +1,6 @@
 import {delay, mergeMap, retryWhen} from "rxjs/operators";
 import {Observable, of, throwError} from "rxjs";
-import {HttpErrorResponse, HttpInterceptor} from "@angular/common/http";
+import { HttpErrorResponse, HttpInterceptor } from "@angular/common/http";
 import {ErrorService} from "@app/error/error.service";
 import {Injectable} from "@angular/core";
 import {UserService} from "@app/user/user.service";

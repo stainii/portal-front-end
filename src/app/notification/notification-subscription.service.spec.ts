@@ -1,19 +1,16 @@
-import {async, inject, TestBed} from '@angular/core/testing';
+import {inject, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {NotificationSubscriptionService} from './notification-subscription.service';
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
-import {HttpClientModule} from "@angular/common/http";
+import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import {NotificationSubscription} from "./notification-subscription.model";
 
 describe('NotificationSubscriptionService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [NotificationSubscriptionService],
-            imports: [
-                HttpClientModule,
-                HttpClientTestingModule
-            ]
-        });
+    imports: [],
+    providers: [NotificationSubscriptionService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
     });
 
     it('should be created', inject([NotificationSubscriptionService], (service: NotificationSubscriptionService) => {
@@ -21,7 +18,7 @@ describe('NotificationSubscriptionService', () => {
     }));
 
     it("should call the webservice when finding all subscriptions",
-        async(
+        waitForAsync(
             inject([NotificationSubscriptionService, HttpTestingController], (subscriptionService: NotificationSubscriptionService, backend: HttpTestingController) => {
 
                 subscriptionService.findAll().subscribe();
@@ -35,7 +32,7 @@ describe('NotificationSubscriptionService', () => {
     );
 
     it("should call the webservice when creating a subscription",
-        async(
+        waitForAsync(
             inject([NotificationSubscriptionService, HttpTestingController], (subscriptionService: NotificationSubscriptionService, backend: HttpTestingController) => {
                 let subscription: NotificationSubscription = new NotificationSubscription();
                 subscriptionService.create(subscription).subscribe();
@@ -49,7 +46,7 @@ describe('NotificationSubscriptionService', () => {
     );
 
     it("should call the webservice when updating a subscription",
-        async(
+        waitForAsync(
             inject([NotificationSubscriptionService, HttpTestingController], (subscriptionService: NotificationSubscriptionService, backend: HttpTestingController) => {
                 let subscription: NotificationSubscription = new NotificationSubscription();
                 subscription.id = 100;

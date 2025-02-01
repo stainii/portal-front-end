@@ -1,9 +1,9 @@
 import {getTestBed, inject, TestBed} from '@angular/core/testing';
 
 import {TokenService} from './token.service';
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
+import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing";
 import {Token} from "./token.model";
-import {HttpHeaders} from "@angular/common/http";
+import { HttpHeaders, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 
 describe('TokenService', () => {
     let injector: TestBed;
@@ -13,9 +13,9 @@ describe('TokenService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [TokenService],
-            imports: [HttpClientTestingModule]
-        });
+    imports: [],
+    providers: [TokenService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
         injector = getTestBed();
         service = injector.get(TokenService);
         httpMock = injector.get(HttpTestingController);

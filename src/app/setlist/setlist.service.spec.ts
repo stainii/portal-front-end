@@ -1,7 +1,7 @@
 import {inject, TestBed} from '@angular/core/testing';
 
 import {SetlistService} from './setlist.service';
-import * as moment from "moment";
+import moment from "moment";
 import {Song} from "@app/setlist/song.model";
 
 describe('SetlistService', () => {

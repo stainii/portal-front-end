@@ -1,11 +1,9 @@
 import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
-import * as moment from "moment";
+import moment from "moment";
 import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {Execution} from "@app/recurring-tasks/execution.model";
-import {ActivatedRoute} from "@angular/router";
 import {Subject} from "rxjs";
-import {takeUntil} from "rxjs/operators";
 
 @Component({
     selector: 'app-housagotchi-add-execution',
@@ -24,13 +22,7 @@ export class HousagotchiAddExecutionComponent implements OnInit, OnChanges, OnDe
 
     private destroy$ = new Subject<void>();
 
-    constructor(private _formBuilder: UntypedFormBuilder,
-                private _activatedRoute: ActivatedRoute) {
-        this._activatedRoute.queryParams
-            .pipe(takeUntil(this.destroy$))
-            .subscribe(params => {
-                let task = params['task'];
-            });
+    constructor(private _formBuilder: UntypedFormBuilder) {
     }
 
     ngOnInit() {

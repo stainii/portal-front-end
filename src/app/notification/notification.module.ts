@@ -15,7 +15,7 @@ import {
     NotificationSubscriptionListComponent
 } from "@app/notification/notification-subscription-list/notification-subscription-list.component";
 import {FormsModule} from "@angular/forms";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import {AuthenticationHttpInterceptor} from "@app/user/authentication.interceptor";
 import {
     NotificationMenuBarForListComponent
@@ -31,11 +31,17 @@ import {MatInputModule} from "@angular/material/input";
 import {MatListModule} from "@angular/material/list";
 import {MatSelectModule} from "@angular/material/select";
 
-@NgModule({
-    imports: [
-        CommonModule,
+@NgModule({ declarations: [
+        NotificationListComponent,
+        NotificationAppComponent,
+        NotificationComponent,
+        NotificationSubscriptionEditorComponent,
+        NotificationSubscriptionListComponent,
+        NotificationSubscriptionDetailsComponent,
+        NotificationMenuBarForListComponent,
+        NotificationMenuBarForSubscriptionsComponent
+    ], imports: [CommonModule,
         NotificationRoutingModule,
-        HttpClientModule,
         FormsModule,
         MatIconModule,
         MatCardModule,
@@ -45,25 +51,13 @@ import {MatSelectModule} from "@angular/material/select";
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSelectModule,
-    ],
-    declarations: [
-        NotificationListComponent,
-        NotificationAppComponent,
-        NotificationComponent,
-        NotificationSubscriptionEditorComponent,
-        NotificationSubscriptionListComponent,
-        NotificationSubscriptionDetailsComponent,
-        NotificationMenuBarForListComponent,
-        NotificationMenuBarForSubscriptionsComponent
-    ],
-    providers: [
+        MatSelectModule], providers: [
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthenticationHttpInterceptor,
             multi: true
-        }
-    ]
-})
+        },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class NotificationModule {
 }

@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {NotificationListComponent} from './notification-list.component';
 import {NotificationComponent} from "@app/notification/notification/notification.component";
@@ -11,20 +11,20 @@ import {MatInputModule} from "@angular/material/input";
 import {MatListModule} from "@angular/material/list";
 import {MatSelectModule} from "@angular/material/select";
 import {TokenService} from "@app/user/token.service";
-import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {provideHttpClientTesting} from "@angular/common/http/testing";
+import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 
 describe('NotificationListComponent', () => {
     let component: NotificationListComponent;
     let fixture: ComponentFixture<NotificationListComponent>;
     let apiService;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         apiService = jasmine.createSpyObj("TokenService", ["logIn"]);
 
         TestBed.configureTestingModule({
             declarations: [NotificationListComponent, NotificationComponent],
-            imports: [
-                FormsModule,
+            imports: [FormsModule,
                 MatIconModule,
                 MatCardModule,
                 MatButtonModule,
@@ -33,10 +33,11 @@ describe('NotificationListComponent', () => {
                 MatCardModule,
                 MatFormFieldModule,
                 MatInputModule,
-                MatSelectModule,
-                HttpClientTestingModule
-            ], providers: [
+                MatSelectModule],
+            providers: [
                 {provide: TokenService, useValue: apiService},
+                provideHttpClient(withInterceptorsFromDi()),
+                provideHttpClientTesting(),
             ]
         })
             .compileComponents();

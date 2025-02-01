@@ -1,19 +1,16 @@
 import {inject, TestBed} from '@angular/core/testing';
 
 import {RecurringTaskService} from './recurring-task.service';
-import {HttpClientModule} from "@angular/common/http";
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 
 describe('RecurringTaskService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [RecurringTaskService],
-            imports: [
-                HttpClientModule,
-                HttpClientTestingModule
-            ]
-        });
+    imports: [],
+    providers: [RecurringTaskService, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
     });
 
     it('should be created', inject([RecurringTaskService], (service: RecurringTaskService) => {

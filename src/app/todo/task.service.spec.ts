@@ -1,5 +1,4 @@
 import {inject, TestBed} from '@angular/core/testing';
-import {HttpTestingController} from "@angular/common/http/testing";
 import {environment} from "@env/environment";
 import {TaskService} from "@app/todo/task.service";
 import {Task} from './task.model';
@@ -16,7 +15,7 @@ describe('TaskService', () => {
             providers: [
                 TaskService,
                 TaskPatchService, // we use the actual task patch service
-                { provide: TaskRepository, useValue: taskRepository },
+                {provide: TaskRepository, useValue: taskRepository},
             ]
         });
     });
@@ -25,7 +24,7 @@ describe('TaskService', () => {
         expect(service).toBeTruthy();
     }));
 
-    it('should create a task and not change the context when it is already filled in', inject([TaskService], (service: TaskService, backend: HttpTestingController) => {
+    it('should create a task and not change the context when it is already filled in', inject([TaskService], (service: TaskService) => {
         const task = new Task();
         task.id = "12";
         task.name = "test";
@@ -37,7 +36,7 @@ describe('TaskService', () => {
         expect(task.context).toBe("myContext");
     }));
 
-    it('should create a task and not change the context to a default value when it is not filled in', inject([TaskService], (service: TaskService, backend: HttpTestingController) => {
+    it('should create a task and not change the context to a default value when it is not filled in', inject([TaskService], (service: TaskService) => {
         const task = new Task();
         task.id = "12";
         task.name = "test";
@@ -49,7 +48,7 @@ describe('TaskService', () => {
         expect(task.context).toEqual(environment.defaultTaskContext);
     }));
 
-    it('should create a task and not change the context to a default value when it is empty', inject([TaskService], (service: TaskService, backend: HttpTestingController) => {
+    it('should create a task and not change the context to a default value when it is empty', inject([TaskService], (service: TaskService) => {
         const task = new Task();
         task.id = "12";
         task.name = "test";
@@ -62,7 +61,7 @@ describe('TaskService', () => {
         expect(task.context).toEqual(environment.defaultTaskContext);
     }));
 
-    it('should update a task and not change the context when it is already filled in', inject([TaskService], (service: TaskService, backend: HttpTestingController) => {
+    it('should update a task and not change the context when it is already filled in', inject([TaskService], (service: TaskService) => {
         const originalTask = new Task();
         originalTask.id = "12";
         originalTask.name = 'test';
@@ -78,7 +77,7 @@ describe('TaskService', () => {
         expect(taskRepository.patch).toHaveBeenCalled();
     }));
 
-    it('should update a task and not change the context to a default value when it is not filled in', inject([TaskService], (service: TaskService, backend: HttpTestingController) => {
+    it('should update a task and not change the context to a default value when it is not filled in', inject([TaskService], (service: TaskService) => {
         const originalTask = new Task();
         originalTask.id = "12";
         originalTask.name = 'test';
@@ -95,7 +94,7 @@ describe('TaskService', () => {
         expect(taskRepository.patch).toHaveBeenCalled();
     }));
 
-    it('should update a task and not change the context to a default value when it is empty', inject([TaskService], (service: TaskService, backend: HttpTestingController) => {
+    it('should update a task and not change the context to a default value when it is empty', inject([TaskService], (service: TaskService) => {
         const originalTask = new Task();
         originalTask.id = "12";
         originalTask.name = 'test';

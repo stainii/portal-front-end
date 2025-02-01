@@ -1,6 +1,6 @@
 import {Task} from "@app/todo/task.model";
 import {Importance} from "@app/todo/importance.model";
-import * as moment from "moment";
+import moment from "moment";
 
 describe('task', () => {
 

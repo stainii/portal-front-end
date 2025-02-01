@@ -1,4 +1,4 @@
-import {async, TestBed} from '@angular/core/testing';
+import {TestBed, waitForAsync} from '@angular/core/testing';
 import {RouterTestingModule} from "@angular/router/testing";
 import {LoginComponent} from "./login.component";
 import {FormsModule} from "@angular/forms";
@@ -17,7 +17,7 @@ describe('LoginComponent', () => {
     const $event = jasmine.createSpyObj("Event", ["preventDefault"]);
     const dummyToken = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzdGlqbiIsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwiaWF0IjoxNTQxNTI1NTE2LCJleHAiOjE1NDE2MTE5MTZ9.fao0Ytttr0Kcylc4I-Pa9k6Cm-42XTKPo1IDG0-R4mBhXufsYRtOi25sKeL6_PheKHenEL-OLxsdFGUX4-j9Kg";
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [
                 LoginComponent,
@@ -34,13 +34,13 @@ describe('LoginComponent', () => {
         }).compileComponents();
     }));
 
-    it('should create', async(() => {
+    it('should create', waitForAsync(() => {
         const fixture = TestBed.createComponent(LoginComponent);
         const loginComponent = fixture.debugElement.componentInstance;
         expect(loginComponent).toBeTruthy();
     }));
 
-    it('should log in', async(() => {
+    it('should log in', waitForAsync(() => {
         //mock
         userService.logIn.and.returnValue(of(new Token(dummyToken)));
 

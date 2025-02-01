@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {Person} from "@app/social/person.model";
 import {SocialService} from "@app/social/social.service";
-import * as moment from "moment";
+import moment from "moment";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
 

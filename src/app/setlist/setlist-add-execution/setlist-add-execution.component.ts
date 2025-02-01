@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@an
 import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import {Execution} from "@app/recurring-tasks/execution.model";
 import {ActivatedRoute} from "@angular/router";
-import * as moment from "moment";
+import moment from "moment";
 import {Setlist} from "@app/setlist/setlist.model";
 import {Song} from "@app/setlist/song.model";
 

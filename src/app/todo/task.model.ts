@@ -1,7 +1,7 @@
 import {TaskPatch} from "@app/todo/task-patch.model";
 import {TaskStatus} from "@app/todo/task-status.model";
 import {Importance} from "@app/todo/importance.model";
-import * as moment from "moment";
+import moment from "moment";
 
 export class Task {
     public id: string;

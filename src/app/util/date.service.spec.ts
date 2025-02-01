@@ -1,7 +1,7 @@
 import {inject, TestBed} from '@angular/core/testing';
 
 import {DateService} from './date.service';
-import * as moment from "moment";
+import moment from "moment";
 
 describe('DateService', () => {
   beforeEach(() => {
