@@ -2,9 +2,10 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TodoSubscription} from "@app/todo/todo-subscription.model";
 
 @Component({
-  selector: 'app-todo-subscription-list',
-  templateUrl: './todo-subscription-list.component.html',
-  styleUrls: ['./todo-subscription-list.component.scss']
+    selector: 'app-todo-subscription-list',
+    templateUrl: './todo-subscription-list.component.html',
+    styleUrls: ['./todo-subscription-list.component.scss'],
+    standalone: false
 })
 export class TodoSubscriptionListComponent {
 

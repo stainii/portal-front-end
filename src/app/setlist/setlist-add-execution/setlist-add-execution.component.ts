@@ -7,9 +7,10 @@ import {Setlist} from "@app/setlist/setlist.model";
 import {Song} from "@app/setlist/song.model";
 
 @Component({
-  selector: 'app-setlist-add-execution',
-  templateUrl: './setlist-add-execution.component.html',
-  styleUrls: ['./setlist-add-execution.component.scss']
+    selector: 'app-setlist-add-execution',
+    templateUrl: './setlist-add-execution.component.html',
+    styleUrls: ['./setlist-add-execution.component.scss'],
+    standalone: false
 })
 export class SetlistAddExecutionComponent implements OnInit {
 

@@ -11,7 +11,8 @@ import {takeUntil} from "rxjs/operators";
 @Component({
     selector: 'app-todo-templates',
     templateUrl: './todo-templates.component.html',
-    styleUrls: ['./todo-templates.component.scss']
+    styleUrls: ['./todo-templates.component.scss'],
+    standalone: false
 })
 export class TodoTemplatesComponent implements OnDestroy {
 

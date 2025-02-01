@@ -7,7 +7,8 @@ import {takeUntil} from "rxjs/operators";
 @Component({
     selector: 'app-notification-subscription-editor',
     templateUrl: './notification-subscription-editor.component.html',
-    styleUrls: ['./notification-subscription-editor.component.scss']
+    styleUrls: ['./notification-subscription-editor.component.scss'],
+    standalone: false
 })
 export class NotificationSubscriptionEditorComponent implements OnInit, OnDestroy {
 

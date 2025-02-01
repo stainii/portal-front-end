@@ -13,7 +13,8 @@ import {Subject} from "rxjs";
 @Component({
     selector: 'app-housagotchi-manage-recurring-tasks',
     templateUrl: './housagotchi-manage-recurring-tasks.component.html',
-    styleUrls: ['./housagotchi-manage-recurring-tasks.component.scss']
+    styleUrls: ['./housagotchi-manage-recurring-tasks.component.scss'],
+    standalone: false
 })
 export class HousagotchiManageRecurringTasksComponent implements OnInit, OnDestroy {
 

@@ -8,7 +8,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 @Component({
     selector: 'app-todo-menu-bar-for-overview',
     templateUrl: './todo-menu-bar-for-overview.component.html',
-    styleUrls: ['./todo-menu-bar-for-overview.component.scss']
+    styleUrls: ['./todo-menu-bar-for-overview.component.scss'],
+    standalone: false
 })
 export class TodoMenuBarForOverviewComponent implements OnInit, OnDestroy {
 

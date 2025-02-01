@@ -8,7 +8,8 @@ import {Subject} from "rxjs";
 @Component({
     selector: 'app-health-add-execution',
     templateUrl: './health-add-execution.component.html',
-    styleUrls: ['./health-add-execution.component.scss']
+    styleUrls: ['./health-add-execution.component.scss'],
+    standalone: false
 })
 export class HealthAddExecutionComponent implements OnInit, OnChanges, OnDestroy {
 

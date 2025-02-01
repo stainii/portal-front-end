@@ -4,9 +4,10 @@ import {Report} from "@app/health/report.model";
 import {HealthReportService} from "@app/health/health-report.service";
 
 @Component({
-  selector: 'app-health-sporty-spice',
-  templateUrl: './health-sporty-spice.component.html',
-  styleUrls: ['./health-sporty-spice.component.scss']
+    selector: 'app-health-sporty-spice',
+    templateUrl: './health-sporty-spice.component.html',
+    styleUrls: ['./health-sporty-spice.component.scss'],
+    standalone: false
 })
 export class HealthSportySpiceComponent implements OnInit, OnChanges {
 

@@ -6,7 +6,8 @@ import {LabelService} from "@app/activity/label.service";
 @Component({
     selector: 'app-activity-labels',
     templateUrl: './activity-labels.component.html',
-    styleUrls: ['./activity-labels.component.scss']
+    styleUrls: ['./activity-labels.component.scss'],
+    standalone: false
 })
 export class ActivityLabelsComponent implements OnInit {
 

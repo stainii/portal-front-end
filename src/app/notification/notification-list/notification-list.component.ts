@@ -8,7 +8,8 @@ import {takeUntil} from "rxjs/operators";
 @Component({
     selector: 'app-notification-list',
     templateUrl: './notification-list.component.html',
-    styleUrls: ['./notification-list.component.scss']
+    styleUrls: ['./notification-list.component.scss'],
+    standalone: false
 })
 export class NotificationListComponent implements OnDestroy {
 

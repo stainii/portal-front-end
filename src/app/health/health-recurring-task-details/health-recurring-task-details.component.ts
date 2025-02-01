@@ -4,9 +4,10 @@ import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
-  selector: 'app-health-recurring-task-details',
-  templateUrl: './health-recurring-task-details.component.html',
-  styleUrls: ['./health-recurring-task-details.component.scss']
+    selector: 'app-health-recurring-task-details',
+    templateUrl: './health-recurring-task-details.component.html',
+    styleUrls: ['./health-recurring-task-details.component.scss'],
+    standalone: false
 })
 export class HealthRecurringTaskDetailsComponent implements OnInit {
 

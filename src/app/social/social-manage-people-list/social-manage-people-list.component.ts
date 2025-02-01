@@ -4,7 +4,8 @@ import {Person} from "@app/social/person.model";
 @Component({
     selector: 'app-social-manage-people-list',
     templateUrl: './social-manage-people-list.component.html',
-    styleUrls: ['./social-manage-people-list.component.scss']
+    styleUrls: ['./social-manage-people-list.component.scss'],
+    standalone: false
 })
 export class SocialManagePeopleListComponent {
 

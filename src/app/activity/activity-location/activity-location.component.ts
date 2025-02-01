@@ -7,7 +7,8 @@ import {RandomAdjectiveService} from "@app/funny-details/random-adjective.servic
 @Component({
     selector: 'app-activity-location',
     templateUrl: './activity-location.component.html',
-    styleUrls: ['./activity-location.component.scss']
+    styleUrls: ['./activity-location.component.scss'],
+    standalone: false
 })
 export class ActivityLocationComponent implements OnInit, OnDestroy {
 

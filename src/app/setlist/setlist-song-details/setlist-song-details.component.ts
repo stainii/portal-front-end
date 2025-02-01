@@ -4,9 +4,10 @@ import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
-  selector: 'app-setlist-song-details',
-  templateUrl: './setlist-song-details.component.html',
-  styleUrls: ['./setlist-song-details.component.scss']
+    selector: 'app-setlist-song-details',
+    templateUrl: './setlist-song-details.component.html',
+    styleUrls: ['./setlist-song-details.component.scss'],
+    standalone: false
 })
 export class SetlistSongDetailsComponent implements OnInit {
 

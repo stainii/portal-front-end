@@ -13,7 +13,8 @@ import {Subject} from "rxjs";
 @Component({
     selector: 'app-health-manage-recurring-tasks',
     templateUrl: './health-manage-recurring-tasks.component.html',
-    styleUrls: ['./health-manage-recurring-tasks.component.scss']
+    styleUrls: ['./health-manage-recurring-tasks.component.scss'],
+    standalone: false
 })
 export class HealthManageRecurringTasksComponent implements OnInit, OnDestroy {
 

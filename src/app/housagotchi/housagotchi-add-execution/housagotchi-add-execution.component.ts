@@ -8,7 +8,8 @@ import {Subject} from "rxjs";
 @Component({
     selector: 'app-housagotchi-add-execution',
     templateUrl: './housagotchi-add-execution.component.html',
-    styleUrls: ['./housagotchi-add-execution.component.scss']
+    styleUrls: ['./housagotchi-add-execution.component.scss'],
+    standalone: false
 })
 export class HousagotchiAddExecutionComponent implements OnInit, OnChanges, OnDestroy {
 

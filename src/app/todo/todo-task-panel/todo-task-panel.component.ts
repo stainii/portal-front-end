@@ -17,7 +17,8 @@ const taskDone = [
         trigger('cardAnimator', [
             transition(':leave', animate(1000, keyframes(taskDone))),
         ])
-    ]
+    ],
+    standalone: false
 })
 export class TodoTaskPanelComponent {
 

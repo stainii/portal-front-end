@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-housagotchi-menu-bar-for-manage-recurring-tasks',
-  templateUrl: './housagotchi-menu-bar-for-manage-recurring-tasks.component.html',
-  styleUrls: ['./housagotchi-menu-bar-for-manage-recurring-tasks.component.scss']
+    selector: 'app-housagotchi-menu-bar-for-manage-recurring-tasks',
+    templateUrl: './housagotchi-menu-bar-for-manage-recurring-tasks.component.html',
+    styleUrls: ['./housagotchi-menu-bar-for-manage-recurring-tasks.component.scss'],
+    standalone: false
 })
 export class HousagotchiMenuBarForManageRecurringTasksComponent implements OnInit {
 

@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-health-balloon',
-  templateUrl: './health-balloon.component.html',
-  styleUrls: ['./health-balloon.component.scss']
+    selector: 'app-health-balloon',
+    templateUrl: './health-balloon.component.html',
+    styleUrls: ['./health-balloon.component.scss'],
+    standalone: false
 })
 export class HealthBalloonComponent implements OnInit {
 

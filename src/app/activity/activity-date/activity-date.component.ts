@@ -5,7 +5,8 @@ import {Moment} from "moment";
 @Component({
     selector: 'app-activity-date',
     templateUrl: './activity-date.component.html',
-    styleUrls: ['./activity-date.component.scss']
+    styleUrls: ['./activity-date.component.scss'],
+    standalone: false
 })
 export class ActivityDateComponent implements OnInit {
     startDate: Moment;

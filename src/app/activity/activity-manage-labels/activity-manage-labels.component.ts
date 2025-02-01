@@ -10,7 +10,8 @@ import {COMMA, ENTER} from "@angular/cdk/keycodes";
 @Component({
     selector: 'app-activity-manage-labels',
     templateUrl: './activity-manage-labels.component.html',
-    styleUrls: ['./activity-manage-labels.component.scss']
+    styleUrls: ['./activity-manage-labels.component.scss'],
+    standalone: false
 })
 export class ActivityManageLabelsComponent implements OnInit, OnDestroy {
 

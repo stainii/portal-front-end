@@ -5,7 +5,8 @@ import {mapTo, takeUntil} from "rxjs/operators";
 @Component({
     selector: 'app-offline-indicator',
     templateUrl: './offline-indicator.component.html',
-    styleUrls: ['./offline-indicator.component.scss']
+    styleUrls: ['./offline-indicator.component.scss'],
+    standalone: false
 })
 export class OfflineIndicatorComponent implements OnDestroy {
 

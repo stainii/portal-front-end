@@ -7,7 +7,8 @@ import {Subject} from "rxjs";
 @Component({
     selector: 'app-todo-subscription-editor',
     templateUrl: './todo-subscription-editor.component.html',
-    styleUrls: ['./todo-subscription-editor.component.scss']
+    styleUrls: ['./todo-subscription-editor.component.scss'],
+    standalone: false
 })
 export class TodoSubscriptionEditorComponent implements OnInit, OnDestroy {
 

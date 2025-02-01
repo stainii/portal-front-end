@@ -11,7 +11,8 @@ import {Subject} from "rxjs";
 @Component({
     selector: 'app-social-manage-people',
     templateUrl: './social-manage-people.component.html',
-    styleUrls: ['./social-manage-people.component.scss']
+    styleUrls: ['./social-manage-people.component.scss'],
+    standalone: false
 })
 export class SocialManagePeopleComponent implements OnDestroy {
 

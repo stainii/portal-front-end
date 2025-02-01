@@ -12,7 +12,8 @@ import {ErrorService} from "@app/error/error.service";
 @Component({
     selector: 'app-todo-task-template-details',
     templateUrl: './todo-task-template-details.component.html',
-    styleUrls: ['./todo-task-template-details.component.scss']
+    styleUrls: ['./todo-task-template-details.component.scss'],
+    standalone: false
 })
 export class TodoTaskTemplateDetailsComponent {
 

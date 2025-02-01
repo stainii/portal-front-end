@@ -11,7 +11,8 @@ import {Subject} from "rxjs";
 @Component({
     selector: 'app-setlist-manage',
     templateUrl: './setlist-manage.component.html',
-    styleUrls: ['./setlist-manage.component.scss']
+    styleUrls: ['./setlist-manage.component.scss'],
+    standalone: false
 })
 export class SetlistManageComponent implements OnInit, OnDestroy {
 

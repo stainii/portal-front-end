@@ -4,7 +4,8 @@ import {DateInterval} from "@app/activity/date-interval.model";
 @Component({
     selector: 'app-activity-manage-date-intervals',
     templateUrl: './activity-manage-date-intervals.component.html',
-    styleUrls: ['./activity-manage-date-intervals.component.scss']
+    styleUrls: ['./activity-manage-date-intervals.component.scss'],
+    standalone: false
 })
 export class ActivityManageDateIntervalsComponent implements OnInit {
 

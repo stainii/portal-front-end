@@ -6,7 +6,8 @@ import {MatTreeNestedDataSource} from "@angular/material/tree";
 @Component({
     selector: 'app-todo-task-templates',
     templateUrl: './todo-task-templates.component.html',
-    styleUrls: ['./todo-task-templates.component.scss']
+    styleUrls: ['./todo-task-templates.component.scss'],
+    standalone: false
 })
 export class TodoTaskTemplatesComponent {
 

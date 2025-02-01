@@ -6,7 +6,8 @@ import {SocialService} from "@app/social/social.service";
 @Component({
     selector: 'app-social-person-settings',
     templateUrl: './social-person-settings.component.html',
-    styleUrls: ['./social-person-settings.component.scss']
+    styleUrls: ['./social-person-settings.component.scss'],
+    standalone: false
 })
 export class SocialPersonSettingsComponent {
 

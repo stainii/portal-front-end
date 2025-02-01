@@ -11,7 +11,8 @@ import {TaskService} from "@app/todo/task.service";
 @Component({
     selector: 'app-todo-task-details',
     templateUrl: './todo-task-details.component.html',
-    styleUrls: ['./todo-task-details.component.scss']
+    styleUrls: ['./todo-task-details.component.scss'],
+    standalone: false
 })
 export class TodoTaskDetailsComponent implements OnInit {
 

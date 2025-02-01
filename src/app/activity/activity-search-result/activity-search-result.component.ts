@@ -5,7 +5,8 @@ import {ActivityHelperService} from "@app/activity/activity-helper.service";
 @Component({
     selector: 'app-activity-search-result',
     templateUrl: './activity-search-result.component.html',
-    styleUrls: ['./activity-search-result.component.scss']
+    styleUrls: ['./activity-search-result.component.scss'],
+    standalone: false
 })
 export class ActivitySearchResultComponent implements OnInit {
 

@@ -5,7 +5,8 @@ import {environment} from "@env/environment";
 @Component({
     selector: 'app-todo-task-definition-details',
     templateUrl: './todo-task-definition-details.component.html',
-    styleUrls: ['./todo-task-definition-details.component.scss']
+    styleUrls: ['./todo-task-definition-details.component.scss'],
+    standalone: false
 })
 export class TodoTaskDefinitionDetailsComponent implements OnInit {
 

@@ -7,7 +7,8 @@ import {SocialService} from "@app/social/social.service";
 @Component({
     selector: 'app-social-person-settings-edit',
     templateUrl: './social-person-settings-edit.component.html',
-    styleUrls: ['./social-person-settings-edit.component.scss']
+    styleUrls: ['./social-person-settings-edit.component.scss'],
+    standalone: false
 })
 export class SocialPersonSettingsEditComponent implements OnInit {
 

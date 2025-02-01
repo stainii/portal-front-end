@@ -11,7 +11,8 @@ import {Subject} from "rxjs";
 @Component({
     selector: 'app-housagotchi-app',
     templateUrl: './housagotchi-app.component.html',
-    styleUrls: ['./housagotchi-app.component.scss']
+    styleUrls: ['./housagotchi-app.component.scss'],
+    standalone: false
 })
 export class HousagotchiAppComponent implements OnInit, OnDestroy {
 

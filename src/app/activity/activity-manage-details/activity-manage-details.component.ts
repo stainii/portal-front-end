@@ -11,7 +11,8 @@ import {takeUntil} from "rxjs/operators";
 @Component({
     selector: 'app-activity-manage-details',
     templateUrl: './activity-manage-details.component.html',
-    styleUrls: ['./activity-manage-details.component.scss']
+    styleUrls: ['./activity-manage-details.component.scss'],
+    standalone: false
 })
 export class ActivityManageDetailsComponent implements OnInit, OnDestroy {
 

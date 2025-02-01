@@ -6,7 +6,8 @@ import {Activity} from "@app/activity/activity.model";
 @Component({
     selector: 'app-activity-app',
     templateUrl: './activity-app.component.html',
-    styleUrls: ['./activity-app.component.scss']
+    styleUrls: ['./activity-app.component.scss'],
+    standalone: false
 })
 export class ActivityAppComponent implements OnInit {
 

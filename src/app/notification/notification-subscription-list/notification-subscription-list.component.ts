@@ -4,7 +4,8 @@ import {NotificationSubscription} from "../notification-subscription.model";
 @Component({
     selector: 'app-notification-subscription-list',
     templateUrl: './notification-subscription-list.component.html',
-    styleUrls: ['./notification-subscription-list.component.scss']
+    styleUrls: ['./notification-subscription-list.component.scss'],
+    standalone: false
 })
 export class NotificationSubscriptionListComponent {
 

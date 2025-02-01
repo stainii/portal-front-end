@@ -6,7 +6,8 @@ import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 @Component({
     selector: 'app-housagotchi-recurring-task-details',
     templateUrl: './housagotchi-recurring-task-details.component.html',
-    styleUrls: ['./housagotchi-recurring-task-details.component.scss']
+    styleUrls: ['./housagotchi-recurring-task-details.component.scss'],
+    standalone: false
 })
 export class HousagotchiRecurringTaskDetailsComponent implements OnInit {
 

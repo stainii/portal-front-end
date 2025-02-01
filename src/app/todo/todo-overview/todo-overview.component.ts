@@ -9,6 +9,7 @@ import {Subject} from "rxjs";
     selector: 'app-todo-overview',
     templateUrl: './todo-overview.component.html',
     styleUrls: ['./todo-overview.component.scss'],
+    standalone: false
 })
 export class TodoOverviewComponent implements OnInit, OnDestroy {
 

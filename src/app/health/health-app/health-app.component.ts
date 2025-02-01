@@ -11,7 +11,8 @@ import {takeUntil} from "rxjs/operators";
 @Component({
     selector: 'app-health-app',
     templateUrl: './health-app.component.html',
-    styleUrls: ['./health-app.component.scss']
+    styleUrls: ['./health-app.component.scss'],
+    standalone: false
 })
 export class HealthAppComponent implements OnInit, OnDestroy {
 

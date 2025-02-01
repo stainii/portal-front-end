@@ -14,7 +14,8 @@ import {MatTable} from "@angular/material/table";
 @Component({
     selector: 'app-activity-manage-list',
     templateUrl: './activity-manage-list.component.html',
-    styleUrls: ['./activity-manage-list.component.scss']
+    styleUrls: ['./activity-manage-list.component.scss'],
+    standalone: false
 })
 export class ActivityManageListComponent implements AfterViewInit, OnDestroy {
 

@@ -9,6 +9,7 @@ import {environment} from "@env/environment";
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
+    standalone: false
 })
 export class LoginComponent implements OnDestroy {
 

@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-notification-menu-bar-for-list',
-  templateUrl: './notification-menu-bar-for-list.component.html',
-  styleUrls: ['./notification-menu-bar-for-list.component.scss']
+    selector: 'app-notification-menu-bar-for-list',
+    templateUrl: './notification-menu-bar-for-list.component.html',
+    styleUrls: ['./notification-menu-bar-for-list.component.scss'],
+    standalone: false
 })
 export class NotificationMenuBarForListComponent implements OnInit {
 

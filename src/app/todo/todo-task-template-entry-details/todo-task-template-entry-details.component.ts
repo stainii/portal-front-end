@@ -9,7 +9,8 @@ import {MatDialogRef} from "@angular/material/dialog";
 @Component({
     selector: 'app-todo-task-template-entry-details',
     templateUrl: './todo-task-template-entry-details.component.html',
-    styleUrls: ['./todo-task-template-entry-details.component.scss']
+    styleUrls: ['./todo-task-template-entry-details.component.scss'],
+    standalone: false
 })
 export class TodoTaskTemplateEntryDetailsComponent {
 

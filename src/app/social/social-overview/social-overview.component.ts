@@ -8,7 +8,8 @@ import {Subject} from "rxjs";
 @Component({
     selector: 'app-social-overview',
     templateUrl: './social-overview.component.html',
-    styleUrls: ['./social-overview.component.scss']
+    styleUrls: ['./social-overview.component.scss'],
+    standalone: false
 })
 export class SocialOverviewComponent implements OnDestroy {
 

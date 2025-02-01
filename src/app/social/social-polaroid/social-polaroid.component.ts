@@ -7,7 +7,8 @@ import {SocialService} from "@app/social/social.service";
 @Component({
     selector: 'app-social-polaroid',
     templateUrl: './social-polaroid.component.html',
-    styleUrls: ['./social-polaroid.component.scss']
+    styleUrls: ['./social-polaroid.component.scss'],
+    standalone: false
 })
 export class SocialPolaroidComponent {
 
