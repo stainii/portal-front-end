@@ -8,7 +8,7 @@ import {takeUntil} from "rxjs/operators";
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    standalone: false
+    standalone: false,
 })
 export class AppComponent implements OnInit, OnDestroy {
 
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.destroy$.next();
     }
 
-    @HostListener('document:visibilitychange', [ '$event' ])
+    @HostListener('document:visibilitychange', ['$event'])
     checkIfLoginTokenHasNotExpired() {
         console.info("The page lost focus and regained it, checking if user token is still valid.");
         this._userService.logOutWhenTokenHasExpired();

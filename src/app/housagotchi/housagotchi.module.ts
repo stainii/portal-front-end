@@ -31,39 +31,38 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {
     HousagotchiRecurringTaskDetailsComponent
 } from './housagotchi-recurring-task-details/housagotchi-recurring-task-details.component';
-import {RecurringTasksModule} from "@app/recurring-tasks/recurring-tasks.module";
+
 import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
     imports: [
-        CommonModule,
-        HousagotchiRoutingModule,
-        RecurringTasksModule,
-        FormsModule,
-        MatCardModule,
-        MatButtonModule,
-        MatIconModule,
-        MatListModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatDatepickerModule,
-        MatMomentDateModule,
-        MatSnackBarModule,
-        MatTableModule,
-        MatRadioModule,
-        ReactiveFormsModule,
-        MatDialogModule,
-        HousagotchiAppComponent,
-        HousagotchiAddExecutionComponent,
-        HousagotchiBalloonComponent,
-        HousagotchiCreatureComponent,
-        HousagotchiManageRecurringTasksComponent,
-        HousagotchiMenuBarForCreatureComponent,
-        HousagotchiMenuBarForManageRecurringTasksComponent,
-        HousagotchiRecurringTaskDetailsComponent
-    ]
+    CommonModule,
+    HousagotchiRoutingModule,
+    FormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    HousagotchiAppComponent,
+    HousagotchiAddExecutionComponent,
+    HousagotchiBalloonComponent,
+    HousagotchiCreatureComponent,
+    HousagotchiManageRecurringTasksComponent,
+    HousagotchiMenuBarForCreatureComponent,
+    HousagotchiMenuBarForManageRecurringTasksComponent,
+    HousagotchiRecurringTaskDetailsComponent
+]
 })
 export class HousagotchiModule {
 

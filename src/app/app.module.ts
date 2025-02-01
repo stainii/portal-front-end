@@ -14,22 +14,24 @@ import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {DashboardComponent} from "@app/dashboard/dashboard.component";
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AuthenticationHttpInterceptor} from "@app/user/authentication.interceptor";
 import {MenuComponent} from './menu/menu.component';
 import {NgProgressModule} from "ngx-progressbar";
 import {NgProgressHttpModule} from "ngx-progressbar/http";
-import {UserModule} from "@app/user/user.module";
-import {RetryInterceptor} from "@app/retry.interceptor";
-import {OfflineModule} from "@app/offline/offline.module";
-import {ErrorModule} from "@app/error/error.module";
-import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
 
-@NgModule({ declarations: [AppComponent],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+import {RetryInterceptor} from "@app/retry.interceptor";
+
+
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
+import {ErrorNotificationComponent} from "@app/error/error-notification/error-notification.component";
+
+@NgModule({
+    declarations: [AppComponent],
+    bootstrap: [AppComponent],
+    imports: [BrowserModule,
         BrowserAnimationsModule,
-        UserModule,
         ServiceWorkerModule.register('/ngsw-worker.js'),
         AppRoutingModule,
         LayoutModule,
@@ -41,23 +43,26 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from "@angular/material/form-field";
         MatListModule,
         NgProgressModule,
         NgProgressHttpModule,
-        OfflineModule,
-        ErrorModule,
         HammerModule,
-        ReactiveFormsModule, DashboardComponent,
-        MenuComponent], providers: [{
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthenticationHttpInterceptor,
-            multi: true
-        }, {
-            provide: HTTP_INTERCEPTORS,
-            useClass: RetryInterceptor,
-            multi: true
-        }, {
-            provide: MAT_DATE_LOCALE, useValue: 'nl-BE'
-        }, {
-            provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' }
-        }, provideHttpClient(withInterceptorsFromDi())] })
+        ReactiveFormsModule,
+        DashboardComponent,
+        MenuComponent,
+        ErrorNotificationComponent
+    ],
+    providers: [{
+        provide: HTTP_INTERCEPTORS,
+        useClass: AuthenticationHttpInterceptor,
+        multi: true
+    }, {
+        provide: HTTP_INTERCEPTORS,
+        useClass: RetryInterceptor,
+        multi: true
+    }, {
+        provide: MAT_DATE_LOCALE, useValue: 'nl-BE'
+    }, {
+        provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}
+    }, provideHttpClient(withInterceptorsFromDi())]
+})
 
 export class AppModule {
 }
