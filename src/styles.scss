@@ -15,12 +15,12 @@ body {
 @import "typeface-indie-flower/index.css";
 @include mat.core();
 
-$portal-primary: mat.define-palette(mat.$teal-palette);
-$portal-accent: mat.define-palette(mat.$pink-palette, 500, 900, A100);
-$portal-warn: mat.define-palette(mat.$deep-orange-palette);
+$portal-primary: mat.m2-define-palette(mat.$m2-teal-palette);
+$portal-accent: mat.m2-define-palette(mat.$m2-pink-palette, 500, 900, A100);
+$portal-warn: mat.m2-define-palette(mat.$m2-deep-orange-palette);
 
 /* This is the new way of defining a theme from Angular 15 */
-$portal-theme: mat.define-light-theme((
+$portal-theme: mat.m2-define-light-theme((
     color: (
         primary: $portal-primary,
         accent: $portal-accent,
