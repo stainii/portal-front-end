@@ -4,14 +4,14 @@ import {NotificationService} from "../notification.service";
 import {ErrorService} from "@app/error/error.service";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
-import { NgIf, NgFor } from '@angular/common';
+
 import { NotificationComponent } from '../notification/notification.component';
 
 @Component({
     selector: 'app-notification-list',
     templateUrl: './notification-list.component.html',
     styleUrls: ['./notification-list.component.scss'],
-    imports: [NgIf, NgFor, NotificationComponent]
+    imports: [NotificationComponent]
 })
 export class NotificationListComponent implements OnDestroy {
 

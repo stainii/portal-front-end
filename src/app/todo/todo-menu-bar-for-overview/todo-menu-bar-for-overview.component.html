@@ -1,43 +1,50 @@
 <div class="menu-bar">
 
+  @if ((contexts$ | async).length <= 3 && !(isHandset$ | async)) {
     <div class="group"
-        *ngIf="(contexts$ | async).length <= 3 && !(isHandset$ | async)">
-        <a (click)="selectContext('')">
-            All contexts
-        </a>
+      >
+      <a (click)="selectContext('')">
+        All contexts
+      </a>
+      @for (context of (contexts$ | async); track context) {
         <a
-            *ngFor="let context of (contexts$ | async)"
-            (click)="selectContext(context)">
-            {{context}}
+          (click)="selectContext(context)">
+          {{context}}
         </a>
+      }
     </div>
+  }
+  @if ((contexts$ | async).length > 3 || (isHandset$ | async)) {
     <div class="group"
-        *ngIf="(contexts$ | async).length > 3 || (isHandset$ | async)">
-        <mat-form-field>
-            <mat-select [(value)]="selectedContext" class="menu-bar">
-                <mat-option [value]="'all'"
-                    (click)="selectContext('all')">
-                    All contexts
-                </mat-option>
-                <mat-option *ngFor="let context of (contexts$ | async)"
-                    [value]="context"
-                    (click)="selectContext(context)">
-                    {{context}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+      >
+      <mat-form-field>
+        <mat-select [(value)]="selectedContext" class="menu-bar">
+          <mat-option [value]="'all'"
+            (click)="selectContext('all')">
+            All contexts
+          </mat-option>
+          @for (context of (contexts$ | async); track context) {
+            <mat-option
+              [value]="context"
+              (click)="selectContext(context)">
+              {{context}}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
     </div>
-    <div class="group">
-        <mat-icon (click)="refreshTasks()" aria-label="Refresh list of tasks">refresh</mat-icon>
-    </div>
-    <div class="group">
-        <a [routerLink]="['/todo', { outlets: { primary: ['templates'], menuBar: ['templates'] } }]">
-            <mat-icon aria-label="Templates">settings</mat-icon>
-        </a>
-    </div>
-    <div class="group">
-        <a [routerLink]="['/todo', { outlets: { primary: ['subscriptions'], menuBar: ['subscriptions'] } }]">
-            <mat-icon aria-label="Subscriptions">mailbox</mat-icon>
-        </a>
-    </div>
+  }
+  <div class="group">
+    <mat-icon (click)="refreshTasks()" aria-label="Refresh list of tasks">refresh</mat-icon>
+  </div>
+  <div class="group">
+    <a [routerLink]="['/todo', { outlets: { primary: ['templates'], menuBar: ['templates'] } }]">
+      <mat-icon aria-label="Templates">settings</mat-icon>
+    </a>
+  </div>
+  <div class="group">
+    <a [routerLink]="['/todo', { outlets: { primary: ['subscriptions'], menuBar: ['subscriptions'] } }]">
+      <mat-icon aria-label="Subscriptions">mailbox</mat-icon>
+    </a>
+  </div>
 </div>

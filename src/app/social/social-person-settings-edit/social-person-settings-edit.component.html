@@ -1,55 +1,57 @@
 <div class="card-content">
-    <div class="card-text">
-        <mat-dialog-content>
-            <input #file
-                   type="file"
-                   accept="image/*"
-                   (change)="fileChanged($event)">
-            <div class="column">
-                <a mat-card-avatar
-                   class="card-image"
-                   (click)="file.click()"
-                   [style.backgroundImage]="getImageUrl()"></a>
-            </div>
-            <div class="column">
-                <mat-form-field>
-                    <mat-label>Name</mat-label>
-                    <input matInput
-                           [(ngModel)]="person.name"
-                           placeholder="James Bond">
-                </mat-form-field>
+  <div class="card-text">
+    <mat-dialog-content>
+      <input #file
+        type="file"
+        accept="image/*"
+        (change)="fileChanged($event)">
+      <div class="column">
+        <a mat-card-avatar
+          class="card-image"
+          (click)="file.click()"
+        [style.backgroundImage]="getImageUrl()"></a>
+      </div>
+      <div class="column">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput
+            [(ngModel)]="person.name"
+            placeholder="James Bond">
+        </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>Min. days between contacts</mat-label>
-                    <input matInput
-                           type="number"
-                           min="0"
-                           [(ngModel)]="person.minNumberOfDaysBetweenContacts">
-                </mat-form-field>
+        <mat-form-field>
+          <mat-label>Min. days between contacts</mat-label>
+          <input matInput
+            type="number"
+            min="0"
+            [(ngModel)]="person.minNumberOfDaysBetweenContacts">
+        </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>Max. numbers of days between contacts</mat-label>
-                    <input matInput
-                           type="number"
-                           min="0"
-                           [(ngModel)]="person.maxNumberOfDaysBetweenContacts">
-                </mat-form-field>
-            </div>
-        </mat-dialog-content>
-    </div>
+        <mat-form-field>
+          <mat-label>Max. numbers of days between contacts</mat-label>
+          <input matInput
+            type="number"
+            min="0"
+            [(ngModel)]="person.maxNumberOfDaysBetweenContacts">
+        </mat-form-field>
+      </div>
+    </mat-dialog-content>
+  </div>
 </div>
 <mat-dialog-actions align="end">
-    <button *ngIf="isNewPerson()"
-            mat-button
-            color="warn"
-            (click)="delete()">
-        <mat-icon>delete</mat-icon>
+  @if (isNewPerson()) {
+    <button
+      mat-button
+      color="warn"
+      (click)="delete()">
+      <mat-icon>delete</mat-icon>
     </button>
-    <span class="fill-space"></span>
-    <button mat-button
-            color="accent"
-            mat-dialog-close>CANCEL</button>
-    <button mat-button
-            color="primary"
-            (click)="save()">SAVE</button>
+  }
+  <span class="fill-space"></span>
+  <button mat-button
+    color="accent"
+  mat-dialog-close>CANCEL</button>
+  <button mat-button
+    color="primary"
+  (click)="save()">SAVE</button>
 </mat-dialog-actions>

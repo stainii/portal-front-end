@@ -1,9 +1,11 @@
-<div class="housagotchi-component" *ngIf="recurringTasks">
+@if (recurringTasks) {
+  <div class="housagotchi-component">
     <app-housagotchi-creature
-        [recurringTasks]="recurringTasks">
+      [recurringTasks]="recurringTasks">
     </app-housagotchi-creature>
     <app-housagotchi-add-execution
-        [recurringTasks]="recurringTasks"
-        (onAddExecution)="addExecution($event)">
+      [recurringTasks]="recurringTasks"
+      (onAddExecution)="addExecution($event)">
     </app-housagotchi-add-execution>
-</div>
+  </div>
+}

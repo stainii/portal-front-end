@@ -1,92 +1,95 @@
 <h1 mat-dialog-title>{{task ? task.name : 'New task'}}</h1>
 <div mat-dialog-content>
-    <mat-vertical-stepper>
-        <mat-step [completed]="task.name!!">
-            <ng-template matStepLabel>What needs to be done?*</ng-template>
-            <mat-form-field>
-                <input required
-                       matInput
-                       [(ngModel)]="task.name"
-                       [placeholder]="placeholderForTaskName">
-            </mat-form-field>
-            <button mat-button
-                    *ngIf="!task.id"
-                    (click)="useATaskTemplateInstead()">
-                or use a template instead
-            </button>
-        </mat-step>
-        <mat-step [completed]="task.context!! && task.context != DEFAULT_TASK_CONTEXT">
-            <ng-template matStepLabel>What is the context?</ng-template>
-            <mat-form-field>
-                <input type="text"
-                       aria-label="Number"
-                       matInput
-                       [(ngModel)]="task.context"
-                       [matAutocomplete]="auto">
-                <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let context of contexts$ | async" [value]="context">
-                        {{context}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-        </mat-step>
-        <mat-step [completed]="task.importance!!">
-            <ng-template matStepLabel>How important is the task?</ng-template>
-            <mat-form-field>
-                <mat-select [(ngModel)]="task.importance">
-                    <mat-option>I don't know</mat-option>
-                    <mat-option value="I_DO_NOT_REALLY_CARE">I do not really care</mat-option>
-                    <mat-option value="NOT_SO_IMPORTANT">Not so important</mat-option>
-                    <mat-option value="IMPORTANT">Important</mat-option>
-                    <mat-option value="VERY_IMPORTANT">Very important</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </mat-step>
-        <mat-step [completed]="task.dueDateTime!!">
-            <ng-template matStepLabel>When should it be finished?</ng-template>
-            <mat-form-field class="dateTime">
-                <input matInput
-                       [matDatepicker]="dueDatePicker"
-                       placeholder="Choose a date"
-                       [(ngModel)]="task.dueDateTime">
-                <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
-                <mat-datepicker touchUi #dueDatePicker></mat-datepicker>
-            </mat-form-field>
-        </mat-step>
-        <mat-step [completed]="task.startDateTime!!">
-            <ng-template matStepLabel>When can we start?</ng-template>
-            <mat-form-field class="dateTime">
-                <input matInput
-                       [matDatepicker]="startDatePicker"
-                       placeholder="Choose a date"
-                       [(ngModel)]="task.startDateTime">
-                <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
-                <mat-datepicker touchUi #startDatePicker></mat-datepicker>
-            </mat-form-field>
-        </mat-step>
-        <mat-step [completed]="task.expectedDurationInHours!!">
-            <ng-template matStepLabel>How long will it take?</ng-template>
-            <mat-form-field>
-                <input matInput type="number" [(ngModel)]="task.expectedDurationInHours">
-            </mat-form-field>
-            <span> hours</span>
-        </mat-step>
-        <mat-step
-            [completed]="task.description!!">
-            <ng-template matStepLabel>Extra information?</ng-template>
-            <mat-form-field>
-                <textarea class="description" matInput placeholder="What needs to be done, in detail?"
-                          [(ngModel)]="task.description"></textarea>
-            </mat-form-field>
-        </mat-step>
-    </mat-vertical-stepper>
+  <mat-vertical-stepper>
+    <mat-step [completed]="task.name!!">
+      <ng-template matStepLabel>What needs to be done?*</ng-template>
+      <mat-form-field>
+        <input required
+          matInput
+          [(ngModel)]="task.name"
+          [placeholder]="placeholderForTaskName">
+      </mat-form-field>
+      @if (!task.id) {
+        <button mat-button
+          (click)="useATaskTemplateInstead()">
+          or use a template instead
+        </button>
+      }
+    </mat-step>
+    <mat-step [completed]="task.context!! && task.context != DEFAULT_TASK_CONTEXT">
+      <ng-template matStepLabel>What is the context?</ng-template>
+      <mat-form-field>
+        <input type="text"
+          aria-label="Number"
+          matInput
+          [(ngModel)]="task.context"
+          [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          @for (context of contexts$ | async; track context) {
+            <mat-option [value]="context">
+              {{context}}
+            </mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </mat-step>
+    <mat-step [completed]="task.importance!!">
+      <ng-template matStepLabel>How important is the task?</ng-template>
+      <mat-form-field>
+        <mat-select [(ngModel)]="task.importance">
+          <mat-option>I don't know</mat-option>
+          <mat-option value="I_DO_NOT_REALLY_CARE">I do not really care</mat-option>
+          <mat-option value="NOT_SO_IMPORTANT">Not so important</mat-option>
+          <mat-option value="IMPORTANT">Important</mat-option>
+          <mat-option value="VERY_IMPORTANT">Very important</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-step>
+    <mat-step [completed]="task.dueDateTime!!">
+      <ng-template matStepLabel>When should it be finished?</ng-template>
+      <mat-form-field class="dateTime">
+        <input matInput
+          [matDatepicker]="dueDatePicker"
+          placeholder="Choose a date"
+          [(ngModel)]="task.dueDateTime">
+        <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #dueDatePicker></mat-datepicker>
+      </mat-form-field>
+    </mat-step>
+    <mat-step [completed]="task.startDateTime!!">
+      <ng-template matStepLabel>When can we start?</ng-template>
+      <mat-form-field class="dateTime">
+        <input matInput
+          [matDatepicker]="startDatePicker"
+          placeholder="Choose a date"
+          [(ngModel)]="task.startDateTime">
+        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #startDatePicker></mat-datepicker>
+      </mat-form-field>
+    </mat-step>
+    <mat-step [completed]="task.expectedDurationInHours!!">
+      <ng-template matStepLabel>How long will it take?</ng-template>
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="task.expectedDurationInHours">
+      </mat-form-field>
+      <span> hours</span>
+    </mat-step>
+    <mat-step
+      [completed]="task.description!!">
+      <ng-template matStepLabel>Extra information?</ng-template>
+      <mat-form-field>
+        <textarea class="description" matInput placeholder="What needs to be done, in detail?"
+        [(ngModel)]="task.description"></textarea>
+      </mat-form-field>
+    </mat-step>
+  </mat-vertical-stepper>
 </div>
 <div class="mat-dialog-actions">
-    <button mat-button
-            (click)="close()">No Thanks
-    </button>
-    <button mat-flat-button
-            class="mat-primary"
-            (click)="saveAndClose()">Save
-    </button>
+  <button mat-button
+    (click)="close()">No Thanks
+  </button>
+  <button mat-flat-button
+    class="mat-primary"
+    (click)="saveAndClose()">Save
+  </button>
 </div>

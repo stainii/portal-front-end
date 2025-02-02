@@ -1,226 +1,220 @@
-<div *ngIf="activity">
-
+@if (activity) {
+  <div>
     <mat-tab-group>
-        <mat-tab label="Basics">
-            <div class="tab-body">
-                <mat-card>
-                    <div class="flex-grid">
-                        <div class="col">
-                            <p>
-                                <mat-form-field>
-                                    <mat-label>Name</mat-label>
-                                    <input matInput
-                                           placeholder="Name"
-                                           [(ngModel)]="activity.name">
-                                </mat-form-field>
-                            </p>
-                            <p>
-                                <mat-form-field>
-                                    <mat-label>Description</mat-label>
-                                    <textarea matInput
-                                              placeholder="Description"
-                                              [(ngModel)]="activity.description">
-                                </textarea>
-                                </mat-form-field>
-                            </p>
-                            <app-activity-manage-labels [labels]="activity.labels"></app-activity-manage-labels>
-                        </div>
-                        <div class="col-photo-thumbnail">
-                            <p>
-                                <img class="photo-thumbnail" [src]="activity.newPhotoContent ? activity.newPhotoContent : getPhotoUrl(activity.photo)"
-                                     (click)="photo.click()">
-                                <input class="hide" type="file" #photo (change)="photoSelected($event)"/>
-                            </p>
-                        </div>
-                    </div>
-                </mat-card>
+      <mat-tab label="Basics">
+        <div class="tab-body">
+          <mat-card>
+            <div class="flex-grid">
+              <div class="col">
+                <p>
+                  <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput
+                      placeholder="Name"
+                      [(ngModel)]="activity.name">
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field>
+                    <mat-label>Description</mat-label>
+                    <textarea matInput
+                      placeholder="Description"
+                      [(ngModel)]="activity.description">
+                    </textarea>
+                  </mat-form-field>
+                </p>
+                <app-activity-manage-labels [labels]="activity.labels"></app-activity-manage-labels>
+              </div>
+              <div class="col-photo-thumbnail">
+                <p>
+                  <img class="photo-thumbnail" [src]="activity.newPhotoContent ? activity.newPhotoContent : getPhotoUrl(activity.photo)"
+                    (click)="photo.click()">
+                  <input class="hide" type="file" #photo (change)="photoSelected($event)"/>
+                </p>
+              </div>
             </div>
-        </mat-tab>
-
-        <mat-tab label="Location">
-            <div class="tab-body">
-                <mat-card>
-                    <div class="flex-grid">
-                        <div class="col">
-                            <p>
-                                <mat-form-field>
-                                    <mat-label>City</mat-label>
-                                    <input matInput
-                                           placeholder="City"
-                                           [(ngModel)]="activity.location.city">
-
-                                </mat-form-field>
-                            </p>
-                            <p>
-                                <mat-form-field>
-                                    <mat-label>Province</mat-label>
-                                    <input matInput
-                                           placeholder="Province"
-                                           [(ngModel)]="activity.location.province">
-
-                                </mat-form-field>
-                            </p>
-                            <p>
-                                <mat-form-field>
-                                    <mat-label>Country</mat-label>
-                                    <input matInput
-                                           placeholder="Country"
-                                           [(ngModel)]="activity.location.country">
-                                </mat-form-field>
-                            </p>
-                        </div>
-                    </div>
-                </mat-card>
+          </mat-card>
+        </div>
+      </mat-tab>
+      <mat-tab label="Location">
+        <div class="tab-body">
+          <mat-card>
+            <div class="flex-grid">
+              <div class="col">
+                <p>
+                  <mat-form-field>
+                    <mat-label>City</mat-label>
+                    <input matInput
+                      placeholder="City"
+                      [(ngModel)]="activity.location.city">
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field>
+                    <mat-label>Province</mat-label>
+                    <input matInput
+                      placeholder="Province"
+                      [(ngModel)]="activity.location.province">
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field>
+                    <mat-label>Country</mat-label>
+                    <input matInput
+                      placeholder="Country"
+                      [(ngModel)]="activity.location.country">
+                  </mat-form-field>
+                </p>
+              </div>
             </div>
-        </mat-tab>
-
-        <mat-tab label="Periods">
-            <div class="tab-body">
-                <div class="flex-grid">
-                    <div class="col">
-                        <p>
-                            <app-activity-manage-date-intervals
-                                [dateIntervals]="activity.dateIntervals"></app-activity-manage-date-intervals>
-                        </p>
-                    </div>
-                </div>
+          </mat-card>
+        </div>
+      </mat-tab>
+      <mat-tab label="Periods">
+        <div class="tab-body">
+          <div class="flex-grid">
+            <div class="col">
+              <p>
+                <app-activity-manage-date-intervals
+                [dateIntervals]="activity.dateIntervals"></app-activity-manage-date-intervals>
+              </p>
             </div>
-        </mat-tab>
-
-        <mat-tab label="Weather">
-            <div class="tab-body">
-                <mat-card>
-                    <div class="flex-grid">
-                        <div class="col">
-                            <p>
-                                <mat-label>Min temperature</mat-label>
-                                <mat-slider
-                                    discrete
-                                    (input)="activity.weather.minTemperature = $event.target.valueAsNumber"
-                                    min="-10"
-                                    max="40">
-                                    <input matSliderThumb [value]="activity.weather.minTemperature">
-                                </mat-slider>
-                                <span>{{activity.weather.minTemperature}} °C</span>
-                            </p>
-                            <p>
-                                <mat-label>Max temperature</mat-label>
-                                <mat-slider
-                                    discrete
-                                    (input)="activity.weather.maxTemperature = $event.target.valueAsNumber"
-                                    min="-10"
-                                    max="40">
-                                    <input matSliderThumb  [value]="activity.weather.maxTemperature">
-                                </mat-slider>
-                                <span>{{activity.weather.maxTemperature}} °C</span>
-                            </p>
-                            <p>
-                                <mat-label>Max cloudiness</mat-label>
-                                <mat-slider
-                                    discrete
-                                    (input)="activity.weather.maxCloudiness = $event.target.valueAsNumber"
-                                    step="10"
-                                    min="0"
-                                    max="100">
-                                    <input matSliderThumb  [value]="activity.weather.maxCloudiness">
-                                </mat-slider>
-                                <span>{{activity.weather.maxCloudiness}} %</span>
-                            </p>
-                            <p>
-                                <mat-label>Max rain</mat-label>
-                                <mat-slider
-                                    discrete
-                                    (input)="activity.weather.maxRain = $event.target.valueAsNumber"
-                                    step="10"
-                                    min="0"
-                                    max="100">
-                                    <input matSliderThumb  [value]="activity.weather.maxRain">
-                                </mat-slider>
-                                <span>{{activity.weather.maxRain}} %</span>
-                            </p>
-                            <p>
-                                <mat-label>Max snow</mat-label>
-                                <mat-slider
-                                    discrete
-                                    (input)="activity.weather.maxSnow = $event.target.valueAsNumber"
-                                    step="10"
-                                    min="0"
-                                    max="100">
-                                    <input matSliderThumb  [value]="activity.weather.maxSnow">
-                                </mat-slider>
-                                <span>{{activity.weather.maxSnow}} %</span>
-                            </p>
-                            <p>
-                                <mat-label>Max fog</mat-label>
-                                <mat-slider
-                                    discrete
-                                    (input)="activity.weather.maxFog = $event.target.valueAsNumber"
-                                    step="10"
-                                    min="0"
-                                    max="100">
-                                    <input matSliderThumb  [value]="activity.weather.maxFog">
-                                </mat-slider>
-                                <span>{{activity.weather.maxFog}} %</span>
-                            </p>
-                            <p>
-                                <mat-label>Min wind in beaufort</mat-label>
-                                <mat-slider
-                                    discrete
-                                    (input)="activity.weather.minWind = $event.target.valueAsNumber"
-                                    min="0"
-                                    max="12">
-                                    <input matSliderThumb  [value]="activity.weather.minWind">
-                                </mat-slider>
-                                <span>{{getBeaufortDescription(activity.weather.minWind)}}</span>
-                            </p>
-                            <p>
-                                <mat-label>Max wind in beaufort</mat-label>
-                                <mat-slider
-                                    discrete
-                                    (input)="activity.weather.maxWind = $event.target.valueAsNumber"
-                                    min="0"
-                                    max="12">
-                                    <input matSliderThumb  [value]="activity.weather.maxWind">
-                                </mat-slider>
-                                <span>{{getBeaufortDescription(activity.weather.maxWind)}}</span>
-                            </p>
-                        </div>
-                    </div>
-                </mat-card>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Weather">
+        <div class="tab-body">
+          <mat-card>
+            <div class="flex-grid">
+              <div class="col">
+                <p>
+                  <mat-label>Min temperature</mat-label>
+                  <mat-slider
+                    discrete
+                    (input)="activity.weather.minTemperature = $event.target.valueAsNumber"
+                    min="-10"
+                    max="40">
+                    <input matSliderThumb [value]="activity.weather.minTemperature">
+                  </mat-slider>
+                  <span>{{activity.weather.minTemperature}} °C</span>
+                </p>
+                <p>
+                  <mat-label>Max temperature</mat-label>
+                  <mat-slider
+                    discrete
+                    (input)="activity.weather.maxTemperature = $event.target.valueAsNumber"
+                    min="-10"
+                    max="40">
+                    <input matSliderThumb  [value]="activity.weather.maxTemperature">
+                  </mat-slider>
+                  <span>{{activity.weather.maxTemperature}} °C</span>
+                </p>
+                <p>
+                  <mat-label>Max cloudiness</mat-label>
+                  <mat-slider
+                    discrete
+                    (input)="activity.weather.maxCloudiness = $event.target.valueAsNumber"
+                    step="10"
+                    min="0"
+                    max="100">
+                    <input matSliderThumb  [value]="activity.weather.maxCloudiness">
+                  </mat-slider>
+                  <span>{{activity.weather.maxCloudiness}} %</span>
+                </p>
+                <p>
+                  <mat-label>Max rain</mat-label>
+                  <mat-slider
+                    discrete
+                    (input)="activity.weather.maxRain = $event.target.valueAsNumber"
+                    step="10"
+                    min="0"
+                    max="100">
+                    <input matSliderThumb  [value]="activity.weather.maxRain">
+                  </mat-slider>
+                  <span>{{activity.weather.maxRain}} %</span>
+                </p>
+                <p>
+                  <mat-label>Max snow</mat-label>
+                  <mat-slider
+                    discrete
+                    (input)="activity.weather.maxSnow = $event.target.valueAsNumber"
+                    step="10"
+                    min="0"
+                    max="100">
+                    <input matSliderThumb  [value]="activity.weather.maxSnow">
+                  </mat-slider>
+                  <span>{{activity.weather.maxSnow}} %</span>
+                </p>
+                <p>
+                  <mat-label>Max fog</mat-label>
+                  <mat-slider
+                    discrete
+                    (input)="activity.weather.maxFog = $event.target.valueAsNumber"
+                    step="10"
+                    min="0"
+                    max="100">
+                    <input matSliderThumb  [value]="activity.weather.maxFog">
+                  </mat-slider>
+                  <span>{{activity.weather.maxFog}} %</span>
+                </p>
+                <p>
+                  <mat-label>Min wind in beaufort</mat-label>
+                  <mat-slider
+                    discrete
+                    (input)="activity.weather.minWind = $event.target.valueAsNumber"
+                    min="0"
+                    max="12">
+                    <input matSliderThumb  [value]="activity.weather.minWind">
+                  </mat-slider>
+                  <span>{{getBeaufortDescription(activity.weather.minWind)}}</span>
+                </p>
+                <p>
+                  <mat-label>Max wind in beaufort</mat-label>
+                  <mat-slider
+                    discrete
+                    (input)="activity.weather.maxWind = $event.target.valueAsNumber"
+                    min="0"
+                    max="12">
+                    <input matSliderThumb  [value]="activity.weather.maxWind">
+                  </mat-slider>
+                  <span>{{getBeaufortDescription(activity.weather.maxWind)}}</span>
+                </p>
+              </div>
             </div>
-        </mat-tab>
-
-        <mat-tab label="Participants">
-            <div class="tab-body">
-                <mat-card>
-                    <div class="flex-grid">
-                        <div class="col">
-                            <p>
-                                <mat-form-field>
-                                    <mat-label>Min number of participants</mat-label>
-                                    <input matInput
-                                           type="number"
-                                           [(ngModel)]="activity.minNumberOfParticipants">
-                                </mat-form-field>
-                            </p>
-                            <p>
-                                <mat-form-field>
-                                    <mat-label>Max number of participants</mat-label>
-                                    <input matInput
-                                           type="number"
-                                           [(ngModel)]="activity.maxNumberOfParticipants">
-                                </mat-form-field>
-                            </p>
-                        </div>
-                    </div>
-                </mat-card>
+          </mat-card>
+        </div>
+      </mat-tab>
+      <mat-tab label="Participants">
+        <div class="tab-body">
+          <mat-card>
+            <div class="flex-grid">
+              <div class="col">
+                <p>
+                  <mat-form-field>
+                    <mat-label>Min number of participants</mat-label>
+                    <input matInput
+                      type="number"
+                      [(ngModel)]="activity.minNumberOfParticipants">
+                  </mat-form-field>
+                </p>
+                <p>
+                  <mat-form-field>
+                    <mat-label>Max number of participants</mat-label>
+                    <input matInput
+                      type="number"
+                      [(ngModel)]="activity.maxNumberOfParticipants">
+                  </mat-form-field>
+                </p>
+              </div>
             </div>
-        </mat-tab>
+          </mat-card>
+        </div>
+      </mat-tab>
     </mat-tab-group>
-
     <button class="save"
-            mat-fab
-            (click)="save()">
-        <mat-icon>save</mat-icon>
+      mat-fab
+      (click)="save()">
+      <mat-icon>save</mat-icon>
     </button>
-</div>
+  </div>
+}

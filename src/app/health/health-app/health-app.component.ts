@@ -7,7 +7,7 @@ import {DEPLOYMENT_NAME} from "@app/health/health-constants";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
-import { NgIf } from '@angular/common';
+
 import { HealthSportySpiceComponent } from '../health-sporty-spice/health-sporty-spice.component';
 import { HealthAddExecutionComponent } from '../health-add-execution/health-add-execution.component';
 
@@ -15,7 +15,7 @@ import { HealthAddExecutionComponent } from '../health-add-execution/health-add-
     selector: 'app-health-app',
     templateUrl: './health-app.component.html',
     styleUrls: ['./health-app.component.scss'],
-    imports: [NgIf, HealthSportySpiceComponent, HealthAddExecutionComponent]
+    imports: [HealthSportySpiceComponent, HealthAddExecutionComponent]
 })
 export class HealthAppComponent implements OnInit, OnDestroy {
 

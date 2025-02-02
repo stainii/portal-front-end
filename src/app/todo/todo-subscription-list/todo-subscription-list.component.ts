@@ -1,13 +1,13 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TodoSubscription} from "@app/todo/todo-subscription.model";
-import { NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-todo-subscription-list',
     templateUrl: './todo-subscription-list.component.html',
     styleUrls: ['./todo-subscription-list.component.scss'],
-    imports: [NgFor, NgClass, MatButton]
+    imports: [NgClass, MatButton]
 })
 export class TodoSubscriptionListComponent {
 

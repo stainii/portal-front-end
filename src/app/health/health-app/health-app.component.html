@@ -1,9 +1,11 @@
-<div class="health-component" *ngIf="recurringTasks">
+@if (recurringTasks) {
+  <div class="health-component">
     <app-health-sporty-spice
-        [recurringTasks]="recurringTasks">
+      [recurringTasks]="recurringTasks">
     </app-health-sporty-spice>
     <app-health-add-execution
-        [recurringTasks]="recurringTasks"
-        (onAddExecution)="addExecution($event)">
+      [recurringTasks]="recurringTasks"
+      (onAddExecution)="addExecution($event)">
     </app-health-add-execution>
-</div>
+  </div>
+}

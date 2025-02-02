@@ -1,103 +1,98 @@
-<form #subscriptionForm="ngForm" *ngIf="subscription">
+@if (subscription) {
+  <form #subscriptionForm="ngForm">
     <mat-form-field>
-        <mat-label>Origin</mat-label>
-        <input id="origin"
-               name="origin"
-               matInput
-               [(ngModel)]="subscription.origin"
-               required/>
-        <mat-hint>The name of the app</mat-hint>
+      <mat-label>Origin</mat-label>
+      <input id="origin"
+        name="origin"
+        matInput
+        [(ngModel)]="subscription.origin"
+        required/>
+      <mat-hint>The name of the app</mat-hint>
     </mat-form-field>
-
     <mat-form-field>
-        <mat-label>Activation condition</mat-label>
-        <input id="activationCondition"
-               name="activationCondition"
-               matInput
-               [(ngModel)]="subscription.activationCondition"
-               required/>
-        <mat-hint>When does an event cause a new notification? Always? Use true</mat-hint>
+      <mat-label>Activation condition</mat-label>
+      <input id="activationCondition"
+        name="activationCondition"
+        matInput
+        [(ngModel)]="subscription.activationCondition"
+        required/>
+      <mat-hint>When does an event cause a new notification? Always? Use true</mat-hint>
     </mat-form-field>
-
     <mat-form-field>
-        <mat-label>Cancellation condition</mat-label>
-        <input id="cancellationCondition"
-               name="cancellationCondition"
-               matInput
-               [(ngModel)]="subscription.cancellationCondition"
-               required/>
-        <mat-hint>When does an event cause no new notification, but a cancellation of previous events?</mat-hint>
+      <mat-label>Cancellation condition</mat-label>
+      <input id="cancellationCondition"
+        name="cancellationCondition"
+        matInput
+        [(ngModel)]="subscription.cancellationCondition"
+        required/>
+      <mat-hint>When does an event cause no new notification, but a cancellation of previous events?</mat-hint>
     </mat-form-field>
-
     <mat-form-field>
-        <mat-label>When should the notification be published?</mat-label>
-        <mat-select id="publishStrategy"
-                    name="publishStrategy"
-                    [(ngModel)]="subscription.publishStrategy"
-                    required>
-            <mat-option value="PUBLISH_IMMEDIATELY">Publish immediately</mat-option>
-            <mat-option value="PUBLISH_WITHIN_24_HOURS">Publish within 24 hours</mat-option>
-            <mat-option value="PUBLISH_AT_SPECIFIC_DATE_TIME">Publish at a specific date time</mat-option>
-        </mat-select>
+      <mat-label>When should the notification be published?</mat-label>
+      <mat-select id="publishStrategy"
+        name="publishStrategy"
+        [(ngModel)]="subscription.publishStrategy"
+        required>
+        <mat-option value="PUBLISH_IMMEDIATELY">Publish immediately</mat-option>
+        <mat-option value="PUBLISH_WITHIN_24_HOURS">Publish within 24 hours</mat-option>
+        <mat-option value="PUBLISH_AT_SPECIFIC_DATE_TIME">Publish at a specific date time</mat-option>
+      </mat-select>
     </mat-form-field>
-
-    <mat-form-field *ngIf="subscription.publishStrategy == 'PUBLISH_AT_SPECIFIC_DATE_TIME'">
+    @if (subscription.publishStrategy == 'PUBLISH_AT_SPECIFIC_DATE_TIME') {
+      <mat-form-field>
         <mat-label>Schedule date time</mat-label>
         <input id="scheduleDateTime"
-               name="scheduleDateTime"
-               matInput
-               [(ngModel)]="subscription.mappingToNotification.mappingOfScheduleDateTime"
-               required/>
+          name="scheduleDateTime"
+          matInput
+          [(ngModel)]="subscription.mappingToNotification.mappingOfScheduleDateTime"
+          required/>
         <mat-hint>Something like data['dueDate'].</mat-hint>
-    </mat-form-field>
-
+      </mat-form-field>
+    }
     <h3>Mapping</h3>
     <mat-form-field>
-        <mat-label>Title</mat-label>
-        <textarea id="title"
-                  name="title"
-                  matInput
-                  class="form-control"
-                  [(ngModel)]="subscription.mappingToNotification.mappingOfTitle"
-                  required>
-        </textarea>
+      <mat-label>Title</mat-label>
+      <textarea id="title"
+        name="title"
+        matInput
+        class="form-control"
+        [(ngModel)]="subscription.mappingToNotification.mappingOfTitle"
+        required>
+      </textarea>
     </mat-form-field>
-
     <mat-form-field>
-        <mat-label>Message</mat-label>
-        <textarea id="message"
-                  name="message"
-                  matInput
-                  class="form-control"
-                  [(ngModel)]="subscription.mappingToNotification.mappingOfMessage"
-                  required>
-        </textarea>
+      <mat-label>Message</mat-label>
+      <textarea id="message"
+        name="message"
+        matInput
+        class="form-control"
+        [(ngModel)]="subscription.mappingToNotification.mappingOfMessage"
+        required>
+      </textarea>
     </mat-form-field>
-
     <mat-form-field>
-        <mat-label>Action button text</mat-label>
-        <input id="actionText" name="actionText"
-               matInput
-               [(ngModel)]="subscription.mappingToNotification.mappingOfActionText"
-               required/>
-        <mat-hint>Something like 'Cool!'</mat-hint>
+      <mat-label>Action button text</mat-label>
+      <input id="actionText" name="actionText"
+        matInput
+        [(ngModel)]="subscription.mappingToNotification.mappingOfActionText"
+        required/>
+      <mat-hint>Something like 'Cool!'</mat-hint>
     </mat-form-field>
-
     <mat-form-field>
-        <mat-label>Action button url</mat-label>
-        <input id="actionUrl"
-               name="actionUrl"
-               matInput
-               [(ngModel)]="subscription.mappingToNotification.mappingOfActionUrl"
-               required/>
-        <mat-hint>Something like 'http://www.stijnhooft.be'</mat-hint>
+      <mat-label>Action button url</mat-label>
+      <input id="actionUrl"
+        name="actionUrl"
+        matInput
+        [(ngModel)]="subscription.mappingToNotification.mappingOfActionUrl"
+        required/>
+      <mat-hint>Something like 'http://www.stijnhooft.be'</mat-hint>
     </mat-form-field>
-
     <button type="submit"
-            mat-button
-            [disabled]="!subscriptionForm.form.valid"
-            class="btn btn-primary"
-            (click)="save()"
-            color="primary">Save
+      mat-button
+      [disabled]="!subscriptionForm.form.valid"
+      class="btn btn-primary"
+      (click)="save()"
+      color="primary">Save
     </button>
-</form>
+  </form>
+}

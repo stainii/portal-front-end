@@ -1,50 +1,69 @@
 <div class="overview">
-    <section class="tasks-section">
-        <h1 *ngIf="mostImportantTasks?.length > 0">Most important todo's</h1>
-        <div class="tasks-section-content">
-            <app-todo-task-panel
-                *ngFor="let task of mostImportantTasks"
+  <section class="tasks-section">
+    @if (mostImportantTasks?.length > 0) {
+      <h1>Most important todo's</h1>
+    }
+    <div class="tasks-section-content">
+      @for (task of mostImportantTasks; track task) {
+        <app-todo-task-panel
+          [task]="task"
+          (onEdit)="edit($event)"
+          (onComplete)="complete($event)">
+        </app-todo-task-panel>
+      }
+    </div>
+    @if (mostImportantTasks?.length == 0 && futureTasks?.length == 0) {
+      <div
+        class="nothing-to-do">
+        <img alt="Nothing to do" src="assets/todo/imgs/nothing_to_do.png"/>
+        <p>Relax! Nothing else to do.</p>
+      </div>
+    }
+  </section>
+
+  @if (lessImportantTasks && lessImportantTasks.length > 0) {
+    <section class="tasks-section"
+      (click)="makeLessImportantTasksVisible()"
+      >
+      <h1>Also... @if (!lessImportantTasksVisible) {
+        <span>(click to see the tasks)</span>
+      }</h1>
+      <div class="tasks-section-content" [class.disabled]="!lessImportantTasksVisible">
+        @for (task of lessImportantTasks; track task; let i = $index) {
+          <span>
+            @if (i <= 5 || lessImportantTasksVisible) {
+              <app-todo-task-panel
                 [task]="task"
                 (onEdit)="edit($event)"
                 (onComplete)="complete($event)">
-            </app-todo-task-panel>
-        </div>
-        <div *ngIf="mostImportantTasks?.length == 0 && futureTasks?.length == 0"
-             class="nothing-to-do">
-            <img alt="Nothing to do" src="assets/todo/imgs/nothing_to_do.png"/>
-            <p>Relax! Nothing else to do.</p>
-        </div>
+              </app-todo-task-panel>
+            }
+          </span>
+        }
+      </div>
     </section>
+  }
 
+  @if (futureTasks && futureTasks.length > 0) {
     <section class="tasks-section"
-             (click)="makeLessImportantTasksVisible()"
-             *ngIf="lessImportantTasks && lessImportantTasks.length > 0">
-        <h1>Also... <span *ngIf="!lessImportantTasksVisible">(click to see the tasks)</span></h1>
-        <div class="tasks-section-content" [class.disabled]="!lessImportantTasksVisible">
-            <span *ngFor="let task of lessImportantTasks; let i = index">
-                <app-todo-task-panel
-                    *ngIf="i <= 5 || lessImportantTasksVisible"
-                    [task]="task"
-                    (onEdit)="edit($event)"
-                    (onComplete)="complete($event)">
-            </app-todo-task-panel>
-            </span>
-        </div>
+      (click)="makeFutureTasksVisible()"
+      >
+      <h1>Starting in the future... @if (!futureTasksVisible) {
+        <span>(click to see the tasks)</span>
+      }</h1>
+      <div class="tasks-section-content" [class.disabled]="!futureTasksVisible">
+        @for (task of futureTasks; track task; let i = $index) {
+          <span>
+            @if (i <= 5 || futureTasksVisible) {
+              <app-todo-task-panel
+                [task]="task"
+                (onEdit)="edit($event)"
+                (onComplete)="complete($event)">
+              </app-todo-task-panel>
+            }
+          </span>
+        }
+      </div>
     </section>
-
-    <section class="tasks-section"
-             (click)="makeFutureTasksVisible()"
-             *ngIf="futureTasks && futureTasks.length > 0">
-        <h1>Starting in the future... <span *ngIf="!futureTasksVisible">(click to see the tasks)</span></h1>
-        <div class="tasks-section-content" [class.disabled]="!futureTasksVisible">
-            <span *ngFor="let task of futureTasks; let i = index">
-                <app-todo-task-panel
-                    *ngIf="i <= 5 || futureTasksVisible"
-                    [task]="task"
-                    (onEdit)="edit($event)"
-                    (onComplete)="complete($event)">
-                </app-todo-task-panel>
-            </span>
-        </div>
-    </section>
+  }
 </div>

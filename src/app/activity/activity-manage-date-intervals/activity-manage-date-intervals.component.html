@@ -1,7 +1,9 @@
-<div *ngFor="let dateInterval of dateIntervals">
+@for (dateInterval of dateIntervals; track dateInterval) {
+  <div>
     <app-activity-manage-date-interval
-        [dateInterval]="dateInterval"
-        (delete)="deleteDateInterval($event)">
+      [dateInterval]="dateInterval"
+      (delete)="deleteDateInterval($event)">
     </app-activity-manage-date-interval>
-</div>
+  </div>
+}
 <button mat-raised-button color="primary" (click)="createNewDateInterval()">Create new period</button>

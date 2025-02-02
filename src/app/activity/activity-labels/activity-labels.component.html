@@ -1,11 +1,13 @@
 <div class="labels">
-    <mat-chip-listbox aria-label="labels"
-                      [multiple]="true">
-        <mat-chip-option *ngFor="let label of labels$ | async"
-                         [selected]="isSelected(label)"
-                         (click)="onClick(label)"
-                         [class.shaary]="label.toLowerCase() == 'shaary'">
-            {{ label }}
-        </mat-chip-option>
-    </mat-chip-listbox>
+  <mat-chip-listbox aria-label="labels"
+    [multiple]="true">
+    @for (label of labels$ | async; track label) {
+      <mat-chip-option
+        [selected]="isSelected(label)"
+        (click)="onClick(label)"
+        [class.shaary]="label.toLowerCase() == 'shaary'">
+        {{ label }}
+      </mat-chip-option>
+    }
+  </mat-chip-listbox>
 </div>

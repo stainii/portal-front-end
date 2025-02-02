@@ -1,8 +1,16 @@
-<div class="housagotchi-creature" *ngIf="report">
+@if (report) {
+  <div class="housagotchi-creature">
     <img [src]="'assets/housagotchi/creature/' + report.mood + '.png'" />
     <app-housagotchi-balloon>
-        <p *ngIf="report.mood == 'happy'">Hey! Nothing to do!! I'm happy!!!</p>
-        <p *ngFor="let task of report.lateTasks">{{task.name}}</p>
-        <p *ngFor="let task of report.veryLateTasks" class="urgent">{{task.name}}</p>
+      @if (report.mood == 'happy') {
+        <p>Hey! Nothing to do!! I'm happy!!!</p>
+      }
+      @for (task of report.lateTasks; track task) {
+        <p>{{task.name}}</p>
+      }
+      @for (task of report.veryLateTasks; track task) {
+        <p class="urgent">{{task.name}}</p>
+      }
     </app-housagotchi-balloon>
-</div>
+  </div>
+}

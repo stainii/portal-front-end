@@ -4,7 +4,7 @@ import {map, takeUntil} from "rxjs/operators";
 import {Observable, Subject} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
-import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatFormField } from '@angular/material/form-field';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/core';
@@ -14,7 +14,7 @@ import { MatIcon } from '@angular/material/icon';
     selector: 'app-todo-menu-bar-for-overview',
     templateUrl: './todo-menu-bar-for-overview.component.html',
     styleUrls: ['./todo-menu-bar-for-overview.component.scss'],
-    imports: [NgIf, NgFor, MatFormField, MatSelect, MatOption, MatIcon, RouterLink, AsyncPipe]
+    imports: [MatFormField, MatSelect, MatOption, MatIcon, RouterLink, AsyncPipe]
 })
 export class TodoMenuBarForOverviewComponent implements OnInit, OnDestroy {
 

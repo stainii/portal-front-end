@@ -1,15 +1,18 @@
 <div class="notificationList">
 
-    <div *ngIf="notifications?.length == 0"
-         class="noNotifications">
-        <img src="assets/notification/imgs/no_notifications.png" />
-        <p>Relax! Nothing else to do.</p>
+  @if (notifications?.length == 0) {
+    <div
+      class="noNotifications">
+      <img src="assets/notification/imgs/no_notifications.png" />
+      <p>Relax! Nothing else to do.</p>
     </div>
+  }
 
+  @for (notification of notifications; track notification) {
     <app-notification
-        *ngFor="let notification of notifications"
-        [notification]="notification"
-        (onRead)="markAsRead(notification)">
+      [notification]="notification"
+      (onRead)="markAsRead(notification)">
     </app-notification>
+  }
 
 </div>

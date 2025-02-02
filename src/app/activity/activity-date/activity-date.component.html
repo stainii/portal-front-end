@@ -1,46 +1,48 @@
 <mat-card id="card-date" class="card col">
-    <mat-card-header>
-        <mat-card-title>Date</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <form>
-            <mat-form-field>
-                <input matInput
-                       name="startDate"
-                       [(ngModel)]="startDate"
-                       (dateChange)="onDateChange()"
-                       [matDatepicker]="startDateElement"
-                       [placeholder]="range ? 'Start date' : 'Date'">
+  <mat-card-header>
+    <mat-card-title>Date</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <mat-form-field>
+        <input matInput
+          name="startDate"
+          [(ngModel)]="startDate"
+          (dateChange)="onDateChange()"
+          [matDatepicker]="startDateElement"
+          [placeholder]="range ? 'Start date' : 'Date'">
 
-                <mat-datepicker-toggle matSuffix
-                                       [for]="startDateElement">
-                </mat-datepicker-toggle>
+        <mat-datepicker-toggle matSuffix
+          [for]="startDateElement">
+        </mat-datepicker-toggle>
 
-                <mat-datepicker touchUi
-                                #startDateElement>
-                </mat-datepicker>
-            </mat-form-field>
+        <mat-datepicker touchUi
+          #startDateElement>
+        </mat-datepicker>
+      </mat-form-field>
 
-            <mat-form-field *ngIf="range">
-                <input matInput
-                       name="endDate"
-                       [(ngModel)]="endDate"
-                       (dateChange)="onDateChange()"
-                       [matDatepicker]="endDateElement"
-                       placeholder="End date">
-                <mat-datepicker-toggle matSuffix
-                                       [for]="endDateElement">
-                </mat-datepicker-toggle>
-                <mat-datepicker touchUi
-                                #endDateElement>
-                </mat-datepicker>
-            </mat-form-field>
+      @if (range) {
+        <mat-form-field>
+          <input matInput
+            name="endDate"
+            [(ngModel)]="endDate"
+            (dateChange)="onDateChange()"
+            [matDatepicker]="endDateElement"
+            placeholder="End date">
+          <mat-datepicker-toggle matSuffix
+            [for]="endDateElement">
+          </mat-datepicker-toggle>
+          <mat-datepicker touchUi
+            #endDateElement>
+          </mat-datepicker>
+        </mat-form-field>
+      }
 
-            <mat-slide-toggle name="range"
-                              [(ngModel)]="range"
-                              (change)="onRangeToggled()">
-                Search for a range
-            </mat-slide-toggle>
-        </form>
-    </mat-card-content>
+      <mat-slide-toggle name="range"
+        [(ngModel)]="range"
+        (change)="onRangeToggled()">
+        Search for a range
+      </mat-slide-toggle>
+    </form>
+  </mat-card-content>
 </mat-card>

@@ -8,7 +8,7 @@ import { MatCardAvatar } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
@@ -16,7 +16,7 @@ import { MatIcon } from '@angular/material/icon';
     selector: 'app-social-person-settings-edit',
     templateUrl: './social-person-settings-edit.component.html',
     styleUrls: ['./social-person-settings-edit.component.scss'],
-    imports: [CdkScrollable, MatDialogContent, MatCardAvatar, MatFormField, MatLabel, MatInput, FormsModule, MatDialogActions, NgIf, MatButton, MatIcon, MatDialogClose]
+    imports: [CdkScrollable, MatDialogContent, MatCardAvatar, MatFormField, MatLabel, MatInput, FormsModule, MatDialogActions, MatButton, MatIcon, MatDialogClose]
 })
 export class SocialPersonSettingsEditComponent implements OnInit {
 

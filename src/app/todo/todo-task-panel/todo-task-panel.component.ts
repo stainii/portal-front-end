@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Task} from '@app/todo/task.model';
 import {animate, keyframes, style, transition, trigger} from "@angular/animations";
-import { NgIf } from '@angular/common';
+
 import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatExpansionPanelContent, MatExpansionPanelActionRow } from '@angular/material/expansion';
 import { MatCardAvatar } from '@angular/material/card';
 import { MatButton } from '@angular/material/button';
@@ -23,7 +23,7 @@ const taskDone = [
             transition(':leave', animate(1000, keyframes(taskDone))),
         ])
     ],
-    imports: [NgIf, MatExpansionPanel, MatExpansionPanelHeader, MatCardAvatar, MatExpansionPanelTitle, MatExpansionPanelContent, MatExpansionPanelActionRow, MatButton, MatIcon]
+    imports: [MatExpansionPanel, MatExpansionPanelHeader, MatCardAvatar, MatExpansionPanelTitle, MatExpansionPanelContent, MatExpansionPanelActionRow, MatButton, MatIcon]
 })
 export class TodoTaskPanelComponent {
 

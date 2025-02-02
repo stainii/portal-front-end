@@ -4,14 +4,14 @@ import {SocialService} from "@app/social/social.service";
 import moment from "moment";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
-import { NgFor } from '@angular/common';
+
 import { SocialPolaroidComponent } from '../social-polaroid/social-polaroid.component';
 
 @Component({
     selector: 'app-social-overview',
     templateUrl: './social-overview.component.html',
     styleUrls: ['./social-overview.component.scss'],
-    imports: [NgFor, SocialPolaroidComponent]
+    imports: [SocialPolaroidComponent]
 })
 export class SocialOverviewComponent implements OnDestroy {
 

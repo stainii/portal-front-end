@@ -1,10 +1,12 @@
 <div class="subscription-list">
-    <ul>
-        <li *ngFor="let subscription of subscriptions"
-            (click)="selectSubscription(subscription)"
-            [ngClass]="{active: subscription == selectedSubscription}">
-            {{subscription.origin}} ({{subscription.id}})
-        </li>
-    </ul>
-    <button mat-button (click)="createNewSubscription()" class="btn btn-primary">+</button>
+  <ul>
+    @for (subscription of subscriptions; track subscription) {
+      <li
+        (click)="selectSubscription(subscription)"
+        [ngClass]="{active: subscription == selectedSubscription}">
+        {{subscription.origin}} ({{subscription.id}})
+      </li>
+    }
+  </ul>
+  <button mat-button (click)="createNewSubscription()" class="btn btn-primary">+</button>
 </div>

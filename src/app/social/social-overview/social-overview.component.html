@@ -1,6 +1,7 @@
-<app-social-polaroid
-    *ngFor="let person of people"
+@for (person of people; track person) {
+  <app-social-polaroid
     [person]="person"
     (onSave)="save($event)"
     [old]="person.shouldContact">
-</app-social-polaroid>
+  </app-social-polaroid>
+}

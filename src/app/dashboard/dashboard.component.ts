@@ -5,7 +5,7 @@ import {map, takeUntil} from 'rxjs/operators';
 import {UserService} from "@app/user/user.service";
 import { MatSidenavContainer, MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MenuComponent } from '../menu/menu.component';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -17,7 +17,7 @@ import { LogoutComponent } from '../user/logout/logout.component';
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
-    imports: [MatSidenavContainer, MatSidenav, MatToolbar, NgIf, MenuComponent, MatSidenavContent, MatIconButton, MatIcon, OfflineIndicatorComponent, RouterOutlet, LogoutComponent, AsyncPipe]
+    imports: [MatSidenavContainer, MatSidenav, MatToolbar, MenuComponent, MatSidenavContent, MatIconButton, MatIcon, OfflineIndicatorComponent, RouterOutlet, LogoutComponent, AsyncPipe]
 })
 export class DashboardComponent implements OnDestroy {
 

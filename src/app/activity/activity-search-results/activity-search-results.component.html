@@ -1,3 +1,5 @@
-<app-activity-search-result *ngFor="let activity of activities"
-                            [activity]="activity">
-</app-activity-search-result>
+@for (activity of activities; track activity) {
+  <app-activity-search-result
+    [activity]="activity">
+  </app-activity-search-result>
+}

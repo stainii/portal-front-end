@@ -1,57 +1,63 @@
 <h1 mat-dialog-title>{{taskTemplateEntry?.taskTemplate?.name ? taskTemplateEntry.taskTemplate.name : 'New task'}}</h1>
 <div mat-dialog-content>
-    <mat-vertical-stepper>
-        <mat-step>
-            <ng-template matStepLabel>Which template?</ng-template>
+  <mat-vertical-stepper>
+    <mat-step>
+      <ng-template matStepLabel>Which template?</ng-template>
+      <mat-form-field>
+        <mat-select [(value)]="taskTemplateEntry.taskTemplate">
+          @for (taskTemplate of taskTemplates$ | async; track taskTemplate) {
+            <mat-option [value]="taskTemplate"
+              >
+              {{taskTemplate.name}}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </mat-step>
+    @if (taskTemplateEntry.taskTemplate) {
+      <mat-step>
+        <ng-template matStepLabel>Fill in the variables</ng-template>
+        @for (variableName of taskTemplateEntry.taskTemplate.variableNames; track variableName) {
+          <div>
             <mat-form-field>
-                <mat-select [(value)]="taskTemplateEntry.taskTemplate">
-                    <mat-option [value]="taskTemplate"
-                                *ngFor="let taskTemplate of taskTemplates$ | async">
-                        {{taskTemplate.name}}
-                    </mat-option>
-                </mat-select>
+              <mat-label>{{variableName}}</mat-label>
+              <input matInput
+                [(ngModel)]="taskTemplateEntry.variables[variableName]">
             </mat-form-field>
-        </mat-step>
-        <mat-step *ngIf="taskTemplateEntry.taskTemplate">
-            <ng-template matStepLabel>Fill in the variables</ng-template>
-            <div *ngFor="let variableName of taskTemplateEntry.taskTemplate.variableNames">
-                <mat-form-field>
-                    <mat-label>{{variableName}}</mat-label>
-                    <input matInput
-                           [(ngModel)]="taskTemplateEntry.variables[variableName]">
-                </mat-form-field>
-            </div>
-        </mat-step>
-        <mat-step>
-            <ng-template matStepLabel>When should it be finished?</ng-template>
-            <mat-form-field>
-                <input matInput
-                       [matDatepicker]="dueDatePicker"
-                       placeholder="Choose a date"
-                       [(ngModel)]="taskTemplateEntry.dueDateTimeOfMainTask">
-                <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
-                <mat-datepicker touchUi #dueDatePicker></mat-datepicker>
-            </mat-form-field>
-        </mat-step>
-        <mat-step>
-            <ng-template matStepLabel>When can we start?</ng-template>
-            <mat-form-field>
-                <input matInput
-                       [matDatepicker]="startDatePicker"
-                       placeholder="Choose a date"
-                       [(ngModel)]="taskTemplateEntry.startDateTimeOfMainTask">
-                <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
-                <mat-datepicker touchUi #startDatePicker></mat-datepicker>
-            </mat-form-field>
-        </mat-step>
-    </mat-vertical-stepper>
+          </div>
+        }
+      </mat-step>
+    }
+    <mat-step>
+      <ng-template matStepLabel>When should it be finished?</ng-template>
+      <mat-form-field>
+        <input matInput
+          [matDatepicker]="dueDatePicker"
+          placeholder="Choose a date"
+          [(ngModel)]="taskTemplateEntry.dueDateTimeOfMainTask">
+        <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #dueDatePicker></mat-datepicker>
+      </mat-form-field>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>When can we start?</ng-template>
+      <mat-form-field>
+        <input matInput
+          [matDatepicker]="startDatePicker"
+          placeholder="Choose a date"
+          [(ngModel)]="taskTemplateEntry.startDateTimeOfMainTask">
+        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #startDatePicker></mat-datepicker>
+      </mat-form-field>
+    </mat-step>
+  </mat-vertical-stepper>
 </div>
 <div class="mat-dialog-actions">
-    <button mat-button
-            (click)="close()">No Thanks
-    </button>
-    <button mat-flat-button
-            class="mat-primary"
-            (click)="saveAndClose()">Save
-    </button>
+  <button mat-button
+    (click)="close()">No Thanks
+  </button>
+  <button mat-flat-button
+    class="mat-primary"
+    (click)="saveAndClose()">Save
+  </button>
 </div>

@@ -2,13 +2,13 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Activity} from "@app/activity/activity.model";
 import {ActivityHelperService} from "@app/activity/activity-helper.service";
 import { MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardFooter } from '@angular/material/card';
-import { NgFor, NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-activity-search-result',
     templateUrl: './activity-search-result.component.html',
     styleUrls: ['./activity-search-result.component.scss'],
-    imports: [MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardFooter, NgFor, NgIf]
+    imports: [MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardFooter]
 })
 export class ActivitySearchResultComponent implements OnInit {
 

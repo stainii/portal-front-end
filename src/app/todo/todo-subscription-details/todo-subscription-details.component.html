@@ -1,92 +1,85 @@
-<form #subscriptionForm="ngForm" *ngIf="subscription">
+@if (subscription) {
+  <form #subscriptionForm="ngForm">
     <mat-form-field>
-
-        <input id="origin"
-               name="origin"
-               matInput
-               [(ngModel)]="subscription.origin"
-               placeholder="Origin"
-               required/>
-        <mat-hint>The name of the app</mat-hint>
+      <input id="origin"
+        name="origin"
+        matInput
+        [(ngModel)]="subscription.origin"
+        placeholder="Origin"
+        required/>
+      <mat-hint>The name of the app</mat-hint>
     </mat-form-field>
-
     <mat-form-field>
-        <input id="creationCondition"
-               name="creationCondition"
-               matInput
-               [(ngModel)]="subscription.creationCondition"
-               placeholder="Creation condition"
-               required/>
-        <mat-hint>When does an event cause a new task? Always? Use true</mat-hint>
+      <input id="creationCondition"
+        name="creationCondition"
+        matInput
+        [(ngModel)]="subscription.creationCondition"
+        placeholder="Creation condition"
+        required/>
+      <mat-hint>When does an event cause a new task? Always? Use true</mat-hint>
     </mat-form-field>
-
     <mat-form-field>
-        <input id="completeCondition"
-               name="completeCondition"
-               matInput
-               [(ngModel)]="subscription.completeCondition"
-               placeholder="Complete condition"
-               required/>
-        <mat-hint>When does an event complete a task?</mat-hint>
+      <input id="completeCondition"
+        name="completeCondition"
+        matInput
+        [(ngModel)]="subscription.completeCondition"
+        placeholder="Complete condition"
+        required/>
+      <mat-hint>When does an event complete a task?</mat-hint>
     </mat-form-field>
-
     <h3>Mapping</h3>
     <mat-form-field>
-        <textarea id="name"
-                  name="name"
-                  matInput
-                  class="form-control"
-                  placeholder="Name"
-                  [(ngModel)]="subscription.mappingToTask.mappingOfName"
-                  required>
-        </textarea>
+      <textarea id="name"
+        name="name"
+        matInput
+        class="form-control"
+        placeholder="Name"
+        [(ngModel)]="subscription.mappingToTask.mappingOfName"
+        required>
+      </textarea>
     </mat-form-field>
-
     <mat-form-field>
-        <input id="context"
-               name="context"
-               matInput
-               [(ngModel)]="subscription.mappingToTask.mappingOfContext"
-               placeholder="Context"
-               required/>
+      <input id="context"
+        name="context"
+        matInput
+        [(ngModel)]="subscription.mappingToTask.mappingOfContext"
+        placeholder="Context"
+        required/>
     </mat-form-field>
-
     <mat-form-field>
-        <input id="dueDateTime"
-               name="dueDateTime"
-               matInput
-               [(ngModel)]="subscription.mappingToTask.mappingOfDueDate"
-               placeholder="Due date" />
+      <input id="dueDateTime"
+        name="dueDateTime"
+        matInput
+        [(ngModel)]="subscription.mappingToTask.mappingOfDueDate"
+        placeholder="Due date" />
     </mat-form-field>
-
     <mat-form-field>
-        <mat-select [(ngModel)]="subscription.mappingToTask.mappingOfImportance"
-            id="importance"
-            name="importance">
-            <mat-option>None</mat-option>
-            <mat-option value="'I_DO_NOT_REALLY_CARE'">I do not really care</mat-option>
-            <mat-option value="'NOT_SO_IMPORTANT'">Not so important</mat-option>
-            <mat-option value="'IMPORTANT'">Important</mat-option>
-            <mat-option value="'VERY_IMPORTANT'">Very important</mat-option>
-        </mat-select>
-        <mat-hint>How important is the task?</mat-hint>
+      <mat-select [(ngModel)]="subscription.mappingToTask.mappingOfImportance"
+        id="importance"
+        name="importance">
+        <mat-option>None</mat-option>
+        <mat-option value="'I_DO_NOT_REALLY_CARE'">I do not really care</mat-option>
+        <mat-option value="'NOT_SO_IMPORTANT'">Not so important</mat-option>
+        <mat-option value="'IMPORTANT'">Important</mat-option>
+        <mat-option value="'VERY_IMPORTANT'">Very important</mat-option>
+      </mat-select>
+      <mat-hint>How important is the task?</mat-hint>
     </mat-form-field>
-
     <mat-form-field>
-        <textarea id="description"
-                  name="description"
-                  matInput
-                  class="form-control"
-                  placeholder="Description"
-                  [(ngModel)]="subscription.mappingToTask.mappingOfDescription">
-        </textarea>
+      <textarea id="description"
+        name="description"
+        matInput
+        class="form-control"
+        placeholder="Description"
+        [(ngModel)]="subscription.mappingToTask.mappingOfDescription">
+      </textarea>
     </mat-form-field>
-
     <button type="submit"
-            mat-button
-            [disabled]="!subscriptionForm.form.valid"
-            class="btn btn-primary"
-            (click)="save()"
-            color="primary">Save
+      mat-button
+      [disabled]="!subscriptionForm.form.valid"
+      class="btn btn-primary"
+      (click)="save()"
+      color="primary">Save
     </button>
-</form>
+  </form>
+}

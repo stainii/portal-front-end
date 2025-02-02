@@ -12,7 +12,7 @@ import { CdkScrollable } from '@angular/cdk/scrolling';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatList, MatListItem } from '@angular/material/list';
-import { NgFor, NgIf } from '@angular/common';
+
 import { MatIcon } from '@angular/material/icon';
 import { MatTabGroup, MatTab, MatTabLabel } from '@angular/material/tabs';
 import { TodoTaskDefinitionDetailsComponent } from '../todo-task-definition-details/todo-task-definition-details.component';
@@ -22,7 +22,7 @@ import { MatButton } from '@angular/material/button';
     selector: 'app-todo-task-template-details',
     templateUrl: './todo-task-template-details.component.html',
     styleUrls: ['./todo-task-template-details.component.scss'],
-    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, FormsModule, MatList, NgFor, MatListItem, MatIcon, MatTabGroup, MatTab, MatTabLabel, NgIf, TodoTaskDefinitionDetailsComponent, MatButton]
+    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, FormsModule, MatList, MatListItem, MatIcon, MatTabGroup, MatTab, MatTabLabel, TodoTaskDefinitionDetailsComponent, MatButton]
 })
 export class TodoTaskTemplateDetailsComponent {
 

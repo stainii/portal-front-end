@@ -1,13 +1,13 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NotificationSubscription} from "../notification-subscription.model";
-import { NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-notification-subscription-list',
     templateUrl: './notification-subscription-list.component.html',
     styleUrls: ['./notification-subscription-list.component.scss'],
-    imports: [NgFor, NgClass, MatButton]
+    imports: [NgClass, MatButton]
 })
 export class NotificationSubscriptionListComponent {
 

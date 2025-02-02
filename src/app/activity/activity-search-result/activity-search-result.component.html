@@ -1,19 +1,23 @@
 <mat-card class="card">
-    <div class="col-text">
-        <mat-card-header>
-            <mat-card-title class="no-left-margin">{{activity.name}}</mat-card-title>
-            <mat-card-subtitle>{{formattedLocation()}}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <p>{{activity.description}}</p>
-        </mat-card-content>
-        <mat-card-footer>
-            <span class="label" *ngFor="let label of activity.labels">#{{label}}&nbsp;</span>
-        </mat-card-footer>
-    </div>
-    <div class="col-img">
-        <img class="activity-image"
-            [src]="getPhotoUrl(activity.photo)"
-             *ngIf="activity.photo">
-    </div>
+  <div class="col-text">
+    <mat-card-header>
+      <mat-card-title class="no-left-margin">{{activity.name}}</mat-card-title>
+      <mat-card-subtitle>{{formattedLocation()}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{activity.description}}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      @for (label of activity.labels; track label) {
+        <span class="label">#{{label}}&nbsp;</span>
+      }
+    </mat-card-footer>
+  </div>
+  <div class="col-img">
+    @if (activity.photo) {
+      <img class="activity-image"
+        [src]="getPhotoUrl(activity.photo)"
+        >
+    }
+  </div>
 </mat-card>

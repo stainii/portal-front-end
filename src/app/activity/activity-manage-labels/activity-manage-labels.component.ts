@@ -7,7 +7,7 @@ import {map, startWith, takeUntil} from "rxjs/operators";
 import { UntypedFormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { MatOption } from '@angular/material/core';
 
@@ -15,7 +15,7 @@ import { MatOption } from '@angular/material/core';
     selector: 'app-activity-manage-labels',
     templateUrl: './activity-manage-labels.component.html',
     styleUrls: ['./activity-manage-labels.component.scss'],
-    imports: [MatFormField, MatLabel, MatChipGrid, NgFor, MatChipRow, MatIcon, MatChipRemove, FormsModule, MatAutocompleteTrigger, MatChipInput, ReactiveFormsModule, MatAutocomplete, MatOption, AsyncPipe]
+    imports: [MatFormField, MatLabel, MatChipGrid, MatChipRow, MatIcon, MatChipRemove, FormsModule, MatAutocompleteTrigger, MatChipInput, ReactiveFormsModule, MatAutocomplete, MatOption, AsyncPipe]
 })
 export class ActivityManageLabelsComponent implements OnInit, OnDestroy {
 

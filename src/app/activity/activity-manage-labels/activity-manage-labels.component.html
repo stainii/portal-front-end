@@ -1,25 +1,28 @@
 <mat-form-field class="labels">
-    <mat-label>Labels</mat-label>
-    <mat-chip-grid #chipList aria-label="Labels">
-        <mat-chip-row
-            *ngFor="let label of labels"
-            [removable]="true"
-            (removed)="remove(label)">
-            {{label}}
-            <mat-icon matChipRemove>cancel</mat-icon>
-        </mat-chip-row>
-        <input
-            placeholder="Labels"
-            #labelInput
-            [formControl]="labelCtrl"
-            [matAutocomplete]="auto"
-            [matChipInputFor]="chipList"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            (matChipInputTokenEnd)="add($event)">
-    </mat-chip-grid>
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-        <mat-option *ngFor="let label of filteredLabels | async" [value]="label">
-            {{label}}
-        </mat-option>
-    </mat-autocomplete>
+  <mat-label>Labels</mat-label>
+  <mat-chip-grid #chipList aria-label="Labels">
+    @for (label of labels; track label) {
+      <mat-chip-row
+        [removable]="true"
+        (removed)="remove(label)">
+        {{label}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip-row>
+    }
+    <input
+      placeholder="Labels"
+      #labelInput
+      [formControl]="labelCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)">
+  </mat-chip-grid>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    @for (label of filteredLabels | async; track label) {
+      <mat-option [value]="label">
+        {{label}}
+      </mat-option>
+    }
+  </mat-autocomplete>
 </mat-form-field>

@@ -1,1 +1,3 @@
-<mat-icon *ngIf="isOffline">wifi_off</mat-icon>
+@if (isOffline) {
+  <mat-icon>wifi_off</mat-icon>
+}

@@ -1,14 +1,14 @@
 import {Component, OnDestroy} from '@angular/core';
 import {fromEvent, Subject} from "rxjs";
 import {mapTo, takeUntil} from "rxjs/operators";
-import { NgIf } from '@angular/common';
+
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
     selector: 'app-offline-indicator',
     templateUrl: './offline-indicator.component.html',
     styleUrls: ['./offline-indicator.component.scss'],
-    imports: [NgIf, MatIcon]
+    imports: [MatIcon]
 })
 export class OfflineIndicatorComponent implements OnDestroy {
 

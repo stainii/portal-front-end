@@ -1,7 +1,8 @@
 <mat-nav-list>
+  @for (module of modules; track module) {
     <a mat-list-item
-       *ngFor="let module of modules"
-       [routerLink]="[module | lowercase]"
-       routerLinkActive="active"
+      [routerLink]="[module | lowercase]"
+      routerLinkActive="active"
     >{{module}}</a>
+  }
 </mat-nav-list>

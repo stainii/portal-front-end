@@ -1,33 +1,35 @@
 <form #addExecutionForm="ngForm" [formGroup]="addExecutionFormGroup"
-      (submit)="addExecution()">
-    <mat-form-field>
-        <mat-label>What did you do?</mat-label>
-        <mat-select id="task"
-                    name="task"
-                    formControlName="selectedSong"
-                    required>
-            <mat-option *ngFor="let song of setlist?.songs"
-                        [value]="song">{{song.name}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>When did you do it?</mat-label>
-        <input matInput
-               formControlName="selectedDate"
-               [matDatepicker]="dateExecuted"
-               required>
-        <mat-datepicker-toggle matSuffix
-                               [for]="dateExecuted">
-        </mat-datepicker-toggle>
-        <mat-datepicker touchUi
-                        #dateExecuted>
-        </mat-datepicker>
+  (submit)="addExecution()">
+  <mat-form-field>
+    <mat-label>What did you do?</mat-label>
+    <mat-select id="task"
+      name="task"
+      formControlName="selectedSong"
+      required>
+      @for (song of setlist?.songs; track song) {
+        <mat-option
+        [value]="song">{{song.name}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>When did you do it?</mat-label>
+    <input matInput
+      formControlName="selectedDate"
+      [matDatepicker]="dateExecuted"
+      required>
+    <mat-datepicker-toggle matSuffix
+      [for]="dateExecuted">
+    </mat-datepicker-toggle>
+    <mat-datepicker touchUi
+      #dateExecuted>
+    </mat-datepicker>
 
-    </mat-form-field>
-    <button type="submit"
-            mat-button
-            [disabled]="!addExecutionForm.form.valid"
-            class="btn btn-primary"
-            color="primary">Done!
-    </button>
+  </mat-form-field>
+  <button type="submit"
+    mat-button
+    [disabled]="!addExecutionForm.form.valid"
+    class="btn btn-primary"
+    color="primary">Done!
+  </button>
 </form>

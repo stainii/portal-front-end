@@ -11,7 +11,7 @@ import { MatStepper, MatStep, MatStepLabel } from '@angular/material/stepper';
 import { MatFormField, MatSuffix } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
 import { MatOption } from '@angular/material/core';
@@ -23,7 +23,7 @@ import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular
     selector: 'app-todo-task-details',
     templateUrl: './todo-task-details.component.html',
     styleUrls: ['./todo-task-details.component.scss'],
-    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatStepper, MatStep, MatStepLabel, MatFormField, MatInput, FormsModule, NgIf, MatButton, MatAutocompleteTrigger, MatAutocomplete, NgFor, MatOption, MatSelect, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, AsyncPipe]
+    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatStepper, MatStep, MatStepLabel, MatFormField, MatInput, FormsModule, MatButton, MatAutocompleteTrigger, MatAutocomplete, MatOption, MatSelect, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, AsyncPipe]
 })
 export class TodoTaskDetailsComponent implements OnInit {
 

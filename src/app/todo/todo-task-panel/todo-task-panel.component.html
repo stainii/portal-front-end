@@ -1,34 +1,34 @@
-<mat-expansion-panel [class.focus]="task.hasTypeFocus()"
-                     [class.goals]="task.hasTypeGoals()"
-                     [class.fit-in]="task.hasTypeFitIn()"
-                     [class.back-burner]="task.hasTypeBackBurner()"
-                     (swiperight)="complete()"
-                     (pan)="fill($event)"
-                     (panend)="revertFill()"
-                     [@cardAnimator]
-                     [style.background-size]="fillSize + 'px 100%'"
-                     *ngIf="!destroyed"
-                     hideToggle="true">
+@if (!destroyed) {
+  <mat-expansion-panel [class.focus]="task.hasTypeFocus()"
+    [class.goals]="task.hasTypeGoals()"
+    [class.fit-in]="task.hasTypeFitIn()"
+    [class.back-burner]="task.hasTypeBackBurner()"
+    (swiperight)="complete()"
+    (pan)="fill($event)"
+    (panend)="revertFill()"
+    [@cardAnimator]
+    [style.background-size]="fillSize + 'px 100%'"
+    hideToggle="true">
     <mat-expansion-panel-header
-        [style.background-size]="fillSize + 'px 100%'">
-        <div mat-card-avatar></div>
-        <mat-panel-title>
-            <div class="task-panel-header">
-                <div class="name">{{task.name}}</div>
-                <div class="remaining-time"><sub>{{task.getRemainingTime()}}</sub></div>
-            </div>
-        </mat-panel-title>
+      [style.background-size]="fillSize + 'px 100%'">
+      <div mat-card-avatar></div>
+      <mat-panel-title>
+        <div class="task-panel-header">
+          <div class="name">{{task.name}}</div>
+          <div class="remaining-time"><sub>{{task.getRemainingTime()}}</sub></div>
+        </div>
+      </mat-panel-title>
     </mat-expansion-panel-header>
-
     <ng-template matExpansionPanelContent>
-        <p class="description">{{task.description}}</p>
-        <mat-action-row>
-            <button mat-button (click)="showDetails()">
-                <mat-icon aria-label="Edit task">edit</mat-icon>
-            </button>
-            <button mat-button (click)="complete()">
-                <mat-icon aria-label="Complete task">done</mat-icon>
-            </button>
-        </mat-action-row>
+      <p class="description">{{task.description}}</p>
+      <mat-action-row>
+        <button mat-button (click)="showDetails()">
+          <mat-icon aria-label="Edit task">edit</mat-icon>
+        </button>
+        <button mat-button (click)="complete()">
+          <mat-icon aria-label="Complete task">done</mat-icon>
+        </button>
+      </mat-action-row>
     </ng-template>
-</mat-expansion-panel>
+  </mat-expansion-panel>
+}

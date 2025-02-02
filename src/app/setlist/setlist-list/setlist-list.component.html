@@ -1,7 +1,9 @@
 <h1 class="heading heading--stroke heading--halftone heading--halftone-color">Setlist</h1>
 
 <ul>
-    <li *ngFor="let song of setlist?.songs" [class.overdue]="song.overdue">
-        {{song.name}}
+  @for (song of setlist?.songs; track song) {
+    <li [class.overdue]="song.overdue">
+      {{song.name}}
     </li>
+  }
 </ul>

@@ -1,39 +1,37 @@
 <div id="manageRecurringTasks">
-    <table *ngIf="recurringTasks"
-           mat-table
-           [dataSource]="recurringTasks"
-           class="mat-elevation-z8">
-        <ng-container matColumnDef="edit">
-            <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let row">
-                <mat-icon (click)="edit(row)" aria-label="edit">edit</mat-icon>
-            </td>
-        </ng-container>
-
-        <ng-container matColumnDef="delete">
-            <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let row">
-                <mat-icon
-                    aria-label="delete"
-                    (click)="delete(row)">delete
-                </mat-icon>
-            </td>
-        </ng-container>
-
-        <ng-container matColumnDef="activity">
-            <th mat-header-cell *matHeaderCellDef>Activity</th>
-            <td mat-cell *matCellDef="let element"> {{element.name}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="restDays">
-            <th mat-header-cell *matHeaderCellDef>Rest days</th>
-            <td mat-cell *matCellDef="let element"> {{element.minNumberOfDaysBetweenExecutions - 1}}</td> <!-- // x rest days = x + 1 min days between executions -->
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  @if (recurringTasks) {
+    <table
+      mat-table
+      [dataSource]="recurringTasks"
+      class="mat-elevation-z8">
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+          <mat-icon (click)="edit(row)" aria-label="edit">edit</mat-icon>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+          <mat-icon
+            aria-label="delete"
+            (click)="delete(row)">delete
+          </mat-icon>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="activity">
+        <th mat-header-cell *matHeaderCellDef>Activity</th>
+        <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+      </ng-container>
+      <ng-container matColumnDef="restDays">
+        <th mat-header-cell *matHeaderCellDef>Rest days</th>
+        <td mat-cell *matCellDef="let element"> {{element.minNumberOfDaysBetweenExecutions - 1}}</td> <!-- // x rest days = x + 1 min days between executions -->
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <button id="add"
-            mat-fab
-            (click)="create()">+</button>
+  }
+  <button id="add"
+    mat-fab
+  (click)="create()">+</button>
 </div>

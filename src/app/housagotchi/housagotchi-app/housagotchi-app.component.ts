@@ -7,7 +7,7 @@ import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {DEPLOYMENT_NAME} from "@app/housagotchi/housagotchi-constants";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
-import { NgIf } from '@angular/common';
+
 import { HousagotchiCreatureComponent } from '../housagotchi-creature/housagotchi-creature.component';
 import { HousagotchiAddExecutionComponent } from '../housagotchi-add-execution/housagotchi-add-execution.component';
 
@@ -15,7 +15,7 @@ import { HousagotchiAddExecutionComponent } from '../housagotchi-add-execution/h
     selector: 'app-housagotchi-app',
     templateUrl: './housagotchi-app.component.html',
     styleUrls: ['./housagotchi-app.component.scss'],
-    imports: [NgIf, HousagotchiCreatureComponent, HousagotchiAddExecutionComponent]
+    imports: [HousagotchiCreatureComponent, HousagotchiAddExecutionComponent]
 })
 export class HousagotchiAppComponent implements OnInit, OnDestroy {
 
