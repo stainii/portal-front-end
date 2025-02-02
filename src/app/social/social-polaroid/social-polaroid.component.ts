@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import {Person} from "@app/social/person.model";
 import moment from "moment";
 import {Contact} from "@app/social/contact.model";
@@ -12,6 +12,8 @@ import { SocialAddContactComponent } from '../social-add-contact/social-add-cont
     imports: [SocialAddContactComponent]
 })
 export class SocialPolaroidComponent {
+    private _socialService = inject(SocialService);
+
 
     @Input()
     person: Person;
@@ -26,7 +28,7 @@ export class SocialPolaroidComponent {
     rotateLeft: boolean;
     rotateRight: boolean;
 
-    constructor(private _socialService: SocialService) {
+    constructor() {
         if (Math.random() < 0.5) {
             this.rotateLeft = true;
         } else {

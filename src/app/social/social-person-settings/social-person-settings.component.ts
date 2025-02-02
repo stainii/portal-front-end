@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import {Person} from "@app/social/person.model";
 import moment from "moment";
 import {SocialService} from "@app/social/social.service";
@@ -11,12 +11,11 @@ import { MatCard, MatCardAvatar, MatCardHeader, MatCardTitle, MatCardSubtitle, M
     imports: [MatCard, MatCardAvatar, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent]
 })
 export class SocialPersonSettingsComponent {
+    private _socialService = inject(SocialService);
+
 
     @Input()
     public person: Person;
-
-    constructor(private _socialService: SocialService) {
-    }
 
     getLastContactInDaysAgo = () => {
         if (this.person && this.person.lastContact) {

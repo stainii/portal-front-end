@@ -37,10 +37,10 @@ describe('UserService', () => {
         storage.retrieve.and.returnValue(user);
 
         // execute constructor
-        let userService = new UserService(tokenService, storage);
+        const service = TestBed.inject(UserService);
 
-        // assert
-        expect(userService.getLoggedInUser()).toEqual(user);
+      // assert
+        expect(service.getLoggedInUser()).toEqual(user);
     });
 
     it('should tell if the user is logged in', done => {

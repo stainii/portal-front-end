@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {Observable} from "rxjs";
 import { HttpClient } from "@angular/common/http";
 
@@ -6,9 +6,8 @@ import { HttpClient } from "@angular/common/http";
     providedIn: 'root'
 })
 export class LabelService {
+    private _http = inject(HttpClient);
 
-    constructor(private _http: HttpClient) {
-    }
 
     findAllLabels(): Observable<string[]> {
         return this._http.get<string[]>(`/api/activity/labels/`);

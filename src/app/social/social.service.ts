@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {Person} from "@app/social/person.model";
 import {Observable} from "rxjs";
@@ -9,9 +9,8 @@ import moment from "moment";
     providedIn: 'root'
 })
 export class SocialService {
+    private _http = inject(HttpClient);
 
-    constructor(private _http: HttpClient) {
-    }
 
     create(person: Person) {
         return this._http.post(`/api/social/api/person/`, person);

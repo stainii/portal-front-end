@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Activity} from "@app/activity/activity.model";
 import {ManageActivitiesService} from "@app/activity/manage-activities.service";
@@ -26,16 +26,17 @@ import { MatIcon } from '@angular/material/icon';
     imports: [MatTabGroup, MatTab, MatCard, MatFormField, MatLabel, MatInput, FormsModule, ActivityManageLabelsComponent, ActivityManageDateIntervalsComponent, MatSlider, MatSliderThumb, MatFabButton, MatIcon]
 })
 export class ActivityManageDetailsComponent implements OnInit, OnDestroy {
+    private route = inject(ActivatedRoute);
+    private router = inject(Router);
+    private manageActivitiesService = inject(ManageActivitiesService);
+    private snackBar = inject(MatSnackBar);
+    private errorService = inject(ErrorService);
+    private activityHelper = inject(ActivityHelperService);
+
 
     activity: Activity;
     private isNew: boolean;
     private destroy$ = new Subject<void>();
-
-    constructor(private route: ActivatedRoute, private router: Router,
-                private manageActivitiesService: ManageActivitiesService,
-                private snackBar: MatSnackBar, private errorService: ErrorService,
-                private activityHelper: ActivityHelperService) {
-    }
 
     private readonly NO_PHOTO = "assets/activity/no-photo.png";
 

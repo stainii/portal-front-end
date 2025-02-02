@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import {Person} from "@app/social/person.model";
 import {SocialService} from "@app/social/social.service";
 import moment from "moment";
@@ -14,11 +14,13 @@ import { SocialPolaroidComponent } from '../social-polaroid/social-polaroid.comp
     imports: [SocialPolaroidComponent]
 })
 export class SocialOverviewComponent implements OnDestroy {
+    private _socialService = inject(SocialService);
+
 
     people: Person[];
     private destroy$ = new Subject<void>();
 
-    constructor(private _socialService: SocialService) {
+    constructor() {
         this._findAllPeople();
     }
 

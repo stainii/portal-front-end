@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {NotificationSubscription} from "./notification-subscription.model";
 
@@ -6,9 +6,8 @@ import {NotificationSubscription} from "./notification-subscription.model";
     providedIn: 'root'
 })
 export class NotificationSubscriptionService {
+    private _http = inject(HttpClient);
 
-    constructor(private _http: HttpClient) {
-    }
 
     findAll() {
         return this._http.get<NotificationSubscription[]>("/api/notifications/api/subscription/");

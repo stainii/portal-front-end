@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {environment} from "@env/environment";
 import {TaskTemplate} from "@app/todo/task-template.model";
@@ -7,9 +7,8 @@ import {TaskTemplate} from "@app/todo/task-template.model";
     providedIn: 'root'
 })
 export class TaskTemplateService {
+    private _http = inject(HttpClient);
 
-    constructor(private _http: HttpClient) {
-    }
 
     findAll() {
         return this._http.get<TaskTemplate[]>("/api/todo/api/template/");

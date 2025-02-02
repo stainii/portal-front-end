@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import {TodoSubscriptionService} from "@app/todo/todo-subscription.service";
 import {TodoSubscription} from "@app/todo/todo-subscription.model";
 import {takeUntil} from "rxjs/operators";
@@ -13,13 +13,12 @@ import { TodoSubscriptionDetailsComponent } from '../todo-subscription-details/t
     imports: [TodoSubscriptionListComponent, TodoSubscriptionDetailsComponent]
 })
 export class TodoSubscriptionEditorComponent implements OnInit, OnDestroy {
+    private _subscriptionService = inject(TodoSubscriptionService);
+
 
     subscriptions: TodoSubscription[];
     currentlyEditing: TodoSubscription;
     private destroy$ = new Subject<void>();
-
-    constructor(private _subscriptionService: TodoSubscriptionService) {
-    }
 
     ngOnInit() {
         this._subscriptionService.findAll()

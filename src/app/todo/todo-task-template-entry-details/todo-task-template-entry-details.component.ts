@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {TaskTemplate} from "@app/todo/task-template.model";
 import {TaskTemplateEntry} from "@app/todo/task-template-entry.model";
 import {TaskTemplateService} from "@app/todo/task-template.service";
@@ -23,12 +23,14 @@ import { MatButton } from '@angular/material/button';
     imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatStepper, MatStep, MatStepLabel, MatFormField, MatSelect, MatOption, MatLabel, MatInput, FormsModule, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, MatButton, AsyncPipe]
 })
 export class TodoTaskTemplateEntryDetailsComponent {
+    private _taskTemplateService = inject(TaskTemplateService);
+    dialogRef = inject<MatDialogRef<TodoTaskTemplateEntryDetailsComponent, DialogResult>>(MatDialogRef);
+
 
     taskTemplateEntry = new TaskTemplateEntry();
     taskTemplates$: Observable<TaskTemplate[]>;
 
-    constructor(private _taskTemplateService: TaskTemplateService,
-                public dialogRef: MatDialogRef<TodoTaskTemplateEntryDetailsComponent, DialogResult>) {
+    constructor() {
         this.taskTemplates$ = this._taskTemplateService.findAll()
     }
 

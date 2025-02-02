@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output, inject } from '@angular/core';
 import {Notification} from "../notification.model";
 import {DateService} from "@app/util/date.service";
 import {NotificationService} from "../notification.service";
@@ -15,6 +15,9 @@ import { MatButton } from '@angular/material/button';
     imports: [MatCardSubtitle, MatCard, MatCardTitle, MatCardContent, MatCardActions, MatButton]
 })
 export class NotificationComponent implements OnDestroy {
+    private dateService = inject(DateService);
+    private _notificationService = inject(NotificationService);
+
 
     @Input()
     notification: Notification;
@@ -25,10 +28,6 @@ export class NotificationComponent implements OnDestroy {
     onRead: EventEmitter<Notification> = new EventEmitter<Notification>();
 
     private destroy$ = new Subject<void>();
-
-    constructor(private dateService: DateService,
-                private _notificationService: NotificationService) {
-    }
 
     ngOnDestroy(): void {
         this.destroy$.next();

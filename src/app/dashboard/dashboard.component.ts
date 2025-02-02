@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable, Subject} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
@@ -20,6 +20,9 @@ import { LogoutComponent } from '../user/logout/logout.component';
     imports: [MatSidenavContainer, MatSidenav, MatToolbar, MenuComponent, MatSidenavContent, MatIconButton, MatIcon, OfflineIndicatorComponent, RouterOutlet, LogoutComponent, AsyncPipe]
 })
 export class DashboardComponent implements OnDestroy {
+    private _breakpointObserver = inject(BreakpointObserver);
+    private _userService = inject(UserService);
+
 
     shouldShowNavigation = false;
 
@@ -28,7 +31,7 @@ export class DashboardComponent implements OnDestroy {
 
     private destroy$ = new Subject<void>();
 
-    constructor(private _breakpointObserver: BreakpointObserver, private _userService: UserService) {
+    constructor() {
         this._userService.watchLoginStatus()
             .pipe(takeUntil(this.destroy$))
             .subscribe(isLoggedIn => this.shouldShowNavigation = isLoggedIn.valueOf());

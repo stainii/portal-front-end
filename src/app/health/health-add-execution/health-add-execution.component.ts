@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {Execution} from "@app/recurring-tasks/execution.model";
@@ -19,6 +19,8 @@ import { MatButton } from '@angular/material/button';
     imports: [FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatSelect, MatOption, MatInput, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, MatButton]
 })
 export class HealthAddExecutionComponent implements OnInit, OnChanges, OnDestroy {
+    private _formBuilder = inject(UntypedFormBuilder);
+
 
     addExecutionFormGroup: UntypedFormGroup;
 
@@ -29,9 +31,6 @@ export class HealthAddExecutionComponent implements OnInit, OnChanges, OnDestroy
     onAddExecution = new EventEmitter<Execution>();
 
     private destroy$ = new Subject<void>();
-
-    constructor(private _formBuilder: UntypedFormBuilder) {
-    }
 
     ngOnInit() {
         this.addExecutionFormGroup = this._formBuilder.group({

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {User} from "./user.model";
 import {TokenService} from "./token.service";
 import {BehaviorSubject, Observable} from "rxjs";
@@ -9,11 +9,13 @@ import {LocalStorageService} from "@app/util/local-storage.service";
     providedIn: 'root'
 })
 export class UserService {
+    private _tokenService = inject(TokenService);
+    private _storage = inject(LocalStorageService);
 
     private _user: User;
     private _logInStatusWatcher: BehaviorSubject<Boolean>;
 
-    constructor(private _tokenService: TokenService, private _storage: LocalStorageService) {
+    constructor() {
         this._user = User.copy(this._storage.retrieve('user')) || null;
         this._logInStatusWatcher = new BehaviorSubject(this.isLoggedIn());
     }

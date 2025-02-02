@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {Execution} from "@app/recurring-tasks/execution.model";
 
@@ -6,10 +6,8 @@ import {Execution} from "@app/recurring-tasks/execution.model";
     providedIn: 'root'
 })
 export class ExecutionService {
+    private _http = inject(HttpClient);
 
-    constructor(private _http: HttpClient) {
-
-    }
 
     addExecution(deploymentName: string, execution: Execution) {
         return this._http.post(`/api/${deploymentName}/api/recurring-task/${execution.recurringTaskId}/execution/`, {

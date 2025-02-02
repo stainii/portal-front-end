@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import {TaskTemplate} from "@app/todo/task-template.model";
 import {MatDialog} from "@angular/material/dialog";
 import {
@@ -18,12 +18,16 @@ import { AsyncPipe } from '@angular/common';
     imports: [TodoTaskTemplatesComponent, MatFabButton, AsyncPipe]
 })
 export class TodoTemplatesComponent implements OnDestroy {
+    dialog = inject(MatDialog);
+    private _taskTemplateService = inject(TaskTemplateService);
+
 
     allTaskTemplates$: Observable<TaskTemplate[]>;
     private destroy$ = new Subject<void>();
 
-    constructor(public dialog: MatDialog,
-                private _taskTemplateService: TaskTemplateService) {
+    constructor() {
+        const _taskTemplateService = this._taskTemplateService;
+
         this.allTaskTemplates$ = _taskTemplateService.findAll();
     }
 

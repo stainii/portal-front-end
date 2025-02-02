@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import {UserService} from "@app/user/user.service";
 import {Router} from "@angular/router";
 import {takeUntil} from "rxjs/operators";
@@ -17,6 +17,9 @@ import { MatButton } from '@angular/material/button';
     imports: [FormsModule, MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatFormField, MatLabel, MatInput, MatCardActions, MatButton]
 })
 export class LoginComponent implements OnDestroy {
+    private _userService = inject(UserService);
+    private _router = inject(Router);
+
 
     username: string;
     password: string;
@@ -24,10 +27,6 @@ export class LoginComponent implements OnDestroy {
     hasError: boolean;
 
     private destroy$ = new Subject<void>();
-
-    constructor(private _userService: UserService, private _router: Router) {
-
-    }
 
     ngOnDestroy(): void {
         this.destroy$.next();

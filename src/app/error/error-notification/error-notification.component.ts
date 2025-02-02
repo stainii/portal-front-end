@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import {ErrorService} from "@app/error/error.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Subject} from "rxjs";
@@ -10,12 +10,11 @@ import {takeUntil} from "rxjs/operators";
     styleUrls: ['./error-notification.component.scss']
 })
 export class ErrorNotificationComponent implements OnInit, OnDestroy {
+    private _errorService = inject(ErrorService);
+    private _snackBar = inject(MatSnackBar);
+
 
     private destroy$ = new Subject<void>();
-
-    constructor(private _errorService: ErrorService,
-                private _snackBar: MatSnackBar) {
-    }
 
     ngOnInit() {
         this._errorService.errors$

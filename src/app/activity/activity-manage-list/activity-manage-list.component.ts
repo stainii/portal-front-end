@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, inject } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import {ManageActivitiesService} from "@app/activity/manage-activities.service";
@@ -23,6 +23,10 @@ import { MatFabButton } from '@angular/material/button';
     imports: [MatFormField, MatLabel, MatInput, MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, MatIcon, RouterLink, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatNoDataRow, MatPaginator, MatFabButton]
 })
 export class ActivityManageListComponent implements AfterViewInit, OnDestroy {
+    private manageActivitiesService = inject(ManageActivitiesService);
+    private breakpointObserver = inject(BreakpointObserver);
+    dialog = inject(MatDialog);
+
 
     displayedColumns: string[] = ['name', 'location', 'description', 'actions'];
     isLoadingResults = false;
@@ -44,8 +48,7 @@ export class ActivityManageListComponent implements AfterViewInit, OnDestroy {
 
     private destroy$ = new Subject<void>();
 
-    constructor(private manageActivitiesService: ManageActivitiesService, private breakpointObserver: BreakpointObserver,
-                public dialog: MatDialog) {
+    constructor() {
         this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset)
             .pipe(takeUntil(this.destroy$))
             .pipe(map(result => result.matches));

@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
@@ -13,13 +13,17 @@ import { MatButton } from '@angular/material/button';
     imports: [FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatButton]
 })
 export class HealthRecurringTaskDetailsComponent implements OnInit {
+    private _formBuilder = inject(UntypedFormBuilder);
+    dialogRef = inject<MatDialogRef<HealthRecurringTaskDetailsComponent>>(MatDialogRef);
+    data = inject(MAT_DIALOG_DATA);
+
 
     editorFormGroup: UntypedFormGroup;
     private readonly _recurringTask: RecurringTask;
 
-    constructor(private _formBuilder: UntypedFormBuilder,
-                public dialogRef: MatDialogRef<HealthRecurringTaskDetailsComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: any) {
+    constructor() {
+        const data = this.data;
+
         if (data) {
             this._recurringTask = data.recurringTask;
         }

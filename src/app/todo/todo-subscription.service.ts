@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {TodoSubscription} from "./todo-subscription.model";
 
@@ -6,9 +6,8 @@ import {TodoSubscription} from "./todo-subscription.model";
     providedIn: 'root'
 })
 export class TodoSubscriptionService {
+    private _http = inject(HttpClient);
 
-    constructor(private _http: HttpClient) {
-    }
 
     findAll() {
         return this._http.get<TodoSubscription[]>("/api/todo/api/subscription/");

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {Token} from "./token.model";
 import {Observable} from "rxjs";
@@ -8,9 +8,8 @@ import {map} from "rxjs/operators";
     providedIn: 'root'
 })
 export class TokenService {
+    private _httpClient = inject(HttpClient);
 
-    constructor(private _httpClient: HttpClient) {
-    }
 
     logIn(username: string, password: string): Observable<Token> {
         return this._httpClient.post<Token>("/api/auth-service/auth/", {

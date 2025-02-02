@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import {UserService} from "@app/user/user.service";
 import {Observable, of} from "rxjs";
@@ -6,9 +6,8 @@ import {catchError} from "rxjs/operators";
 
 @Injectable()
 export class AuthenticationHttpInterceptor implements HttpInterceptor {
+    private _userService = inject(UserService);
 
-    constructor(private _userService: UserService) {
-    }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header

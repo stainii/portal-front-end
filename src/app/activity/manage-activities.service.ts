@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Activity} from "@app/activity/activity.model";
@@ -11,9 +11,10 @@ import {ActivityHelperService} from "@app/activity/activity-helper.service";
     providedIn: 'root'
 })
 export class ManageActivitiesService {
+    private _http = inject(HttpClient);
+    private _search = inject(SearchActivitiesService);
+    private _activityHelper = inject(ActivityHelperService);
 
-    constructor(private _http: HttpClient, private _search: SearchActivitiesService, private _activityHelper: ActivityHelperService) {
-    }
 
     public find(sortField: string, order: string, page: number, pageSize: number, filter: string): Observable<Page<Activity>> {
         let searchParams = this.calculateSearchParams(sortField, order, page, pageSize, filter);

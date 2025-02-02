@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import {RecurringTaskService} from "@app/recurring-tasks/recurring-task.service";
 import {SetlistService} from "@app/setlist/setlist.service";
 import {DEPLOYMENT_NAME} from "@app/setlist/setlist-constants";
@@ -18,15 +18,14 @@ import { SetlistAddExecutionComponent } from '../setlist-add-execution/setlist-a
     imports: [SetlistListComponent, SetlistAddExecutionComponent]
 })
 export class SetlistAppComponent implements OnInit, OnDestroy {
+    private _recurringTaskService = inject(RecurringTaskService);
+    private _setlistService = inject(SetlistService);
+    private _executionService = inject(ExecutionService);
+    private _snackBar = inject(MatSnackBar);
+
 
     public setlist: Setlist;
     private destroy$ = new Subject<void>();
-
-    constructor(private _recurringTaskService: RecurringTaskService,
-                private _setlistService: SetlistService,
-                private _executionService: ExecutionService,
-                private _snackBar: MatSnackBar) {
-    }
 
     ngOnInit(): void {
         this._findSetlist();

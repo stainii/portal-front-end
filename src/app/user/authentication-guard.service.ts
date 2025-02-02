@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from "@angular/router";
 import {Observable} from "rxjs";
 import {UserService} from "./user.service";
@@ -11,9 +11,9 @@ import {UserService} from "./user.service";
     providedIn: 'root'
 })
 export class AuthenticationGuardService  {
+    private _userService = inject(UserService);
+    private _router = inject(Router);
 
-    constructor(private _userService: UserService, private _router: Router) {
-    }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         if (this._userService.isLoggedIn()) {

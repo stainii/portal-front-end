@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {Task} from '../task.model';
 import {environment} from "@env/environment";
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent } from "@angular/material/dialog";
@@ -26,16 +26,19 @@ import { MatDatepickerInput, MatDatepickerToggle, MatDatepicker } from '@angular
     imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatStepper, MatStep, MatStepLabel, MatFormField, MatInput, FormsModule, MatButton, MatAutocompleteTrigger, MatAutocomplete, MatOption, MatSelect, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, AsyncPipe]
 })
 export class TodoTaskDetailsComponent implements OnInit {
+    dialogRef = inject<MatDialogRef<TodoTaskDetailsComponent, DialogResult>>(MatDialogRef);
+    private _randomAdjective = inject(RandomAdjectiveService);
+    private _taskService = inject(TaskService);
+
 
     DEFAULT_TASK_CONTEXT = environment.defaultTaskContext;
     task: Task;
     placeholderForTaskName: string;
     contexts$: any;
 
-    constructor(public dialogRef: MatDialogRef<TodoTaskDetailsComponent, DialogResult>,
-                private _randomAdjective: RandomAdjectiveService,
-                private _taskService: TaskService,
-                @Inject(MAT_DIALOG_DATA) data: Task) {
+    constructor() {
+        const data = inject<Task>(MAT_DIALOG_DATA);
+
         this.task = Object.create(data);
         this.placeholderForTaskName = "My " + this._randomAdjective.lowercase() + " task";
     }

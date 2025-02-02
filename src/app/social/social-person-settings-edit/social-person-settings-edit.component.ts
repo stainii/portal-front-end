@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {Person} from "@app/social/person.model";
 import { MAT_DIALOG_DATA, MatDialogConfig, MatDialogRef, MatDialogContent, MatDialogActions, MatDialogClose } from "@angular/material/dialog";
 import {DomSanitizer} from "@angular/platform-browser";
@@ -19,14 +19,18 @@ import { MatIcon } from '@angular/material/icon';
     imports: [CdkScrollable, MatDialogContent, MatCardAvatar, MatFormField, MatLabel, MatInput, FormsModule, MatDialogActions, MatButton, MatIcon, MatDialogClose]
 })
 export class SocialPersonSettingsEditComponent implements OnInit {
+    private _sanitizer = inject(DomSanitizer);
+    dialogRef = inject<MatDialogRef<SocialPersonSettingsEditComponent>>(MatDialogRef);
+    private _socialService = inject(SocialService);
+    data = inject(MAT_DIALOG_DATA);
+
 
     person: Person;
     image;
 
-    constructor(private _sanitizer: DomSanitizer,
-                public dialogRef: MatDialogRef<SocialPersonSettingsEditComponent>,
-                private _socialService: SocialService,
-                @Inject(MAT_DIALOG_DATA) public data: any) {
+    constructor() {
+        const data = this.data;
+
         this.person = Object.assign({}, data.person);
 
         if (this.person && this.person.colorThumbnail) {

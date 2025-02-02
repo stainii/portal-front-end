@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import {ExecutionService} from "@app/recurring-tasks/execution.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {RecurringTaskService} from "@app/recurring-tasks/recurring-task.service";
@@ -18,15 +18,14 @@ import { HousagotchiAddExecutionComponent } from '../housagotchi-add-execution/h
     imports: [HousagotchiCreatureComponent, HousagotchiAddExecutionComponent]
 })
 export class HousagotchiAppComponent implements OnInit, OnDestroy {
+    private _executionService = inject(ExecutionService);
+    private _snackBar = inject(MatSnackBar);
+    private _recurringTaskService = inject(RecurringTaskService);
+
 
     recurringTasks: RecurringTask[];
 
     private destroy$ = new Subject<void>();
-
-    constructor(private _executionService: ExecutionService,
-                private _snackBar: MatSnackBar,
-                private _recurringTaskService: RecurringTaskService) {
-    }
 
     ngOnInit() {
         this._findAllRecurringTasks();

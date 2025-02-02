@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {Task} from "@app/todo/task.model";
 import {environment} from "@env/environment";
 import {TaskTemplateEntry} from "@app/todo/task-template-entry.model";
@@ -13,10 +13,9 @@ import {TaskPatch} from "@app/todo/task-patch.model";
     providedIn: 'root'
 })
 export class TaskService {
+    private _taskRepository = inject(TaskRepository);
+    private _taskPatchService = inject(TaskPatchService);
 
-    constructor(private _taskRepository: TaskRepository,
-                private _taskPatchService: TaskPatchService) {
-    }
 
     watchTasks() {
         return this._taskRepository.watchTasks();

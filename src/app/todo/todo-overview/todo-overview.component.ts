@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
 import {Task} from "@app/todo/task.model";
 import {ActivatedRoute} from "@angular/router";
 import {taskComparator} from "@app/todo/task.comparator";
@@ -14,6 +14,8 @@ import { TodoTaskPanelComponent } from '../todo-task-panel/todo-task-panel.compo
     imports: [TodoTaskPanelComponent]
 })
 export class TodoOverviewComponent implements OnInit, OnDestroy {
+    private _route = inject(ActivatedRoute);
+
 
     mostImportantTasks: Task[];
     lessImportantTasks: Task[];
@@ -37,9 +39,6 @@ export class TodoOverviewComponent implements OnInit, OnDestroy {
 
     @Output()
     public onComplete: EventEmitter<Task> = new EventEmitter<Task>();
-
-    constructor(private _route: ActivatedRoute) {
-    }
 
     ngOnInit() {
         this._route

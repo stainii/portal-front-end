@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {Report} from "@app/health/report.model";
 import {HealthReportService} from "@app/health/health-report.service";
@@ -12,14 +12,13 @@ import { HealthBalloonComponent } from '../health-balloon/health-balloon.compone
     imports: [HealthBalloonComponent]
 })
 export class HealthSportySpiceComponent implements OnInit, OnChanges {
+    private _reportService = inject(HealthReportService);
+
 
     @Input()
     recurringTasks: RecurringTask[];
 
     report: Report;
-
-    constructor(private _reportService: HealthReportService) {
-    }
 
     ngOnInit() {
         this.updateReport();

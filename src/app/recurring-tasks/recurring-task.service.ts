@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {Observable} from "rxjs";
@@ -8,9 +8,8 @@ import {map} from "rxjs/operators";
     providedIn: 'root'
 })
 export class RecurringTaskService {
+    private _http = inject(HttpClient);
 
-    constructor(private _http: HttpClient) {
-    }
 
     findAll(deploymentName: string): Observable<RecurringTask[]> {
         return this._http.get<RecurringTask[]>(`/api/${deploymentName}/api/recurring-task/`)

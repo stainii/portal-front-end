@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {ExecutionService} from "@app/recurring-tasks/execution.service";
 import {RecurringTaskService} from "@app/recurring-tasks/recurring-task.service";
@@ -18,15 +18,14 @@ import { HealthAddExecutionComponent } from '../health-add-execution/health-add-
     imports: [HealthSportySpiceComponent, HealthAddExecutionComponent]
 })
 export class HealthAppComponent implements OnInit, OnDestroy {
+    private _executionService = inject(ExecutionService);
+    private _snackBar = inject(MatSnackBar);
+    private _recurringTaskService = inject(RecurringTaskService);
+
 
     recurringTasks: RecurringTask[];
 
     private destroy$ = new Subject<void>();
-
-    constructor(private _executionService: ExecutionService,
-                private _snackBar: MatSnackBar,
-                private _recurringTaskService: RecurringTaskService) {
-    }
 
     ngOnInit() {
         this._findAllRecurringTasks();

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import {Activity} from "@app/activity/activity.model";
 import {ActivityHelperService} from "@app/activity/activity-helper.service";
 import { MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardFooter } from '@angular/material/card';
@@ -11,12 +11,11 @@ import { MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, 
     imports: [MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardFooter]
 })
 export class ActivitySearchResultComponent implements OnInit {
+    private activityHelper = inject(ActivityHelperService);
+
 
     @Input()
     activity: Activity;
-
-    constructor(private activityHelper: ActivityHelperService) {
-    }
 
     ngOnInit(): void {
     }

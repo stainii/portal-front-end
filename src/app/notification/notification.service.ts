@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {Notification} from "./notification.model";
 
@@ -6,9 +6,8 @@ import {Notification} from "./notification.model";
     providedIn: 'root'
 })
 export class NotificationService {
+    private _http = inject(HttpClient);
 
-    constructor(private _http: HttpClient) {
-    }
 
     findActiveNotifications() {
         return this._http.get<Notification[]>("/api/notifications/api/notification/?onlyUnread=true");

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {Task} from "@app/todo/task.model";
 import { HttpClient } from "@angular/common/http";
@@ -21,15 +21,17 @@ import {LocalStorageService} from "@app/util/local-storage.service";
     providedIn: 'root'
 })
 export class TaskRepository {
+    private _storage = inject(LocalStorageService);
+    private _http = inject(HttpClient);
+    private _userService = inject(UserService);
+    private _taskPatchService = inject(TaskPatchService);
+    private _errorService = inject(ErrorService);
+
 
     private _taskWatcher: BehaviorSubject<Task[]>;
     private _taskTail: EventSource;
 
-    constructor(private _storage: LocalStorageService,
-                private _http: HttpClient,
-                private _userService: UserService,
-                private _taskPatchService: TaskPatchService,
-                private _errorService: ErrorService) {
+    constructor() {
         this._taskWatcher = new BehaviorSubject([]);
         this._setup();
     }

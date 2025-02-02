@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {SearchActivitiesService} from "@app/activity/search-activities.service";
 import {Moment} from "moment";
 import { MatCard, MatCardHeader, MatCardTitle, MatCardContent } from '@angular/material/card';
@@ -16,12 +16,11 @@ import { MatSlideToggle } from '@angular/material/slide-toggle';
     imports: [MatCard, MatCardHeader, MatCardTitle, MatCardContent, FormsModule, MatFormField, MatInput, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, MatSlideToggle]
 })
 export class ActivityDateComponent implements OnInit {
+    private searchActivitiesService = inject(SearchActivitiesService);
+
     startDate: Moment;
     endDate: Moment;
     range = false;
-
-    constructor(private searchActivitiesService: SearchActivitiesService) {
-    }
 
     ngOnInit(): void {
     }

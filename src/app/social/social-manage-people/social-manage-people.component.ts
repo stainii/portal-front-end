@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import {Person} from "@app/social/person.model";
 import {
     SocialPersonSettingsEditComponent
@@ -17,11 +17,14 @@ import { MatFabButton } from '@angular/material/button';
     imports: [SocialManagePeopleListComponent, MatFabButton]
 })
 export class SocialManagePeopleComponent implements OnDestroy {
+    private _dialog = inject(MatDialog);
+    private _socialService = inject(SocialService);
+
 
     people: Person[];
     private destroy$ = new Subject<void>();
 
-    constructor(private _dialog: MatDialog, private _socialService: SocialService) {
+    constructor() {
         this._findAllPeople();
     }
 

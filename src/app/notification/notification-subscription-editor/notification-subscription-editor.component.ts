@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import {NotificationSubscriptionService} from "../notification-subscription.service";
 import {NotificationSubscription} from "../notification-subscription.model";
 import {Subject} from "rxjs";
@@ -13,13 +13,12 @@ import { NotificationSubscriptionDetailsComponent } from '../notification-subscr
     imports: [NotificationSubscriptionListComponent, NotificationSubscriptionDetailsComponent]
 })
 export class NotificationSubscriptionEditorComponent implements OnInit, OnDestroy {
+    private _subscriptionService = inject(NotificationSubscriptionService);
+
 
     subscriptions: NotificationSubscription[];
     currentlyEditing: NotificationSubscription;
     private destroy$ = new Subject<void>();
-
-    constructor(private _subscriptionService: NotificationSubscriptionService) {
-    }
 
     ngOnInit() {
         this._subscriptionService.findAll()

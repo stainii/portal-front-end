@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent } from "@angular/material/dialog";
 import {TaskTemplate} from "@app/todo/task-template.model";
 import {Observable} from "rxjs";
@@ -25,6 +25,11 @@ import { MatButton } from '@angular/material/button';
     imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, FormsModule, MatList, MatListItem, MatIcon, MatTabGroup, MatTab, MatTabLabel, TodoTaskDefinitionDetailsComponent, MatButton]
 })
 export class TodoTaskTemplateDetailsComponent {
+    dialogRef = inject<MatDialogRef<TodoTaskTemplateDetailsComponent>>(MatDialogRef);
+    private _breakpointObserver = inject(BreakpointObserver);
+    private _randomAdjective = inject(RandomAdjectiveService);
+    private _errorService = inject(ErrorService);
+
 
     taskTemplate: TaskTemplate;
     newVariableName: string;
@@ -35,11 +40,9 @@ export class TodoTaskTemplateDetailsComponent {
     placeholderForTaskTemplateName: string;
     placeholderForVariableName: string;
 
-    constructor(public dialogRef: MatDialogRef<TodoTaskTemplateDetailsComponent>,
-                private _breakpointObserver: BreakpointObserver,
-                private _randomAdjective: RandomAdjectiveService,
-                private _errorService: ErrorService,
-                @Inject(MAT_DIALOG_DATA) data: TaskTemplate) {
+    constructor() {
+        const data = inject<TaskTemplate>(MAT_DIALOG_DATA);
+
         this.taskTemplate = data;
         this.placeholderForTaskTemplateName = "My " + this._randomAdjective.lowercase() + " task template";
         this.placeholderForVariableName = "my" + this._randomAdjective.capitalized() + "Variable";

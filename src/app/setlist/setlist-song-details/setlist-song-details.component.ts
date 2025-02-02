@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
@@ -13,13 +13,17 @@ import { MatButton } from '@angular/material/button';
     imports: [FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatButton]
 })
 export class SetlistSongDetailsComponent implements OnInit {
+    private _formBuilder = inject(UntypedFormBuilder);
+    dialogRef = inject<MatDialogRef<SetlistSongDetailsComponent>>(MatDialogRef);
+    data = inject(MAT_DIALOG_DATA);
+
 
     editorFormGroup: UntypedFormGroup;
     private readonly _song: RecurringTask;
 
-    constructor(private _formBuilder: UntypedFormBuilder,
-                public dialogRef: MatDialogRef<SetlistSongDetailsComponent>,
-                @Inject(MAT_DIALOG_DATA) public data: any) {
+    constructor() {
+        const data = this.data;
+
         if (data) {
             this._song = data.song;
         }

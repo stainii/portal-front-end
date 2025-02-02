@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {Execution} from "@app/recurring-tasks/execution.model";
 import {ActivatedRoute} from "@angular/router";
@@ -20,6 +20,9 @@ import { MatButton } from '@angular/material/button';
     imports: [FormsModule, ReactiveFormsModule, MatFormField, MatLabel, MatSelect, MatOption, MatInput, MatDatepickerInput, MatDatepickerToggle, MatSuffix, MatDatepicker, MatButton]
 })
 export class SetlistAddExecutionComponent implements OnInit {
+    private _formBuilder = inject(UntypedFormBuilder);
+    private _activatedRoute = inject(ActivatedRoute);
+
 
     addExecutionFormGroup: UntypedFormGroup;
 
@@ -28,10 +31,6 @@ export class SetlistAddExecutionComponent implements OnInit {
 
     @Output()
     onAddExecution = new EventEmitter<Execution>();
-
-    constructor(private _formBuilder: UntypedFormBuilder,
-                private _activatedRoute: ActivatedRoute) {
-    }
 
     ngOnInit() {
         this.addExecutionFormGroup = this._formBuilder.group({

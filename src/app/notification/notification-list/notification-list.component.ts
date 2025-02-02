@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import {Notification} from "../notification.model";
 import {NotificationService} from "../notification.service";
 import {ErrorService} from "@app/error/error.service";
@@ -14,11 +14,14 @@ import { NotificationComponent } from '../notification/notification.component';
     imports: [NotificationComponent]
 })
 export class NotificationListComponent implements OnDestroy {
+    private _notificationService = inject(NotificationService);
+    private _errorService = inject(ErrorService);
+
 
     notifications: Notification[];
     private destroy$ = new Subject<void>();
 
-    constructor(private _notificationService: NotificationService, private _errorService: ErrorService) {
+    constructor() {
         this._notificationService.findActiveNotifications()
             .pipe(takeUntil(this.destroy$))
             .subscribe(

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import {SearchActivitiesService} from "@app/activity/search-activities.service";
 import {Observable} from "rxjs";
 import {LabelService} from "@app/activity/label.service";
@@ -12,11 +12,11 @@ import { AsyncPipe } from '@angular/common';
     imports: [MatChipListbox, MatChipOption, AsyncPipe]
 })
 export class ActivityLabelsComponent implements OnInit {
+    private labelService = inject(LabelService);
+    private searchActivitiesService = inject(SearchActivitiesService);
+
 
     labels$: Observable<string[]>;
-
-    constructor(private labelService: LabelService, private searchActivitiesService: SearchActivitiesService) {
-    }
 
     ngOnInit(): void {
         this.labels$ = this.labelService.findAllLabels();

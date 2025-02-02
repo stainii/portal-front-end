@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import {Observable, Subject} from "rxjs";
 import {LabelService} from "@app/activity/label.service";
 import { MatChipInputEvent, MatChipGrid, MatChipRow, MatChipRemove, MatChipInput } from "@angular/material/chips";
@@ -18,6 +18,8 @@ import { MatOption } from '@angular/material/core';
     imports: [MatFormField, MatLabel, MatChipGrid, MatChipRow, MatIcon, MatChipRemove, FormsModule, MatAutocompleteTrigger, MatChipInput, ReactiveFormsModule, MatAutocomplete, MatOption, AsyncPipe]
 })
 export class ActivityManageLabelsComponent implements OnInit, OnDestroy {
+    private labelService = inject(LabelService);
+
 
     existingLabels: string[] = [];
     filteredLabels: Observable<string[]>;
@@ -36,7 +38,7 @@ export class ActivityManageLabelsComponent implements OnInit, OnDestroy {
 
     private destroy$ = new Subject<void>();
 
-    constructor(private labelService: LabelService) {
+    constructor() {
         this.filteredLabels = this.labelCtrl.valueChanges.pipe(
             startWith(null),
             map((label: string | null) => label ? this._filter(label) : this.existingLabels.slice()));

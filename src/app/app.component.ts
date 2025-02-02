@@ -1,4 +1,4 @@
-import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, inject } from '@angular/core';
 import {UserService} from "@app/user/user.service";
 import { Router, RouterOutlet } from "@angular/router";
 import {Subject} from "rxjs";
@@ -19,11 +19,11 @@ import { ErrorNotificationComponent } from './error/error-notification/error-not
     ],
 })
 export class AppComponent implements OnInit, OnDestroy {
+    private _userService = inject(UserService);
+    private _router = inject(Router);
+
 
     private destroy$ = new Subject<void>();
-
-    constructor(private _userService: UserService, private _router: Router) {
-    }
 
     ngOnInit(): void {
         this._userService.watchLoginStatus()

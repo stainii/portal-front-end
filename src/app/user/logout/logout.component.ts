@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {UserService} from "../user.service";
 import {Router} from "@angular/router";
 import { MatIcon } from '@angular/material/icon';
@@ -10,9 +10,9 @@ import { MatIcon } from '@angular/material/icon';
     imports: [MatIcon]
 })
 export class LogoutComponent {
+    private _userService = inject(UserService);
+    private _router = inject(Router);
 
-    constructor(private _userService: UserService, private _router: Router) {
-    }
 
     logOut() {
         this._userService.logOut();

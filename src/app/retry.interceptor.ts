@@ -2,17 +2,17 @@ import {delay, mergeMap, retryWhen} from "rxjs/operators";
 import {Observable, of, throwError} from "rxjs";
 import { HttpErrorResponse, HttpInterceptor } from "@angular/common/http";
 import {ErrorService} from "@app/error/error.service";
-import {Injectable} from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import {UserService} from "@app/user/user.service";
 
 @Injectable()
 export class RetryInterceptor implements HttpInterceptor {
+    private _errorService = inject(ErrorService);
+    private _userService = inject(UserService);
+
 
     static DEFAULT_MAX_ATTEMPTS = 10;
     static DEFAULT_BACKOFF = 10000;
-
-    constructor(private _errorService: ErrorService, private _userService: UserService) {
-    }
 
     intercept(req, next) {
         return next.handle(req)

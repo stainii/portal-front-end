@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import {TaskService} from "@app/todo/task.service";
 import {map, takeUntil} from "rxjs/operators";
 import {Observable, Subject} from "rxjs";
@@ -17,6 +17,11 @@ import { MatIcon } from '@angular/material/icon';
     imports: [MatFormField, MatSelect, MatOption, MatIcon, RouterLink, AsyncPipe]
 })
 export class TodoMenuBarForOverviewComponent implements OnInit, OnDestroy {
+    private _taskService = inject(TaskService);
+    private _breakpointObserver = inject(BreakpointObserver);
+    private _route = inject(ActivatedRoute);
+    private _router = inject(Router);
+
 
     contexts$: Observable<string[]>;
     selectedContext: string;
@@ -25,10 +30,6 @@ export class TodoMenuBarForOverviewComponent implements OnInit, OnDestroy {
         .pipe(map(result => result.matches));
 
     private destroy$ = new Subject<void>();
-
-    constructor(private _taskService: TaskService, private _breakpointObserver: BreakpointObserver,
-                private _route: ActivatedRoute, private _router: Router) {
-    }
 
     ngOnInit() {
         this.contexts$ = this._taskService.watchTasks()

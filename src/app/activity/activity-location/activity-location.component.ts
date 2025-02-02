@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import {SearchActivitiesService} from "@app/activity/search-activities.service";
 import {fromEvent, Subject} from "rxjs";
 import {distinctUntilChanged, map, takeUntil} from "rxjs/operators";
@@ -15,6 +15,9 @@ import { MatInput } from '@angular/material/input';
     imports: [MatCard, MatCardHeader, MatCardTitle, MatCardContent, FormsModule, MatFormField, MatInput]
 })
 export class ActivityLocationComponent implements OnInit, OnDestroy {
+    private searchActivitiesService = inject(SearchActivitiesService);
+    private randomAdjectiveService = inject(RandomAdjectiveService);
+
 
     location: string;
     placeholder: string;
@@ -23,9 +26,6 @@ export class ActivityLocationComponent implements OnInit, OnDestroy {
 
     @ViewChild('locationElement')
     locationElement: ElementRef;
-
-    constructor(private searchActivitiesService: SearchActivitiesService, private randomAdjectiveService: RandomAdjectiveService) {
-    }
 
     ngOnInit(): void {
         this.location = this.searchActivitiesService.getLocation();

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {Moment} from "moment";
@@ -9,6 +9,9 @@ import {ActivityHelperService} from "@app/activity/activity-helper.service";
     providedIn: 'root'
 })
 export class SearchActivitiesService {
+    private _http = inject(HttpClient);
+    private _activityHelper = inject(ActivityHelperService);
+
 
     private selectedLabels: string[] = [];
     private location: string;
@@ -18,7 +21,7 @@ export class SearchActivitiesService {
 
     private searchResults: BehaviorSubject<Activity[]> = new BehaviorSubject([]);
 
-    constructor(private _http: HttpClient, private _activityHelper: ActivityHelperService) {
+    constructor() {
         this.search();
     }
 

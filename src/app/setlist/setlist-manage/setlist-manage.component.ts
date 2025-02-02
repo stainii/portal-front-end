@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {RecurringTaskService} from "@app/recurring-tasks/recurring-task.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -19,15 +19,14 @@ import { MatFabButton } from '@angular/material/button';
     imports: [MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatIcon, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, MatFabButton]
 })
 export class SetlistManageComponent implements OnInit, OnDestroy {
+    private _recurringTaskService = inject(RecurringTaskService);
+    private _snackBar = inject(MatSnackBar);
+    private _dialog = inject(MatDialog);
+
 
     displayedColumns: string[] = ['name', 'minNumberOfDaysBetweenExecutions', 'maxNumberOfDaysBetweenExecutions', 'edit', 'delete',];
     setlist: RecurringTask[];
     private destroy$ = new Subject<void>();
-
-    constructor(private _recurringTaskService: RecurringTaskService,
-                private _snackBar: MatSnackBar,
-                private _dialog: MatDialog) {
-    }
 
     ngOnInit() {
         this._loadSetlist();
