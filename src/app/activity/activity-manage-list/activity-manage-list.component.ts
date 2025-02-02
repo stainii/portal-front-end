@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild, inject } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, inject, viewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
 import {ManageActivitiesService} from "@app/activity/manage-activities.service";
@@ -34,17 +34,13 @@ export class ActivityManageListComponent implements AfterViewInit, OnDestroy {
 
     isHandset$: Observable<boolean>;
 
-    @ViewChild(MatPaginator)
-    paginator: MatPaginator;
+    readonly paginator = viewChild(MatPaginator);
 
-    @ViewChild(MatTable)
-    table: MatTable<Activity>;
+    readonly table = viewChild(MatTable);
 
-    @ViewChild(MatSort)
-    sort: MatSort;
+    readonly sort = viewChild(MatSort);
 
-    @ViewChild("input")
-    filter: ElementRef;
+    readonly filter = viewChild<ElementRef>("input");
 
     private destroy$ = new Subject<void>();
 
@@ -58,9 +54,9 @@ export class ActivityManageListComponent implements AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit() {
-        let sortChangeEvent = this.sort.sortChange;
-        let pageChangeEvent = this.paginator.page;
-        let filterKeyUpEvent = fromEvent(this.filter.nativeElement, "keyup").pipe(debounceTime(1000));
+        let sortChangeEvent = this.sort().sortChange;
+        let pageChangeEvent = this.paginator().page;
+        let filterKeyUpEvent = fromEvent(this.filter().nativeElement, "keyup").pipe(debounceTime(1000));
 
         merge(sortChangeEvent, pageChangeEvent, filterKeyUpEvent)
             .pipe(
@@ -69,12 +65,12 @@ export class ActivityManageListComponent implements AfterViewInit, OnDestroy {
                 switchMap(() => {
                     this.isLoadingResults = true;
                     return this.manageActivitiesService!.find(
-                        this.sort.active, this.sort.direction, this.paginator.pageIndex, this.paginator.pageSize, this.filter.nativeElement.value);
+                        this.sort().active, this.sort().direction, this.paginator().pageIndex, this.paginator().pageSize, this.filter().nativeElement.value);
                 }),
                 map(data => {
                     // Flip flag to show that loading has finished.
                     this.isLoadingResults = false;
-                    this.paginator.length = data.totalElements;
+                    this.paginator().length = data.totalElements;
                     return data.content;
                 }),
                 catchError((error) => {
@@ -86,7 +82,7 @@ export class ActivityManageListComponent implements AfterViewInit, OnDestroy {
 
         sortChangeEvent
             .pipe(takeUntil(this.destroy$))
-            .subscribe(() => this.paginator.pageIndex = 0);
+            .subscribe(() => this.paginator().pageIndex = 0);
     }
 
     ngOnDestroy(): void {
@@ -104,7 +100,7 @@ export class ActivityManageListComponent implements AfterViewInit, OnDestroy {
                     .pipe(takeUntil(this.destroy$))
                     .subscribe(() => {
                         this.data.splice(this.data.indexOf(activity), 1);
-                        this.table.renderRows()
+                        this.table().renderRows()
                     });
             }
         });

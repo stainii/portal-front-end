@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, inject, viewChild, AfterViewInit} from '@angular/core';
 import {SearchActivitiesService} from "@app/activity/search-activities.service";
 import {fromEvent, Subject} from "rxjs";
 import {distinctUntilChanged, map, takeUntil} from "rxjs/operators";
@@ -14,7 +14,7 @@ import { MatInput } from '@angular/material/input';
     styleUrls: ['./activity-location.component.scss'],
     imports: [MatCard, MatCardHeader, MatCardTitle, MatCardContent, FormsModule, MatFormField, MatInput]
 })
-export class ActivityLocationComponent implements OnInit, OnDestroy {
+export class ActivityLocationComponent implements OnInit, OnDestroy, AfterViewInit {
     private searchActivitiesService = inject(SearchActivitiesService);
     private randomAdjectiveService = inject(RandomAdjectiveService);
 
@@ -24,8 +24,7 @@ export class ActivityLocationComponent implements OnInit, OnDestroy {
 
     private destroy$ = new Subject<void>();
 
-    @ViewChild('locationElement')
-    locationElement: ElementRef;
+    readonly locationElement = viewChild<ElementRef>('locationElement');
 
     ngOnInit(): void {
         this.location = this.searchActivitiesService.getLocation();
@@ -33,7 +32,7 @@ export class ActivityLocationComponent implements OnInit, OnDestroy {
     }
 
     ngAfterViewInit(): void {
-        fromEvent(this.locationElement.nativeElement, 'input')
+        fromEvent(this.locationElement().nativeElement, 'input')
             .pipe(
                 takeUntil(this.destroy$),
                 map((event: Event) => (event.target as HTMLInputElement).value),
