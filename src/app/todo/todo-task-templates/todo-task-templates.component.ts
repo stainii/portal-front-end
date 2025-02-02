@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input, output} from '@angular/core';
 import {NestedTreeControl} from "@angular/cdk/tree";
 import {TaskTemplate} from "@app/todo/task-template.model";
 import { MatTreeNestedDataSource, MatTree, MatTreeNodeDef, MatNestedTreeNode, MatTreeNodeToggle, MatTreeNodeOutlet, MatTreeNode } from "@angular/material/tree";
@@ -21,11 +21,9 @@ export class TodoTaskTemplatesComponent {
         this.dataSource.data = taskTemplates;
     }
 
-    @Output()
-    onEdit: EventEmitter<TaskTemplate> = new EventEmitter<TaskTemplate>();
+    readonly onEdit = output<TaskTemplate>();
 
-    @Output()
-    onDelete: EventEmitter<TaskTemplate> = new EventEmitter<TaskTemplate>();
+    readonly onDelete = output<TaskTemplate>();
 
     hasChild = (_: number, node: TaskTemplate) => !!node.taskDefinitions && node.taskDefinitions.length > 0;
 

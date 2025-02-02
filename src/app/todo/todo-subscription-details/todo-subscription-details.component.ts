@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, input} from '@angular/core';
+import {Component, input, output} from '@angular/core';
 import {TodoSubscription} from "@app/todo/todo-subscription.model";
 
 import { FormsModule } from '@angular/forms';
@@ -18,8 +18,7 @@ export class TodoSubscriptionDetailsComponent {
 
     readonly subscription = input<TodoSubscription>(undefined);
 
-    @Output()
-    onSave: EventEmitter<TodoSubscription> = new EventEmitter<TodoSubscription>();
+    readonly onSave = output<TodoSubscription>();
 
     constructor() {
     }

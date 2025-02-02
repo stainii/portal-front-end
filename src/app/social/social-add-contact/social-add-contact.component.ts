@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output, input} from '@angular/core';
+import {Component, OnInit, input, output} from '@angular/core';
 import {Contact} from "@app/social/contact.model";
 import {Person} from "@app/social/person.model";
 import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
@@ -15,11 +15,9 @@ import { MatButton } from '@angular/material/button';
 })
 export class SocialAddContactComponent implements OnInit {
 
-    @Output()
-    onCancel = new EventEmitter<any>();
+    readonly onCancel = output<any>();
 
-    @Output()
-    onSave = new EventEmitter<any>();
+    readonly onSave = output<any>();
 
     readonly person = input<Person>(undefined);
 
@@ -36,7 +34,7 @@ export class SocialAddContactComponent implements OnInit {
     }
 
     cancel() {
-        this.onCancel.emit();
+        this.onCancel.emit({});
     }
 
     save() {

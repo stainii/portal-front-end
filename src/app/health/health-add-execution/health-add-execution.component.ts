@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, inject, input } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges, inject, input, output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {Execution} from "@app/recurring-tasks/execution.model";
@@ -26,8 +26,7 @@ export class HealthAddExecutionComponent implements OnInit, OnChanges, OnDestroy
 
     readonly recurringTasks = input<RecurringTask[]>(undefined);
 
-    @Output()
-    onAddExecution = new EventEmitter<Execution>();
+    readonly onAddExecution = output<Execution>();
 
     private destroy$ = new Subject<void>();
 

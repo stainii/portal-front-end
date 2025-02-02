@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output, input} from '@angular/core';
+import {Component, OnInit, input, output} from '@angular/core';
 import {DateInterval} from "@app/activity/date-interval.model";
 import { MatCard } from '@angular/material/card';
 import { MatFormField } from '@angular/material/form-field';
@@ -17,8 +17,7 @@ export class ActivityManageDateIntervalComponent implements OnInit {
 
     readonly dateInterval = input<DateInterval>(undefined);
 
-    @Output()
-    delete: EventEmitter<DateInterval> = new EventEmitter<DateInterval>();
+    readonly delete = output<DateInterval>();
 
     constructor() {
     }

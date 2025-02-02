@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, SimpleChanges, inject, input } from '@angular/core';
+import { Component, OnInit, SimpleChanges, inject, input, output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {Execution} from "@app/recurring-tasks/execution.model";
 import {ActivatedRoute} from "@angular/router";
@@ -28,8 +28,7 @@ export class SetlistAddExecutionComponent implements OnInit {
 
     readonly setlist = input<Setlist>(undefined);
 
-    @Output()
-    onAddExecution = new EventEmitter<Execution>();
+    readonly onAddExecution = output<Execution>();
 
     ngOnInit() {
         this.addExecutionFormGroup = this._formBuilder.group({

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, Output, inject, input } from '@angular/core';
+import { Component, OnDestroy, inject, input, output } from '@angular/core';
 import {Notification} from "../notification.model";
 import {DateService} from "@app/util/date.service";
 import {NotificationService} from "../notification.service";
@@ -23,8 +23,7 @@ export class NotificationComponent implements OnDestroy {
 
     read: boolean = false;
 
-    @Output()
-    onRead: EventEmitter<Notification> = new EventEmitter<Notification>();
+    readonly onRead = output<Notification>();
 
     private destroy$ = new Subject<void>();
 

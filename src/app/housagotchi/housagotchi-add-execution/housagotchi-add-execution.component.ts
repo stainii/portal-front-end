@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, inject, input } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges, inject, input, output } from '@angular/core';
 import moment from "moment";
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
@@ -26,8 +26,7 @@ export class HousagotchiAddExecutionComponent implements OnInit, OnChanges, OnDe
 
     readonly recurringTasks = input<RecurringTask[]>(undefined);
 
-    @Output()
-    onAddExecution = new EventEmitter<Execution>();
+    readonly onAddExecution = output<Execution>();
 
     private destroy$ = new Subject<void>();
 

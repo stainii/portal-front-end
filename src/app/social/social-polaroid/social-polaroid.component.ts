@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, inject, input } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import {Person} from "@app/social/person.model";
 import moment from "moment";
 import {Contact} from "@app/social/contact.model";
@@ -19,8 +19,7 @@ export class SocialPolaroidComponent {
 
     readonly old = input<boolean>(undefined);
 
-    @Output()
-    onSave = new EventEmitter<Contact>();
+    readonly onSave = output<Contact>();
 
     flipped = false;
     rotateLeft: boolean;

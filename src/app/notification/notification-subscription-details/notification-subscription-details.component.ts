@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, input} from '@angular/core';
+import {Component, input, output} from '@angular/core';
 import {NotificationSubscription} from "../notification-subscription.model";
 
 import { FormsModule } from '@angular/forms';
@@ -18,8 +18,7 @@ export class NotificationSubscriptionDetailsComponent {
 
     readonly subscription = input<NotificationSubscription>(undefined);
 
-    @Output()
-    onSave: EventEmitter<NotificationSubscription> = new EventEmitter<NotificationSubscription>();
+    readonly onSave = output<NotificationSubscription>();
 
     constructor() {
     }

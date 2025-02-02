@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output, input} from '@angular/core';
+import {Component, input, output} from '@angular/core';
 import {Task} from '@app/todo/task.model';
 import {animate, keyframes, style, transition, trigger} from "@angular/animations";
 
@@ -32,11 +32,9 @@ export class TodoTaskPanelComponent {
 
     readonly task = input<Task>(undefined);
 
-    @Output()
-    public onEdit: EventEmitter<Task> = new EventEmitter<Task>();
+    public readonly onEdit = output<Task>();
 
-    @Output()
-    public onComplete: EventEmitter<Task> = new EventEmitter<Task>();
+    public readonly onComplete = output<Task>();
 
     destroyed: boolean;
     fillSize: number = TodoTaskPanelComponent.MIN_FILL_SIZE;

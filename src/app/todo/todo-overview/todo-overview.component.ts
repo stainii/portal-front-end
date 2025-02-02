@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject, output } from '@angular/core';
 import {Task} from "@app/todo/task.model";
 import {ActivatedRoute} from "@angular/router";
 import {taskComparator} from "@app/todo/task.comparator";
@@ -34,11 +34,9 @@ export class TodoOverviewComponent implements OnInit, OnDestroy {
         this.refreshTasksWhenPageRegainsFocus();
     };
 
-    @Output()
-    public onEdit: EventEmitter<Task> = new EventEmitter<Task>();
+    public readonly onEdit = output<Task>();
 
-    @Output()
-    public onComplete: EventEmitter<Task> = new EventEmitter<Task>();
+    public readonly onComplete = output<Task>();
 
     ngOnInit() {
         this._route

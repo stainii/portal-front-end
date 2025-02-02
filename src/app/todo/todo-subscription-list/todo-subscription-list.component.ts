@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input, output} from '@angular/core';
 import {TodoSubscription} from "@app/todo/todo-subscription.model";
 import { NgClass } from '@angular/common';
 import { MatButton } from '@angular/material/button';
@@ -23,8 +23,7 @@ export class TodoSubscriptionListComponent {
         return this._subscriptions;
     }
 
-    @Output()
-    subscriptionSelected: EventEmitter<TodoSubscription> = new EventEmitter<TodoSubscription>();
+    readonly subscriptionSelected = output<TodoSubscription>();
 
     selectedSubscription: TodoSubscription;
     private _subscriptions: TodoSubscription[];

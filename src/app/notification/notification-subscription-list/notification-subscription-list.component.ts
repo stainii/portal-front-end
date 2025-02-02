@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input, output} from '@angular/core';
 import {NotificationSubscription} from "../notification-subscription.model";
 import { NgClass } from '@angular/common';
 import { MatButton } from '@angular/material/button';
@@ -23,8 +23,7 @@ export class NotificationSubscriptionListComponent {
         return this._subscriptions;
     }
 
-    @Output()
-    subscriptionSelected: EventEmitter<NotificationSubscription> = new EventEmitter<NotificationSubscription>();
+    readonly subscriptionSelected = output<NotificationSubscription>();
 
     selectedSubscription: NotificationSubscription;
     private _subscriptions: NotificationSubscription[];
