@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Output, input} from '@angular/core';
 import {NotificationSubscription} from "../notification-subscription.model";
 
 import { FormsModule } from '@angular/forms';
@@ -16,8 +16,7 @@ import { MatButton } from '@angular/material/button';
 })
 export class NotificationSubscriptionDetailsComponent {
 
-    @Input()
-    subscription: NotificationSubscription;
+    readonly subscription = input<NotificationSubscription>(undefined);
 
     @Output()
     onSave: EventEmitter<NotificationSubscription> = new EventEmitter<NotificationSubscription>();
@@ -26,6 +25,6 @@ export class NotificationSubscriptionDetailsComponent {
     }
 
     save() {
-        this.onSave.emit(this.subscription);
+        this.onSave.emit(this.subscription());
     }
 }

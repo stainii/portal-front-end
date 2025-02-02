@@ -3,18 +3,18 @@
          [class.rotate-left]="rotateLeft"
          [class.rotate-right]="rotateRight"
          [class.flipped]="flipped"
-         [class.old]="old">
+         [class.old]="old()">
         <div class="face front" (click)="flip()">
             <span class="tint">
                 <img [src]="getImageUrl()"/>
             </span>
-            <h1>{{person.name}}</h1>
-            <h2>{{getLastContactInDaysAgo(person)}}</h2>
+            <h1>{{person().name}}</h1>
+            <h2>{{getLastContactInDaysAgo(person())}}</h2>
         </div>
         <div class="face back">
             <app-social-add-contact (onCancel)="cancel()"
                                     (onSave)="save($event)"
-                                    [person]="person">
+                                    [person]="person()">
             </app-social-add-contact>
         </div>
     </div>

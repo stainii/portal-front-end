@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit, input} from '@angular/core';
 import {Setlist} from "@app/setlist/setlist.model";
 
 
@@ -10,8 +10,7 @@ import {Setlist} from "@app/setlist/setlist.model";
 })
 export class SetlistListComponent implements OnInit {
 
-    @Input()
-    public setlist: Setlist;
+    public readonly setlist = input<Setlist>(undefined);
 
     constructor() {
     }

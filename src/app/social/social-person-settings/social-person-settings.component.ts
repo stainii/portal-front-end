@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import {Person} from "@app/social/person.model";
 import moment from "moment";
 import {SocialService} from "@app/social/social.service";
@@ -14,18 +14,18 @@ export class SocialPersonSettingsComponent {
     private _socialService = inject(SocialService);
 
 
-    @Input()
-    public person: Person;
+    public readonly person = input<Person>(undefined);
 
     getLastContactInDaysAgo = () => {
-        if (this.person && this.person.lastContact) {
-            return moment().startOf("day").diff(moment(this.person.lastContact).startOf("day"), "days") + " days ago";
+        const person = this.person();
+        if (person && person.lastContact) {
+            return moment().startOf("day").diff(moment(person.lastContact).startOf("day"), "days") + " days ago";
         } else {
             return "unknown";
         }
     };
 
     getImageUrl() {
-        return this._socialService.getImageUrl(this.person.colorThumbnail);
+        return this._socialService.getImageUrl(this.person().colorThumbnail);
     }
 }

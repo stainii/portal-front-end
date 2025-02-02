@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit, input} from '@angular/core';
 import {Activity} from "@app/activity/activity.model";
 
 import { ActivitySearchResultComponent } from '../activity-search-result/activity-search-result.component';
@@ -11,8 +11,7 @@ import { ActivitySearchResultComponent } from '../activity-search-result/activit
 })
 export class ActivitySearchResultsComponent implements OnInit {
 
-    @Input()
-    activities: Activity[];
+    readonly activities = input<Activity[]>(undefined);
 
     constructor() {
     }

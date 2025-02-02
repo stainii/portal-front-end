@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, input } from '@angular/core';
 import {Activity} from "@app/activity/activity.model";
 import {ActivityHelperService} from "@app/activity/activity-helper.service";
 import { MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardFooter } from '@angular/material/card';
@@ -14,15 +14,15 @@ export class ActivitySearchResultComponent implements OnInit {
     private activityHelper = inject(ActivityHelperService);
 
 
-    @Input()
-    activity: Activity;
+    readonly activity = input<Activity>(undefined);
 
     ngOnInit(): void {
     }
 
     formattedLocation() {
-        if (this.activity && this.activity.location) {
-            let parts = [this.activity.location.city, this.activity.location.province, this.activity.location.country];
+        const activity = this.activity();
+        if (activity && activity.location) {
+            let parts = [activity.location.city, activity.location.province, activity.location.country];
             let formattedLocation = "";
             for(let part of parts) {
                 if (part) {

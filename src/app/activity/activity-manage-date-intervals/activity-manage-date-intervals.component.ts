@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit, input} from '@angular/core';
 import {DateInterval} from "@app/activity/date-interval.model";
 
 import { ActivityManageDateIntervalComponent } from '../activity-manage-date-interval/activity-manage-date-interval.component';
@@ -12,8 +12,7 @@ import { MatButton } from '@angular/material/button';
 })
 export class ActivityManageDateIntervalsComponent implements OnInit {
 
-    @Input()
-    dateIntervals: DateInterval[]
+    readonly dateIntervals = input<DateInterval[]>(undefined);
 
     constructor() {
     }
@@ -23,7 +22,7 @@ export class ActivityManageDateIntervalsComponent implements OnInit {
     }
 
     createNewDateInterval() {
-        this.dateIntervals.push({
+        this.dateIntervals().push({
             startDay: undefined,
             startMonth: undefined,
             startYear: undefined,
@@ -36,8 +35,8 @@ export class ActivityManageDateIntervalsComponent implements OnInit {
     }
 
     deleteDateInterval(dateInterval: DateInterval) {
-        let index = this.dateIntervals.indexOf(dateInterval);
-        this.dateIntervals.splice(index, 1);
+        let index = this.dateIntervals().indexOf(dateInterval);
+        this.dateIntervals().splice(index, 1);
     }
 
 }

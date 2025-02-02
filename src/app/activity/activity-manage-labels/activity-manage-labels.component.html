@@ -1,7 +1,7 @@
 <mat-form-field class="labels">
   <mat-label>Labels</mat-label>
   <mat-chip-grid #chipList aria-label="Labels">
-    @for (label of labels; track label) {
+    @for (label of labels(); track label) {
       <mat-chip-row
         [removable]="true"
         (removed)="remove(label)">

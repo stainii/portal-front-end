@@ -1,8 +1,8 @@
 @if (!destroyed) {
-  <mat-expansion-panel [class.focus]="task.hasTypeFocus()"
-    [class.goals]="task.hasTypeGoals()"
-    [class.fit-in]="task.hasTypeFitIn()"
-    [class.back-burner]="task.hasTypeBackBurner()"
+  <mat-expansion-panel [class.focus]="task().hasTypeFocus()"
+    [class.goals]="task().hasTypeGoals()"
+    [class.fit-in]="task().hasTypeFitIn()"
+    [class.back-burner]="task().hasTypeBackBurner()"
     (swiperight)="complete()"
     (pan)="fill($event)"
     (panend)="revertFill()"
@@ -14,13 +14,13 @@
       <div mat-card-avatar></div>
       <mat-panel-title>
         <div class="task-panel-header">
-          <div class="name">{{task.name}}</div>
-          <div class="remaining-time"><sub>{{task.getRemainingTime()}}</sub></div>
+          <div class="name">{{task().name}}</div>
+          <div class="remaining-time"><sub>{{task().getRemainingTime()}}</sub></div>
         </div>
       </mat-panel-title>
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
-      <p class="description">{{task.description}}</p>
+      <p class="description">{{task().description}}</p>
       <mat-action-row>
         <button mat-button (click)="showDetails()">
           <mat-icon aria-label="Edit task">edit</mat-icon>

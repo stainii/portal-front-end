@@ -6,7 +6,7 @@
       name="task"
       formControlName="selectedRecurringTask"
       required>
-      @for (recurringTask of recurringTasks; track recurringTask) {
+      @for (recurringTask of recurringTasks(); track recurringTask) {
         <mat-option
         [value]="recurringTask">{{recurringTask.name}}</mat-option>
       }

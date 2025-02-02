@@ -1,11 +1,11 @@
-@if (subscription) {
+@if (subscription()) {
   <form #subscriptionForm="ngForm">
     <mat-form-field>
       <mat-label>Origin</mat-label>
       <input id="origin"
         name="origin"
         matInput
-        [(ngModel)]="subscription.origin"
+        [(ngModel)]="subscription().origin"
         required/>
       <mat-hint>The name of the app</mat-hint>
     </mat-form-field>
@@ -14,7 +14,7 @@
       <input id="activationCondition"
         name="activationCondition"
         matInput
-        [(ngModel)]="subscription.activationCondition"
+        [(ngModel)]="subscription().activationCondition"
         required/>
       <mat-hint>When does an event cause a new notification? Always? Use true</mat-hint>
     </mat-form-field>
@@ -23,7 +23,7 @@
       <input id="cancellationCondition"
         name="cancellationCondition"
         matInput
-        [(ngModel)]="subscription.cancellationCondition"
+        [(ngModel)]="subscription().cancellationCondition"
         required/>
       <mat-hint>When does an event cause no new notification, but a cancellation of previous events?</mat-hint>
     </mat-form-field>
@@ -31,20 +31,20 @@
       <mat-label>When should the notification be published?</mat-label>
       <mat-select id="publishStrategy"
         name="publishStrategy"
-        [(ngModel)]="subscription.publishStrategy"
+        [(ngModel)]="subscription().publishStrategy"
         required>
         <mat-option value="PUBLISH_IMMEDIATELY">Publish immediately</mat-option>
         <mat-option value="PUBLISH_WITHIN_24_HOURS">Publish within 24 hours</mat-option>
         <mat-option value="PUBLISH_AT_SPECIFIC_DATE_TIME">Publish at a specific date time</mat-option>
       </mat-select>
     </mat-form-field>
-    @if (subscription.publishStrategy == 'PUBLISH_AT_SPECIFIC_DATE_TIME') {
+    @if (subscription().publishStrategy == 'PUBLISH_AT_SPECIFIC_DATE_TIME') {
       <mat-form-field>
         <mat-label>Schedule date time</mat-label>
         <input id="scheduleDateTime"
           name="scheduleDateTime"
           matInput
-          [(ngModel)]="subscription.mappingToNotification.mappingOfScheduleDateTime"
+          [(ngModel)]="subscription().mappingToNotification.mappingOfScheduleDateTime"
           required/>
         <mat-hint>Something like data['dueDate'].</mat-hint>
       </mat-form-field>
@@ -56,7 +56,7 @@
         name="title"
         matInput
         class="form-control"
-        [(ngModel)]="subscription.mappingToNotification.mappingOfTitle"
+        [(ngModel)]="subscription().mappingToNotification.mappingOfTitle"
         required>
       </textarea>
     </mat-form-field>
@@ -66,7 +66,7 @@
         name="message"
         matInput
         class="form-control"
-        [(ngModel)]="subscription.mappingToNotification.mappingOfMessage"
+        [(ngModel)]="subscription().mappingToNotification.mappingOfMessage"
         required>
       </textarea>
     </mat-form-field>
@@ -74,7 +74,7 @@
       <mat-label>Action button text</mat-label>
       <input id="actionText" name="actionText"
         matInput
-        [(ngModel)]="subscription.mappingToNotification.mappingOfActionText"
+        [(ngModel)]="subscription().mappingToNotification.mappingOfActionText"
         required/>
       <mat-hint>Something like 'Cool!'</mat-hint>
     </mat-form-field>
@@ -83,7 +83,7 @@
       <input id="actionUrl"
         name="actionUrl"
         matInput
-        [(ngModel)]="subscription.mappingToNotification.mappingOfActionUrl"
+        [(ngModel)]="subscription().mappingToNotification.mappingOfActionUrl"
         required/>
       <mat-hint>Something like 'http://www.stijnhooft.be'</mat-hint>
     </mat-form-field>

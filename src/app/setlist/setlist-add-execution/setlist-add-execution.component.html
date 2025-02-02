@@ -6,7 +6,7 @@
       name="task"
       formControlName="selectedSong"
       required>
-      @for (song of setlist?.songs; track song) {
+      @for (song of setlist()?.songs; track song) {
         <mat-option
         [value]="song">{{song.name}}</mat-option>
       }

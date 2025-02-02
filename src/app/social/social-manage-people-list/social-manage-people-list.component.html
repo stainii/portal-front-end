@@ -1,5 +1,5 @@
 <div class="list">
-  @for (person of people; track person) {
+  @for (person of people(); track person) {
     <app-social-person-settings
       [person]="person"
       (click)="clicked(person, $event)">

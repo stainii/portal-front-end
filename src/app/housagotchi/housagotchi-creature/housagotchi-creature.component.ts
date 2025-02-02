@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, inject, input } from '@angular/core';
 import {HousagotchiReportService} from "@app/housagotchi/housagotchi-report.service";
 import {Report} from "@app/housagotchi/report.model";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
@@ -15,8 +15,7 @@ export class HousagotchiCreatureComponent implements OnInit, OnChanges {
     private _reportService = inject(HousagotchiReportService);
 
 
-    @Input()
-    recurringTasks: RecurringTask[];
+    readonly recurringTasks = input<RecurringTask[]>(undefined);
 
     report: Report;
 
@@ -33,7 +32,7 @@ export class HousagotchiCreatureComponent implements OnInit, OnChanges {
     }
 
     updateReport() {
-        this.report = this._reportService.assemble(this.recurringTasks);
+        this.report = this._reportService.assemble(this.recurringTasks());
     }
 
 }

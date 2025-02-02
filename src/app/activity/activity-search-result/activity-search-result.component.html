@@ -1,22 +1,22 @@
 <mat-card class="card">
   <div class="col-text">
     <mat-card-header>
-      <mat-card-title class="no-left-margin">{{activity.name}}</mat-card-title>
+      <mat-card-title class="no-left-margin">{{activity().name}}</mat-card-title>
       <mat-card-subtitle>{{formattedLocation()}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>{{activity.description}}</p>
+      <p>{{activity().description}}</p>
     </mat-card-content>
     <mat-card-footer>
-      @for (label of activity.labels; track label) {
+      @for (label of activity().labels; track label) {
         <span class="label">#{{label}}&nbsp;</span>
       }
     </mat-card-footer>
   </div>
   <div class="col-img">
-    @if (activity.photo) {
+    @if (activity().photo) {
       <img class="activity-image"
-        [src]="getPhotoUrl(activity.photo)"
+        [src]="getPhotoUrl(activity().photo)"
         >
     }
   </div>

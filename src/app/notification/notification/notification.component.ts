@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, Output, inject } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, Output, inject, input } from '@angular/core';
 import {Notification} from "../notification.model";
 import {DateService} from "@app/util/date.service";
 import {NotificationService} from "../notification.service";
@@ -19,8 +19,7 @@ export class NotificationComponent implements OnDestroy {
     private _notificationService = inject(NotificationService);
 
 
-    @Input()
-    notification: Notification;
+    readonly notification = input<Notification>(undefined);
 
     read: boolean = false;
 
@@ -43,7 +42,7 @@ export class NotificationComponent implements OnDestroy {
             .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
                 this.read = true;
-                this.onRead.emit(this.notification);
+                this.onRead.emit(this.notification());
             });
     }
 

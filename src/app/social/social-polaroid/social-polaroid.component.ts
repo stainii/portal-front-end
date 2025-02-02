@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Output, inject, input } from '@angular/core';
 import {Person} from "@app/social/person.model";
 import moment from "moment";
 import {Contact} from "@app/social/contact.model";
@@ -15,11 +15,9 @@ export class SocialPolaroidComponent {
     private _socialService = inject(SocialService);
 
 
-    @Input()
-    person: Person;
+    readonly person = input<Person>(undefined);
 
-    @Input()
-    old: boolean;
+    readonly old = input<boolean>(undefined);
 
     @Output()
     onSave = new EventEmitter<Contact>();
@@ -59,7 +57,7 @@ export class SocialPolaroidComponent {
     }
 
     getImageUrl() {
-        let thumbnail = this.old ? this.person.sepiaThumbnail : this.person.colorThumbnail;
+        let thumbnail = this.old() ? this.person().sepiaThumbnail : this.person().colorThumbnail;
         return this._socialService.getImageUrl(thumbnail);
     }
 }

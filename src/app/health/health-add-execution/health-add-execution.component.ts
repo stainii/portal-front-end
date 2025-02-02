@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, inject } from '@angular/core';
+import { Component, EventEmitter, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, inject, input } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {RecurringTask} from "@app/recurring-tasks/recurring-task.model";
 import {Execution} from "@app/recurring-tasks/execution.model";
@@ -24,8 +24,7 @@ export class HealthAddExecutionComponent implements OnInit, OnChanges, OnDestroy
 
     addExecutionFormGroup: UntypedFormGroup;
 
-    @Input()
-    recurringTasks: RecurringTask[];
+    readonly recurringTasks = input<RecurringTask[]>(undefined);
 
     @Output()
     onAddExecution = new EventEmitter<Execution>();
@@ -38,8 +37,9 @@ export class HealthAddExecutionComponent implements OnInit, OnChanges, OnDestroy
             selectedDate: moment()
         });
 
-        if (Array.isArray(this.recurringTasks)) {
-            this._selectRecurringTask(this.recurringTasks[0]);
+        const recurringTasks = this.recurringTasks();
+        if (Array.isArray(recurringTasks)) {
+            this._selectRecurringTask(recurringTasks[0]);
         }
     }
 
@@ -50,7 +50,7 @@ export class HealthAddExecutionComponent implements OnInit, OnChanges, OnDestroy
 
         for (let propName in changes) {
             if (propName == "recurringTasks") {
-                this.recurringTasks.forEach(newTask => {
+                this.recurringTasks().forEach(newTask => {
                     if (newTask.name == this.addExecutionFormGroup.value.selectedRecurringTask.name) {
                         this._selectRecurringTask(newTask);
                     }
@@ -73,7 +73,8 @@ export class HealthAddExecutionComponent implements OnInit, OnChanges, OnDestroy
     }
 
     private _selectRecurringTask(task: RecurringTask) {
-        if (Array.isArray(this.recurringTasks) && this.recurringTasks.length > 0) {
+        const recurringTasks = this.recurringTasks();
+        if (Array.isArray(recurringTasks) && recurringTasks.length > 0) {
             this.addExecutionFormGroup.controls['selectedRecurringTask']
                 .setValue(task);
         }

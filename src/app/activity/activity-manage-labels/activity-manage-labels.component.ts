@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject, input } from '@angular/core';
 import {Observable, Subject} from "rxjs";
 import {LabelService} from "@app/activity/label.service";
 import { MatChipInputEvent, MatChipGrid, MatChipRow, MatChipRemove, MatChipInput } from "@angular/material/chips";
@@ -24,8 +24,7 @@ export class ActivityManageLabelsComponent implements OnInit, OnDestroy {
     existingLabels: string[] = [];
     filteredLabels: Observable<string[]>;
 
-    @Input()
-    labels: string[];
+    readonly labels = input<string[]>(undefined);
 
     labelCtrl = new UntypedFormControl();
     separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -61,7 +60,7 @@ export class ActivityManageLabelsComponent implements OnInit, OnDestroy {
         const value = event.value;
 
         if ((value || '').trim()) {
-            this.labels.push(value.trim());
+            this.labels().push(value.trim());
         }
 
         // Reset the input value
@@ -73,15 +72,15 @@ export class ActivityManageLabelsComponent implements OnInit, OnDestroy {
     }
 
     remove(label: string): void {
-        const index = this.labels.indexOf(label);
+        const index = this.labels().indexOf(label);
 
         if (index >= 0) {
-            this.labels.splice(index, 1);
+            this.labels().splice(index, 1);
         }
     }
 
     selected(event: MatAutocompleteSelectedEvent): void {
-        this.labels.push(event.option.viewValue);
+        this.labels().push(event.option.viewValue);
         this.labelInput.nativeElement.value = '';
         this.labelCtrl.setValue(null);
     }

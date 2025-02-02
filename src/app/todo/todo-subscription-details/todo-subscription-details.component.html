@@ -1,10 +1,10 @@
-@if (subscription) {
+@if (subscription()) {
   <form #subscriptionForm="ngForm">
     <mat-form-field>
       <input id="origin"
         name="origin"
         matInput
-        [(ngModel)]="subscription.origin"
+        [(ngModel)]="subscription().origin"
         placeholder="Origin"
         required/>
       <mat-hint>The name of the app</mat-hint>
@@ -13,7 +13,7 @@
       <input id="creationCondition"
         name="creationCondition"
         matInput
-        [(ngModel)]="subscription.creationCondition"
+        [(ngModel)]="subscription().creationCondition"
         placeholder="Creation condition"
         required/>
       <mat-hint>When does an event cause a new task? Always? Use true</mat-hint>
@@ -22,7 +22,7 @@
       <input id="completeCondition"
         name="completeCondition"
         matInput
-        [(ngModel)]="subscription.completeCondition"
+        [(ngModel)]="subscription().completeCondition"
         placeholder="Complete condition"
         required/>
       <mat-hint>When does an event complete a task?</mat-hint>
@@ -34,7 +34,7 @@
         matInput
         class="form-control"
         placeholder="Name"
-        [(ngModel)]="subscription.mappingToTask.mappingOfName"
+        [(ngModel)]="subscription().mappingToTask.mappingOfName"
         required>
       </textarea>
     </mat-form-field>
@@ -42,7 +42,7 @@
       <input id="context"
         name="context"
         matInput
-        [(ngModel)]="subscription.mappingToTask.mappingOfContext"
+        [(ngModel)]="subscription().mappingToTask.mappingOfContext"
         placeholder="Context"
         required/>
     </mat-form-field>
@@ -50,11 +50,11 @@
       <input id="dueDateTime"
         name="dueDateTime"
         matInput
-        [(ngModel)]="subscription.mappingToTask.mappingOfDueDate"
+        [(ngModel)]="subscription().mappingToTask.mappingOfDueDate"
         placeholder="Due date" />
     </mat-form-field>
     <mat-form-field>
-      <mat-select [(ngModel)]="subscription.mappingToTask.mappingOfImportance"
+      <mat-select [(ngModel)]="subscription().mappingToTask.mappingOfImportance"
         id="importance"
         name="importance">
         <mat-option>None</mat-option>
@@ -71,7 +71,7 @@
         matInput
         class="form-control"
         placeholder="Description"
-        [(ngModel)]="subscription.mappingToTask.mappingOfDescription">
+        [(ngModel)]="subscription().mappingToTask.mappingOfDescription">
       </textarea>
     </mat-form-field>
     <button type="submit"

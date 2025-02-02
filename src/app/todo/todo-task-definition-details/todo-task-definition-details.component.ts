@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit, input} from '@angular/core';
 import {TaskDefinition} from "@app/todo/task-definition.model";
 import {environment} from "@env/environment";
 import { MatStepper, MatStep, MatStepLabel } from '@angular/material/stepper';
@@ -19,8 +19,7 @@ export class TodoTaskDefinitionDetailsComponent implements OnInit {
 
     DEFAULT_TASK_CONTEXT = environment.defaultTaskContext;
 
-    @Input()
-    taskDefinition: TaskDefinition;
+    readonly taskDefinition = input<TaskDefinition>(undefined);
 
     constructor() {
     }

@@ -5,7 +5,7 @@
 
         <div class="card-text">
             <mat-card-header>
-                <mat-card-title>{{person.name}}</mat-card-title>
+                <mat-card-title>{{person().name}}</mat-card-title>
                 <mat-card-subtitle>{{getLastContactInDaysAgo()}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
@@ -15,7 +15,7 @@
                             Min.
                         </span>
                         <span class="days-between-contacts-container-content">
-                            {{person.minNumberOfDaysBetweenContacts}} days
+                            {{person().minNumberOfDaysBetweenContacts}} days
                         </span>
                     </div>
                     <div class="days-between-contacts-container">
@@ -23,7 +23,7 @@
                             Max.
                         </span>
                         <span class="days-between-contacts-container-content">
-                            {{person.maxNumberOfDaysBetweenContacts}} days
+                            {{person().maxNumberOfDaysBetweenContacts}} days
                         </span>
                     </div>
                 </div>

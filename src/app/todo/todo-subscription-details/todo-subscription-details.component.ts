@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Output, input} from '@angular/core';
 import {TodoSubscription} from "@app/todo/todo-subscription.model";
 
 import { FormsModule } from '@angular/forms';
@@ -16,8 +16,7 @@ import { MatButton } from '@angular/material/button';
 })
 export class TodoSubscriptionDetailsComponent {
 
-    @Input()
-    subscription: TodoSubscription;
+    readonly subscription = input<TodoSubscription>(undefined);
 
     @Output()
     onSave: EventEmitter<TodoSubscription> = new EventEmitter<TodoSubscription>();
@@ -26,7 +25,7 @@ export class TodoSubscriptionDetailsComponent {
     }
 
     save() {
-        this.onSave.emit(this.subscription);
+        this.onSave.emit(this.subscription());
     }
 
 }

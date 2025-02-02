@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, SimpleChanges, inject, input } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {Execution} from "@app/recurring-tasks/execution.model";
 import {ActivatedRoute} from "@angular/router";
@@ -26,8 +26,7 @@ export class SetlistAddExecutionComponent implements OnInit {
 
     addExecutionFormGroup: UntypedFormGroup;
 
-    @Input()
-    setlist: Setlist;
+    readonly setlist = input<Setlist>(undefined);
 
     @Output()
     onAddExecution = new EventEmitter<Execution>();
@@ -38,8 +37,9 @@ export class SetlistAddExecutionComponent implements OnInit {
             selectedDate: moment()
         });
 
-        if (this.setlist) {
-            this._selectSong(this.setlist.songs[0]);
+        const setlist = this.setlist();
+        if (setlist) {
+            this._selectSong(setlist.songs[0]);
         }
     }
 
@@ -50,7 +50,7 @@ export class SetlistAddExecutionComponent implements OnInit {
 
         for (let propName in changes) {
             if (propName == "setlist") {
-                this.setlist.songs.forEach(song => {
+                this.setlist().songs.forEach(song => {
                     if (song.name == this.addExecutionFormGroup.value.selectedSong.name) {
                         this._selectSong(song);
                     }
@@ -69,7 +69,8 @@ export class SetlistAddExecutionComponent implements OnInit {
     }
 
     private _selectSong(song: Song) {
-        if (this.setlist && this.setlist.songs && this.setlist.songs.length > 0) {
+        const setlist = this.setlist();
+        if (setlist && setlist.songs && setlist.songs.length > 0) {
             this.addExecutionFormGroup.controls['selectedSong']
                 .setValue(song);
         }

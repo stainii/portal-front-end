@@ -1,7 +1,7 @@
 <h1 class="heading heading--stroke heading--halftone heading--halftone-color">Setlist</h1>
 
 <ul>
-  @for (song of setlist?.songs; track song) {
+  @for (song of setlist()?.songs; track song) {
     <li [class.overdue]="song.overdue">
       {{song.name}}
     </li>

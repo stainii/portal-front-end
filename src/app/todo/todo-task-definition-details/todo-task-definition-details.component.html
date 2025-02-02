@@ -1,24 +1,24 @@
 <mat-vertical-stepper>
-    <mat-step [completed]="taskDefinition.name!!">
+    <mat-step [completed]="taskDefinition().name!!">
         <ng-template matStepLabel>What needs to be done?*</ng-template>
         <mat-form-field>
             <input required
                    matInput
-                   [(ngModel)]="taskDefinition.name"
+                   [(ngModel)]="taskDefinition().name"
                    matTooltip="You can use the variable names, which you've defined above, by using this notation: ${myVariableName}">
         </mat-form-field>
     </mat-step>
-    <mat-step [completed]="taskDefinition.context!! && DEFAULT_TASK_CONTEXT">
+    <mat-step [completed]="taskDefinition().context!! && DEFAULT_TASK_CONTEXT">
         <ng-template matStepLabel>What is the context?</ng-template>
         <mat-form-field>
-            <input matInput [(ngModel)]="taskDefinition.context"
+            <input matInput [(ngModel)]="taskDefinition().context"
                    matTooltip="You can use the variable names, which you've defined above, by using this notation: ${myVariableName}">
         </mat-form-field>
     </mat-step>
-    <mat-step [completed]="taskDefinition.importance!!">
+    <mat-step [completed]="taskDefinition().importance!!">
         <ng-template matStepLabel>How important is the task?</ng-template>
         <mat-form-field>
-            <mat-select [(ngModel)]="taskDefinition.importance">
+            <mat-select [(ngModel)]="taskDefinition().importance">
                 <mat-option>None</mat-option>
                 <mat-option value="I_DO_NOT_REALLY_CARE">I do not really care</mat-option>
                 <mat-option value="NOT_SO_IMPORTANT">Not so important</mat-option>
@@ -27,49 +27,49 @@
             </mat-select>
         </mat-form-field>
     </mat-step>
-    <mat-step [completed]="taskDefinition.dueDateDeviationDays!!">
+    <mat-step [completed]="taskDefinition().dueDateDeviationDays!!">
         <ng-template matStepLabel>Deviation of due date in days</ng-template>
         <mat-form-field>
-            <input matInput type="number" [(ngModel)]="taskDefinition.dueDateDeviationDays">
+            <input matInput type="number" [(ngModel)]="taskDefinition().dueDateDeviationDays">
         </mat-form-field>
     </mat-step>
-    <mat-step [completed]="taskDefinition.dueDateDeviationBase!!">
+    <mat-step [completed]="taskDefinition().dueDateDeviationBase!!">
         <ng-template matStepLabel>Deviation of due date from...</ng-template>
         <mat-form-field>
-            <mat-select [(ngModel)]="taskDefinition.dueDateDeviationBase">
+            <mat-select [(ngModel)]="taskDefinition().dueDateDeviationBase">
                 <mat-option value="DUE_DATE">Due date of main task</mat-option>
                 <mat-option value="START_DATE">Start date of main task</mat-option>
             </mat-select>
         </mat-form-field>
     </mat-step>
-    <mat-step [completed]="taskDefinition.startDateDeviationDays!!">
+    <mat-step [completed]="taskDefinition().startDateDeviationDays!!">
         <ng-template matStepLabel>Deviation of the start date in days</ng-template>
         <mat-form-field>
-            <input matInput type="number" [(ngModel)]="taskDefinition.startDateDeviationDays">
+            <input matInput type="number" [(ngModel)]="taskDefinition().startDateDeviationDays">
         </mat-form-field>
     </mat-step>
-    <mat-step [completed]="taskDefinition.startDateDeviationBase!!">
+    <mat-step [completed]="taskDefinition().startDateDeviationBase!!">
         <ng-template matStepLabel>Deviation of the start date from...</ng-template>
         <mat-form-field>
-            <mat-select [(ngModel)]="taskDefinition.startDateDeviationBase">
+            <mat-select [(ngModel)]="taskDefinition().startDateDeviationBase">
                 <mat-option value="START_DATE">From start date of main task</mat-option>
                 <mat-option value="DUE_DATE">From due date of main task</mat-option>
             </mat-select>
         </mat-form-field>
     </mat-step>
-    <mat-step [completed]="taskDefinition.expectedDurationInHours!!">
+    <mat-step [completed]="taskDefinition().expectedDurationInHours!!">
         <ng-template matStepLabel>How long will it take?</ng-template>
         <mat-form-field>
-            <input matInput type="number" [(ngModel)]="taskDefinition.expectedDurationInHours">
+            <input matInput type="number" [(ngModel)]="taskDefinition().expectedDurationInHours">
         </mat-form-field>
         <span> hours</span>
     </mat-step>
-    <mat-step [completed]="taskDefinition.description!!">
+    <mat-step [completed]="taskDefinition().description!!">
         <ng-template matStepLabel>Extra information?</ng-template>
         <mat-form-field>
             <textarea matInput
                       placeholder="What needs to be done, in detail?"
-                      [(ngModel)]="taskDefinition.description"
+                      [(ngModel)]="taskDefinition().description"
                       matTooltip="You can use the variable names, which you've defined above, by using this notation: ${myVariableName}"></textarea>
         </mat-form-field>
     </mat-step>

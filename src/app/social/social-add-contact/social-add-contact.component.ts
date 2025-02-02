@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, input} from '@angular/core';
 import {Contact} from "@app/social/contact.model";
 import {Person} from "@app/social/person.model";
 import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
@@ -21,8 +21,7 @@ export class SocialAddContactComponent implements OnInit {
     @Output()
     onSave = new EventEmitter<any>();
 
-    @Input()
-    person: Person;
+    readonly person = input<Person>(undefined);
 
     contact: Contact;
 
@@ -31,8 +30,8 @@ export class SocialAddContactComponent implements OnInit {
 
     ngOnInit(): void {
         this.contact = {
-            latestUpdates: this.person.latestUpdates,
-            lastContact: this.person.lastContact
+            latestUpdates: this.person().latestUpdates,
+            lastContact: this.person().lastContact
         }
     }
 
@@ -43,7 +42,7 @@ export class SocialAddContactComponent implements OnInit {
     save() {
         this.onSave.emit({
             contact: this.contact,
-            person: this.person
+            person: this.person()
         });
     }
 

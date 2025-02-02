@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Output, input} from '@angular/core';
 import {Person} from "@app/social/person.model";
 
 import { SocialPersonSettingsComponent } from '../social-person-settings/social-person-settings.component';
@@ -11,8 +11,7 @@ import { SocialPersonSettingsComponent } from '../social-person-settings/social-
 })
 export class SocialManagePeopleListComponent {
 
-    @Input()
-    people: Person[];
+    readonly people = input<Person[]>(undefined);
 
     @Output()
     onClick = new EventEmitter<any>()
