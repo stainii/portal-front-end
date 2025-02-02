@@ -1,36 +1,32 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ActivityAppComponent} from "@app/activity/activity-app/activity-app.component";
-import {
-    ActivityMenuBarForSearchComponent
-} from "@app/activity/activity-menu-bar-for-search/activity-menu-bar-for-search.component";
-import {
-    ActivityMenuBarForManageComponent
-} from "@app/activity/activity-menu-bar-for-manage/activity-menu-bar-for-manage.component";
-import {ActivityManageListComponent} from "@app/activity/activity-manage-list/activity-manage-list.component";
-import {ActivityManageDetailsComponent} from "@app/activity/activity-manage-details/activity-manage-details.component";
+
+
+
+
+
 
 
 const routes: Routes = [{
     path: "",
-    component: ActivityAppComponent,
+    loadComponent: () => import('@app/activity/activity-app/activity-app.component').then(m => m.ActivityAppComponent),
 }, {
     path: "",
-    component: ActivityMenuBarForSearchComponent,
+    loadComponent: () => import('@app/activity/activity-menu-bar-for-search/activity-menu-bar-for-search.component').then(m => m.ActivityMenuBarForSearchComponent),
     outlet: "menuBar"
 }, {
     path: "manage",
-    component: ActivityManageListComponent,
+    loadComponent: () => import('@app/activity/activity-manage-list/activity-manage-list.component').then(m => m.ActivityManageListComponent),
 }, {
     path: "manage",
-    component: ActivityMenuBarForManageComponent,
+    loadComponent: () => import('@app/activity/activity-menu-bar-for-manage/activity-menu-bar-for-manage.component').then(m => m.ActivityMenuBarForManageComponent),
     outlet: "menuBar"
 }, {
     path: "manage/:id",
-    component: ActivityManageDetailsComponent,
+    loadComponent: () => import('@app/activity/activity-manage-details/activity-manage-details.component').then(m => m.ActivityManageDetailsComponent),
 }, {
     path: "manage/:id",
-    component: ActivityMenuBarForManageComponent,
+    loadComponent: () => import('@app/activity/activity-menu-bar-for-manage/activity-menu-bar-for-manage.component').then(m => m.ActivityMenuBarForManageComponent),
     outlet: "menuBar"
 }];
 

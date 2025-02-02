@@ -1,15 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HousagotchiAppComponent} from "@app/housagotchi/housagotchi-app/housagotchi-app.component";
-import {
-    HousagotchiManageRecurringTasksComponent
-} from "@app/housagotchi/housagotchi-manage-recurring-tasks/housagotchi-manage-recurring-tasks.component";
-import {
-    HousagotchiMenuBarForCreatureComponent
-} from "@app/housagotchi/housagotchi-menu-bar-for-creature/housagotchi-menu-bar-for-creature.component";
-import {
-    HousagotchiMenuBarForManageRecurringTasksComponent
-} from "@app/housagotchi/housagotchi-menu-bar-for-manage-recurring-tasks/housagotchi-menu-bar-for-manage-recurring-tasks.component";
+
+
+
+
 
 const routes: Routes = [{
     path: "",
@@ -20,17 +14,17 @@ const routes: Routes = [{
     outlet: "menuBar"
 }, {
     path: "creature",
-    component: HousagotchiAppComponent,
+    loadComponent: () => import('@app/housagotchi/housagotchi-app/housagotchi-app.component').then(m => m.HousagotchiAppComponent),
 }, {
     path: "creature",
-    component: HousagotchiMenuBarForCreatureComponent,
+    loadComponent: () => import('@app/housagotchi/housagotchi-menu-bar-for-creature/housagotchi-menu-bar-for-creature.component').then(m => m.HousagotchiMenuBarForCreatureComponent),
     outlet: "menuBar"
 }, {
     path: "recurring-tasks",
-    component: HousagotchiManageRecurringTasksComponent,
+    loadComponent: () => import('@app/housagotchi/housagotchi-manage-recurring-tasks/housagotchi-manage-recurring-tasks.component').then(m => m.HousagotchiManageRecurringTasksComponent),
 }, {
     path: "recurring-tasks",
-    component: HousagotchiMenuBarForManageRecurringTasksComponent,
+    loadComponent: () => import('@app/housagotchi/housagotchi-menu-bar-for-manage-recurring-tasks/housagotchi-menu-bar-for-manage-recurring-tasks.component').then(m => m.HousagotchiMenuBarForManageRecurringTasksComponent),
     outlet: "menuBar"
 }];
 

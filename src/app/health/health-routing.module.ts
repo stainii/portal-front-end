@@ -1,15 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HealthAppComponent} from "@app/health/health-app/health-app.component";
-import {
-    HealthMenuBarForSportySpiceComponent
-} from "@app/health/health-menu-bar-for-sporty-spice/health-menu-bar-for-sporty-spice.component";
-import {
-    HealthManageRecurringTasksComponent
-} from "@app/health/health-manage-recurring-tasks/health-manage-recurring-tasks.component";
-import {
-    HealthMenuBarForManageRecurringTasksComponent
-} from "@app/health/health-menu-bar-for-manage-recurring-tasks/health-menu-bar-for-manage-recurring-tasks.component";
+
+
+
+
 
 
 const routes: Routes = [{
@@ -21,17 +15,17 @@ const routes: Routes = [{
     outlet: "menuBar"
 }, {
     path: "status",
-    component: HealthAppComponent,
+    loadComponent: () => import('@app/health/health-app/health-app.component').then(m => m.HealthAppComponent),
 }, {
     path: "status",
-    component: HealthMenuBarForSportySpiceComponent,
+    loadComponent: () => import('@app/health/health-menu-bar-for-sporty-spice/health-menu-bar-for-sporty-spice.component').then(m => m.HealthMenuBarForSportySpiceComponent),
     outlet: "menuBar"
 }, {
     path: "recurring-tasks",
-    component: HealthManageRecurringTasksComponent,
+    loadComponent: () => import('@app/health/health-manage-recurring-tasks/health-manage-recurring-tasks.component').then(m => m.HealthManageRecurringTasksComponent),
 }, {
     path: "recurring-tasks",
-    component: HealthMenuBarForManageRecurringTasksComponent,
+    loadComponent: () => import('@app/health/health-menu-bar-for-manage-recurring-tasks/health-menu-bar-for-manage-recurring-tasks.component').then(m => m.HealthMenuBarForManageRecurringTasksComponent),
     outlet: "menuBar"
 }];
 

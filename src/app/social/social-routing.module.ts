@@ -1,13 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {
-    SocialMenuBarForOverviewComponent
-} from "@app/social/social-menu-bar-for-overview/social-menu-bar-for-overview.component";
-import {SocialManagePeopleComponent} from "@app/social/social-manage-people/social-manage-people.component";
-import {
-    SocialMenuBarForManagePeopleComponent
-} from "@app/social/social-menu-bar-for-manage-people/social-menu-bar-for-manage-people.component";
-import {SocialOverviewComponent} from "@app/social/social-overview/social-overview.component";
+
+
+
+
 
 
 const routes: Routes = [{
@@ -19,17 +15,17 @@ const routes: Routes = [{
     outlet: "menuBar"
 }, {
     path: "overview",
-    component: SocialOverviewComponent,
+    loadComponent: () => import('@app/social/social-overview/social-overview.component').then(m => m.SocialOverviewComponent),
 }, {
     path: "overview",
-    component: SocialMenuBarForOverviewComponent,
+    loadComponent: () => import('@app/social/social-menu-bar-for-overview/social-menu-bar-for-overview.component').then(m => m.SocialMenuBarForOverviewComponent),
     outlet: "menuBar"
 }, {
     path: "manage-people",
-    component: SocialManagePeopleComponent,
+    loadComponent: () => import('@app/social/social-manage-people/social-manage-people.component').then(m => m.SocialManagePeopleComponent),
 }, {
     path: "manage-people",
-    component: SocialMenuBarForManagePeopleComponent,
+    loadComponent: () => import('@app/social/social-menu-bar-for-manage-people/social-menu-bar-for-manage-people.component').then(m => m.SocialMenuBarForManagePeopleComponent),
     outlet: "menuBar"
 }];
 

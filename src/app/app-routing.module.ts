@@ -2,12 +2,12 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthenticationGuardService} from "@app/user/authentication-guard.service";
 import {LoginPageGuardService} from "@app/user/login-page-guard.service";
-import {LoginComponent} from "@app/user/login/login.component";
+
 
 const routes: Routes = [
     {
         path: 'login',
-        component: LoginComponent,
+        loadComponent: () => import('@app/user/login/login.component').then(m => m.LoginComponent),
         canActivate: [LoginPageGuardService]
     }, {
         path: 'notifications',
@@ -39,7 +39,7 @@ const routes: Routes = [
         canActivate: [AuthenticationGuardService]
     }, {
         path: "**",
-        component: LoginComponent,
+        loadComponent: () => import('@app/user/login/login.component').then(m => m.LoginComponent),
         canActivate: [LoginPageGuardService]
     }
 ];

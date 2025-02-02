@@ -1,17 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {
-    TodoMenuBarForOverviewComponent
-} from "@app/todo/todo-menu-bar-for-overview/todo-menu-bar-for-overview.component";
-import {TodoAppComponent} from "@app/todo/todo-app/todo-app.component";
-import {
-    TodoMenuBarForTemplatesComponent
-} from "@app/todo/todo-menu-bar-for-templates/todo-menu-bar-for-templates.component";
-import {TodoTemplatesComponent} from "@app/todo/todo-templates/todo-templates.component";
-import {TodoSubscriptionEditorComponent} from "@app/todo/todo-subscription-editor/todo-subscription-editor.component";
-import {
-    TodoMenuBarForSubscriptionsComponent
-} from "@app/todo/todo-menu-bar-for-subscriptions/todo-menu-bar-for-subscriptions.component";
+
+
+
+
+
+
 
 const routes: Routes = [{
     path: "",
@@ -22,24 +16,24 @@ const routes: Routes = [{
     outlet: "menuBar"
 }, {
     path: "overview",
-    component: TodoAppComponent
+    loadComponent: () => import('@app/todo/todo-app/todo-app.component').then(m => m.TodoAppComponent)
 }, {
     path: "overview",
-    component: TodoMenuBarForOverviewComponent,
+    loadComponent: () => import('@app/todo/todo-menu-bar-for-overview/todo-menu-bar-for-overview.component').then(m => m.TodoMenuBarForOverviewComponent),
     outlet: "menuBar"
 }, {
     path: "templates",
-    component: TodoTemplatesComponent
+    loadComponent: () => import('@app/todo/todo-templates/todo-templates.component').then(m => m.TodoTemplatesComponent)
 }, {
     path: "templates",
-    component: TodoMenuBarForTemplatesComponent,
+    loadComponent: () => import('@app/todo/todo-menu-bar-for-templates/todo-menu-bar-for-templates.component').then(m => m.TodoMenuBarForTemplatesComponent),
     outlet: "menuBar"
 },  {
     path: "subscriptions",
-    component: TodoSubscriptionEditorComponent,
+    loadComponent: () => import('@app/todo/todo-subscription-editor/todo-subscription-editor.component').then(m => m.TodoSubscriptionEditorComponent),
 }, {
     path: "subscriptions",
-    component: TodoMenuBarForSubscriptionsComponent,
+    loadComponent: () => import('@app/todo/todo-menu-bar-for-subscriptions/todo-menu-bar-for-subscriptions.component').then(m => m.TodoMenuBarForSubscriptionsComponent),
     outlet: "menuBar"
 }];
 
