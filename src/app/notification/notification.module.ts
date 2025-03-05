@@ -6,22 +6,20 @@ import {NotificationListComponent} from './notification-list/notification-list.c
 import {NotificationAppComponent} from './notification-app/notification-app.component';
 import {NotificationComponent} from "@app/notification/notification/notification.component";
 import {
-    NotificationSubscriptionEditorComponent
+  NotificationSubscriptionEditorComponent
 } from "@app/notification/notification-subscription-editor/notification-subscription-editor.component";
 import {
-    NotificationSubscriptionDetailsComponent
+  NotificationSubscriptionDetailsComponent
 } from "@app/notification/notification-subscription-details/notification-subscription-details.component";
 import {
-    NotificationSubscriptionListComponent
+  NotificationSubscriptionListComponent
 } from "@app/notification/notification-subscription-list/notification-subscription-list.component";
 import {FormsModule} from "@angular/forms";
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
-import {AuthenticationHttpInterceptor} from "@app/user/authentication.interceptor";
 import {
-    NotificationMenuBarForListComponent
+  NotificationMenuBarForListComponent
 } from './notification-menu-bar-for-list/notification-menu-bar-for-list.component';
 import {
-    NotificationMenuBarForSubscriptionsComponent
+  NotificationMenuBarForSubscriptionsComponent
 } from './notification-menu-bar-for-subscriptions/notification-menu-bar-for-subscriptions.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
@@ -30,33 +28,40 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatListModule} from "@angular/material/list";
 import {MatSelectModule} from "@angular/material/select";
+import {provideHttpClient, withInterceptors, withInterceptorsFromDi} from "@angular/common/http";
+import {includeBearerTokenInterceptor} from "keycloak-angular";
 
 @NgModule({
-    imports: [CommonModule,
-        NotificationRoutingModule,
-        FormsModule,
-        MatIconModule,
-        MatCardModule,
-        MatButtonModule,
-        MatIconModule,
-        MatListModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule, NotificationListComponent,
-        NotificationAppComponent,
-        NotificationComponent,
-        NotificationSubscriptionEditorComponent,
-        NotificationSubscriptionListComponent,
-        NotificationSubscriptionDetailsComponent,
-        NotificationMenuBarForListComponent,
-        NotificationMenuBarForSubscriptionsComponent], providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: AuthenticationHttpInterceptor,
-            multi: true
-        },
-        provideHttpClient(withInterceptorsFromDi())
-    ] })
+  imports: [CommonModule,
+    NotificationRoutingModule,
+    FormsModule,
+    MatIconModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule, NotificationListComponent,
+    NotificationAppComponent,
+    NotificationComponent,
+    NotificationSubscriptionEditorComponent,
+    NotificationSubscriptionListComponent,
+    NotificationSubscriptionDetailsComponent,
+    NotificationMenuBarForListComponent,
+    NotificationMenuBarForSubscriptionsComponent
+  ],
+  providers: [
+    provideHttpClient(
+      withInterceptorsFromDi(),
+      withInterceptors([
+          includeBearerTokenInterceptor
+        ]
+      )
+    )
+  ]
+})
+
 export class NotificationModule {
 }

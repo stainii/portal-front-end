@@ -1,27 +1,24 @@
-import { Injectable, inject } from '@angular/core';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from "@angular/router";
-import {Observable} from "rxjs";
-import {UserService} from "./user.service";
+import {ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot, UrlTree} from "@angular/router";
+import {AuthGuardData, createAuthGuard} from 'keycloak-angular';
+import {UserService} from "@app/user/user.service";
+import {inject} from "@angular/core";
 
 /**
  * Guard for the router.
  * Checks if the user is logged in, before letting him/her go to any page.
  */
-@Injectable({
-    providedIn: 'root'
-})
-export class AuthenticationGuardService  {
-    private _userService = inject(UserService);
-    private _router = inject(Router);
+const isAccessAllowed = async (
+    route: ActivatedRouteSnapshot,
+    _: RouterStateSnapshot,
+    authData: AuthGuardData
+): Promise<boolean | UrlTree> => {
+    const {authenticated, grantedRoles} = authData;
 
-
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        if (this._userService.isLoggedIn()) {
-            return true;
-        } else {
-            this._router.navigate(["login"]);
-            return false;
-        }
+    if(!authenticated) {
+        await inject(UserService).login();
     }
 
-}
+    return authenticated;
+};
+
+export const canActivateAuthRole = createAuthGuard<CanActivateFn>(isAccessAllowed);

@@ -1,11 +1,35 @@
 {
-    "/api/": {
-        "target": "https://portal.stijnhooft.be",
-        "pathRewrite": {
-            "^/api": ""
-        },
-        "secure": false,
-        "changeOrigin": true,
-        "logLevel": "debug"
-    }
+  "/api/keycloak": {
+    "target": "http://localhost:8080",
+    "pathRewrite": {
+      "^/api/keycloak": ""
+    },
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/resources/": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/api/notifications": {
+    "target": "http://localhost:2003",
+    "pathRewrite": {
+      "^/api/notifications/": ""
+    },
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "trace"
+  },
+  "/api/": {
+    "target": "https://portal.stijnhooft.be",
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
 }

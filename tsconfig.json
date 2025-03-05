@@ -2,14 +2,15 @@
     "compileOnSave": false,
     "compilerOptions": {
       "baseUrl": "./",
-      "module": "es2020",
       "esModuleInterop": true,
       "outDir": "../resources/public/out-tsc",
       "sourceMap": true,
       "declaration": false,
-      "moduleResolution": "node",
+      "moduleResolution": "bundler",
       "experimentalDecorators": true,
       "target": "ES2022",
+      "module": "ES2022",
+      "lib": ["ES2022", "dom"],
       "typeRoots": [
         "node_modules/@types"
       ],
@@ -24,10 +25,6 @@
           "node_modules/core-js/proposals/reflect-metadata"
         ]
       },
-      "lib": [
-        "es2017",
-        "dom"
-      ],
       "useDefineForClassFields": false
     }
 }

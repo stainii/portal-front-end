@@ -5,8 +5,8 @@
     fixedInViewport="true"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="shouldShowNavigation && !(isHandset$ | async)">
-    <mat-toolbar color="primary" [class.hidden]="!shouldShowNavigation">
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">
       @if (isHandset$ | async) {
         <span>Menu</span>
       }
@@ -14,12 +14,10 @@
         <span>Portal</span>
       }
     </mat-toolbar>
-    @if (shouldShowNavigation) {
-      <app-menu></app-menu>
-    }
+    <app-menu></app-menu>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary" [class.hidden]="!shouldShowNavigation">
+    <mat-toolbar color="primary">
       <!-- left -->
       @if (isHandset$ | async) {
         <button
@@ -27,7 +25,7 @@
           aria-label="Toggle sidenav"
           mat-icon-button
           (click)="drawer.toggle()"
-          >
+        >
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
