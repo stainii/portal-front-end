@@ -11,6 +11,7 @@ import {ErrorService} from "@app/error/error.service";
 import {TaskPatchResult} from "@app/todo/task-patch-result.model";
 import {LocalStorageService} from "@app/util/local-storage.service";
 import {UserService} from "@app/user/user.service";
+import {SSE} from "sse.js";
 
 /**
  * This repository is the single source of truth regarding the current state of tasks and their patches.
@@ -29,7 +30,7 @@ export class TaskRepository {
 
 
   private _taskWatcher: BehaviorSubject<Task[]>;
-  private _taskTail: EventSource;
+  private _taskTail: SSE;
 
   constructor() {
     this._taskWatcher = new BehaviorSubject([]);
@@ -134,7 +135,7 @@ export class TaskRepository {
   }
 
   private _watchChangesToTasks() {
-    this._taskTail = new EventSource("/api/todo/api/task/patch/?tail&jwt=" + this.userService.token());
+    this._taskTail = new SSE("/api/todo/api/task/patch/?tail", { headers: { 'Authorization': 'Bearer ' + this.userService.token() } });
 
     this._taskTail.addEventListener('message', (event: MessageEvent) => {
       console.info("New task patches were sent by the server.");

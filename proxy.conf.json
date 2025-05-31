@@ -23,6 +23,15 @@
     "changeOrigin": true,
     "logLevel": "trace"
   },
+  "/api/todo": {
+    "target": "http://localhost:2007",
+    "pathRewrite": {
+      "^/api/todo/": ""
+    },
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "trace"
+  },
   "/api/": {
     "target": "https://portal.stijnhooft.be",
     "pathRewrite": {
