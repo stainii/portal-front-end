@@ -32,6 +32,15 @@
     "changeOrigin": true,
     "logLevel": "trace"
   },
+  "/api/housagotchi": {
+    "target": "http://localhost:2002",
+    "pathRewrite": {
+      "^/api/housagotchi/": ""
+    },
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "trace"
+  },
   "/api/": {
     "target": "https://portal.stijnhooft.be",
     "pathRewrite": {
